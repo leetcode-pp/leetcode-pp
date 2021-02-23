@@ -1,3 +1,4 @@
-import BasicLayout from './BasicLayout.vue'
+import Layout from './Layout.vue'
+import '@/common/less/layout.less'
 
-export { BasicLayout }
+export default Layout

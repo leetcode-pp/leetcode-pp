@@ -31,7 +31,7 @@
     "src/**/*.tsx",
     "src/**/*.vue",
     "tests/**/*.ts",
-    "tests/**/*.tsx", "src/core/lazy_lib/components_use.ts", "src/components/GlobalFooter/index.js", "src/components/GlobalHeader/index.js", "src/layouts/index.ts"
+    "tests/**/*.tsx", "src/lazy_lib/components_use.ts", "src/components/LayoutFooter/index.ts", "src/components/LayoutHeader/index.ts", "src/layouts/index.ts", "src/router/index.ts", "src/router/router.config.ts"
   ],
   "exclude": [
     "node_modules"
