@@ -27,7 +27,10 @@
         @click="handleVideo(item.aid)"
         class="video-item"
       >
-        <img class="video-item-cover" :src="item.cover" />
+        <img
+          class="video-item-cover"
+          :src="item.cover + '@180w_100h_1e_1c.webp'"
+        />
         <article class="video-item-descript">
           <p class="video-item-p video-item-title">{{ item.title }}</p>
           <p class="video-item-p video-item-detail">
