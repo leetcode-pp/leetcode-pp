@@ -35,13 +35,13 @@
           <p class="video-item-p video-item-title">{{ item.title }}</p>
           <p class="video-item-p video-item-detail">
             <a-button
-              v-if="item.problemsLink"
+              v-if="item.link"
               type="link"
               size="small"
               class="video-item-detail-play"
-              @click="e => viewProblems(e, item.problemsLink)"
+              @click="e => openLink(e, item.link)"
             >
-              查看题目
+              文字版
             </a-button>
             <span v-else class="video-item-detail-play"> lucifer</span>
 
@@ -182,9 +182,9 @@ export default {
       this.tagList = tagList
       this.videoList = vlist
     },
-    viewProblems(e, problemsLink) {
+    openLink(e, link) {
       e.stopPropagation()
-      window.location.href = problemsLink
+      window.location.href = link
     },
     handleInputChange(e) {
       this.searchWorld = e.target.value
@@ -211,14 +211,23 @@ export default {
     getAllVideos() {
       return Promise.resolve([
         {
+          aid: 971961728,
+          tid: 6, // 春招/秋招
+          title: '搞定春招之虾皮篇（前端岗）',
+          cover:
+            'http://i2.hdslb.com/bfs/archive/a167605754245dd311424c2f0c9f3e8d926eb468.jpg',
+          created: 1614823665,
+          link:
+            'https://mp.weixin.qq.com/s?__biz=MzI4MzUxNjI3OA==&mid=2247487632&idx=1&sn=830fe267d835e5acbfc417787f85f1c1&chksm=eb88dc89dcff559f49913c0f2dec77b1d06c2ddbe2c6c299b32b3e49c2efaf8b11ac0aedce8f&token=1676518002&lang=zh_CN#rd'
+        },
+        {
           aid: 79269711,
           tid: 1,
           title: '【大前端模拟面试】- 2019-12-14',
           cover:
             'http://i1.hdslb.com/bfs/archive/6e8b0751dcc43f8f8b06fa31920ba2a002cca13c.jpg',
           created: 1576332558,
-          problemsLink:
-            'https://lucifer.ren/fe-interview/#/mock-interview/2019-12-14'
+          link: 'https://lucifer.ren/fe-interview/#/mock-interview/2019-12-14'
         },
         {
           aid: 90738781,
@@ -227,8 +236,7 @@ export default {
           cover:
             'http://i0.hdslb.com/bfs/archive/7a51a328134118bceef0579e04c068b44f42bd40.jpg',
           created: 1582313002,
-          problemsLink:
-            'https://lucifer.ren/fe-interview/#/mock-interview/2020-02-20'
+          link: 'https://lucifer.ren/fe-interview/#/mock-interview/2020-02-20'
         },
         {
           aid: 76756338,
@@ -236,7 +244,8 @@ export default {
           tid: 5,
           cover:
             'http://i2.hdslb.com/bfs/archive/63331bbb5340fbf9f01c7e47a0872d2912b42991.jpg',
-          created: 1574511732
+          created: 1574511732,
+          link: 'https://github.com/azl397985856/mac-setup'
         },
         {
           aid: 64313957,
@@ -285,7 +294,9 @@ export default {
           tid: 3,
           title: '91 天学算法第三期视频会议',
           cover:
-            'http://i0.hdslb.com/bfs/archive/e34ebf4c0492ed2171e2d0723b71156f27f036b0.jpg'
+            'http://i0.hdslb.com/bfs/archive/e34ebf4c0492ed2171e2d0723b71156f27f036b0.jpg',
+          link:
+            'https://mp.weixin.qq.com/s?__biz=MzI4MzUxNjI3OA==&mid=2247487620&idx=1&sn=5f2b73c5b57c6451ca1fe1bcbb036a80&chksm=eb88dc9ddcff558bf74c367b6c71055cb190cd72b60a08664e11c216183f716f689f176cf3b9&token=1676518002&lang=zh_CN#rd'
         },
         {
           tid: 2,
@@ -309,7 +320,8 @@ export default {
           title: '帮助你高效刷题的插件了解一下？',
           cover:
             'http://i1.hdslb.com/bfs/archive/61d32eb509ef1822884c4ee48c644f9b97dfcada.jpg',
-          created: 1591438281
+          created: 1591438281,
+          link: 'https://lucifer.ren/blog/2020/08/16/leetcode-cheat/'
         },
         {
           tid: 2,
@@ -380,6 +392,11 @@ export default {
               name: '效率',
               tid: 5,
               count: vlist.filter(v => v.tid === 5).length
+            },
+            school: {
+              name: '校招',
+              tid: 6,
+              count: vlist.filter(v => v.tid === 6).length
             }
           },
           vlist,
