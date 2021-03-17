@@ -193,11 +193,8 @@ export default {
       this.currentTagId = tid
       this.onSearch()
     },
-    // 点击某一作品,打开iframe开始播放视频
     handleVideo(aid) {
-      this.videoSrc = `//player.bilibili.com/player.html?aid=${aid}`
-      this.isShowVideo = true
-      this.videoLoading = true
+      window.open(`https://www.bilibili.com/video/av${aid}`)
     },
     // 视频加载完毕时
     videoOnLoad() {
@@ -212,6 +209,7 @@ export default {
       return Promise.resolve([
         {
           aid: 971961728,
+          bvid: 'BV1bp4y1H7KT',
           tid: 6, // 春招/秋招
           title: '搞定春招之虾皮篇（前端岗）',
           cover:
@@ -224,6 +222,7 @@ export default {
           aid: 799648825,
           tid: 6,
           title: '搞定春招之腾讯&钉钉篇）',
+          bvid: 'BV1Qy4y187Em',
           cover:
             'http://i1.hdslb.com/bfs/archive/13547a8934c66ec0bf69b4518715b17194485315.jpg',
           created: 1615889895,
@@ -232,6 +231,7 @@ export default {
         {
           aid: 79269711,
           tid: 1,
+          bvid: 'BV1RJ411r7jj',
           title: '【大前端模拟面试】- 2019-12-14',
           cover:
             'http://i1.hdslb.com/bfs/archive/6e8b0751dcc43f8f8b06fa31920ba2a002cca13c.jpg',
@@ -249,6 +249,7 @@ export default {
         },
         {
           aid: 76756338,
+          bvid: 'BV1RJ411d7XT',
           title: 'mac装机（前端工程师）',
           tid: 5,
           cover:
@@ -258,6 +259,7 @@ export default {
         },
         {
           aid: 64313957,
+          bvid: 'BV1V4411o7AP',
           tid: 4,
           title: '大前端 每日一题 - 实现一个简单的移动端debug工具',
           cover:
@@ -266,6 +268,7 @@ export default {
         },
         {
           aid: 840090130,
+          bvid: 'BV1M54y1d7h2',
           tid: 2,
           title:
             '【贪心~双指针】 881. 求生艇 (\tBoats to Save People  ) LeetCode',
@@ -275,6 +278,7 @@ export default {
         },
         {
           aid: 95571324,
+          bvid: 'BV1rE411L7eH',
           tid: 2,
           title: '【树】 404. 左叶子之和 (Sum of Left Leaves) LeetCode',
           cover:
@@ -285,6 +289,7 @@ export default {
         {
           aid: 670114626,
           tid: 3,
+          bvid: 'BV1pa4y1s7g2',
           title: '【力扣加加】91天学算法 - 基础篇',
           cover:
             'http://i0.hdslb.com/bfs/archive/0a700ea680450ea379928f871d34c26a8cb3d8b0.jpg',
@@ -293,6 +298,7 @@ export default {
         {
           aid: 627510315,
           tid: 3,
+          bvid: 'BV17t4y1i71G',
           title: '【力扣加加】91算法先导篇',
           cover:
             'http://i2.hdslb.com/bfs/archive/5e5cc5f6ed4901f9f9ce6ca8b07b71f28917c874.jpg',
@@ -301,6 +307,7 @@ export default {
         {
           aid: 886975432,
           tid: 3,
+          bvid: 'BV1qK4y1J7DD',
           title: '91 天学算法第三期视频会议',
           cover:
             'http://i0.hdslb.com/bfs/archive/e34ebf4c0492ed2171e2d0723b71156f27f036b0.jpg',
@@ -310,6 +317,7 @@ export default {
         {
           tid: 2,
           aid: 797618520,
+          bvid: 'BV1fy4y1r7pX',
           title: '【力扣加加】 二分图',
           cover:
             'http://i0.hdslb.com/bfs/archive/36d6e1555831615a1187d02a13bf9e028ab2cf3a.jpg',
@@ -318,6 +326,7 @@ export default {
         {
           tid: 2,
           aid: 285933298,
+          bvid: 'BV11f4y127Se',
           title: '【哈希表~双指针】 141. 环形链表 142. 环形链表 II  LeetCode',
           cover:
             'http://i1.hdslb.com/bfs/archive/cbf54f882261167938353e0c77e5e458420e006e.jpg',
@@ -326,6 +335,7 @@ export default {
         {
           tid: 5,
           aid: 883465515,
+          bvid: 'BV1UK4y1x7zj',
           title: '帮助你高效刷题的插件了解一下？',
           cover:
             'http://i1.hdslb.com/bfs/archive/61d32eb509ef1822884c4ee48c644f9b97dfcada.jpg',
@@ -334,6 +344,7 @@ export default {
         },
         {
           tid: 2,
+          bvid: 'BV1GT4y137W9',
           aid: 925519225,
           title:
             '【递归，分治】 236.最近公共祖先 (Lowest Common Ancestor of a Binary Tree) LeetCode',
@@ -344,6 +355,7 @@ export default {
         {
           tid: 2,
           aid: 667788596,
+          bvid: 'BV1Xa4y1x7st',
           title:
             '【记忆化递归，动态规划】 44.通配符匹配（wildcard-matching） LeetCode',
           cover:
@@ -353,6 +365,7 @@ export default {
         {
           tid: 2,
           aid: 455316365,
+          bvid: 'BV1f5411t7cF',
           title: '【栈，中心扩展】 32.最长有效括号 LeetCode',
           cover:
             'http://i1.hdslb.com/bfs/archive/3313371f0f1e7d4ba0937ee58c08faa4cf9ae725.jpg',
@@ -361,6 +374,7 @@ export default {
         {
           tid: 2,
           aid: 840186648,
+          bvid: 'BV1N54y197Xe',
           title: '【树】 1367.二叉树中的列表  LeetCode',
           cover:
             'http://i1.hdslb.com/bfs/archive/cab8977ce7f830be929c97b2540f56e4961b4fb6.jpg',
@@ -369,6 +383,7 @@ export default {
         {
           tid: 2,
           aid: 752707742,
+          bvid: 'BV1Rk4y197AJ',
           title: '【二叉树的搜索】 1379. 找出克隆二叉树中的相同节点 LeetCode',
           cover:
             'http://i0.hdslb.com/bfs/archive/1ce7bec2be397f6688569e220aa396f89442be78.jpg',
