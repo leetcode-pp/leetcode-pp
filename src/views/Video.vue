@@ -27,10 +27,7 @@
         @click="handleVideo(item.aid)"
         class="video-item"
       >
-        <img
-          class="video-item-cover"
-          :src="item.cover + '@180w_100h_1e_1c.webp'"
-        />
+        <img class="video-item-cover" :src="item.cover" />
         <article class="video-item-descript">
           <p class="video-item-p video-item-title">{{ item.title }}</p>
           <p class="video-item-p video-item-detail">
@@ -213,7 +210,7 @@ export default {
           tid: 6, // 春招/秋招
           title: '搞定春招之虾皮篇（前端岗）',
           cover:
-            'http://i2.hdslb.com/bfs/archive/a167605754245dd311424c2f0c9f3e8d926eb468.jpg',
+            'https://tva1.sinaimg.cn/large/008eGmZEly1gomv0k4jo5j31c00u0akj.jpg',
           created: 1614823665,
           link:
             'https://mp.weixin.qq.com/s?__biz=MzI4MzUxNjI3OA==&mid=2247487632&idx=1&sn=830fe267d835e5acbfc417787f85f1c1&chksm=eb88dc89dcff559f49913c0f2dec77b1d06c2ddbe2c6c299b32b3e49c2efaf8b11ac0aedce8f&token=1676518002&lang=zh_CN#rd'
@@ -224,7 +221,7 @@ export default {
           title: '搞定春招之腾讯&钉钉篇）',
           bvid: 'BV1Qy4y187Em',
           cover:
-            'http://i1.hdslb.com/bfs/archive/13547a8934c66ec0bf69b4518715b17194485315.jpg',
+            'https://tva1.sinaimg.cn/large/008eGmZEly1gomv0lfjvuj31c00u0alc.jpg',
           created: 1615889895,
           link: 'https://lucifer.ren/blog/2021/03/11/school-02/'
         },
@@ -234,7 +231,7 @@ export default {
           bvid: 'BV1RJ411r7jj',
           title: '【大前端模拟面试】- 2019-12-14',
           cover:
-            'http://i1.hdslb.com/bfs/archive/6e8b0751dcc43f8f8b06fa31920ba2a002cca13c.jpg',
+            'https://tva1.sinaimg.cn/large/008eGmZEly1gomv0m7nwej30sh0ht3zt.jpg',
           created: 1576332558,
           link: 'https://lucifer.ren/fe-interview/#/mock-interview/2019-12-14'
         },
@@ -243,7 +240,7 @@ export default {
           tid: 1,
           title: '【大前端模拟面试】- 2020-02-20',
           cover:
-            'http://i0.hdslb.com/bfs/archive/7a51a328134118bceef0579e04c068b44f42bd40.jpg',
+            'https://tva1.sinaimg.cn/large/008eGmZEly1gomv0nbe1rj30sg0g0mze.jpg',
           created: 1582313002,
           link: 'https://lucifer.ren/fe-interview/#/mock-interview/2020-02-20'
         },
@@ -253,7 +250,7 @@ export default {
           title: 'mac装机（前端工程师）',
           tid: 5,
           cover:
-            'http://i2.hdslb.com/bfs/archive/63331bbb5340fbf9f01c7e47a0872d2912b42991.jpg',
+            'https://tva1.sinaimg.cn/large/008eGmZEly1gomv0o7yzlj31bd0u0ncz.jpg',
           created: 1574511732,
           link: 'https://github.com/azl397985856/mac-setup'
         },
@@ -263,7 +260,7 @@ export default {
           tid: 4,
           title: '大前端 每日一题 - 实现一个简单的移动端debug工具',
           cover:
-            'http://i2.hdslb.com/bfs/archive/2f645a2205c66d20576a03e47d94e87e87faaffb.jpg',
+            'https://tva1.sinaimg.cn/large/008eGmZEly1gomv0p1eyuj313i0iw0wb.jpg',
           created: 1566132353
         },
         {
@@ -273,7 +270,7 @@ export default {
           title:
             '【贪心~双指针】 881. 求生艇 (\tBoats to Save People  ) LeetCode',
           cover:
-            'http://i2.hdslb.com/bfs/archive/bfa206c65ddb3dfb8dd4d5d417e17add823560c3.jpg',
+            'https://tva1.sinaimg.cn/large/008eGmZEly1gomv0plh6vj31hc0u00wp.jpg',
           created: 1585907937
         },
         {
@@ -282,7 +279,7 @@ export default {
           tid: 2,
           title: '【树】 404. 左叶子之和 (Sum of Left Leaves) LeetCode',
           cover:
-            'http://i1.hdslb.com/bfs/archive/e6a7a74406902ae9d50e683cde78b327b0876fb5.jpg',
+            'https://tva1.sinaimg.cn/large/008eGmZEly1gomv0qj6kej31cw0u0gs9.jpg',
           created: 1583942986
         },
 
@@ -292,7 +289,7 @@ export default {
           bvid: 'BV1pa4y1s7g2',
           title: '【力扣加加】91天学算法 - 基础篇',
           cover:
-            'http://i0.hdslb.com/bfs/archive/0a700ea680450ea379928f871d34c26a8cb3d8b0.jpg',
+            'https://tva1.sinaimg.cn/large/008eGmZEly1gomv0r0f1ej30zk0k0tac.jpg',
           created: 1603901419
         },
         {
@@ -301,7 +298,7 @@ export default {
           bvid: 'BV17t4y1i71G',
           title: '【力扣加加】91算法先导篇',
           cover:
-            'http://i2.hdslb.com/bfs/archive/5e5cc5f6ed4901f9f9ce6ca8b07b71f28917c874.jpg',
+            'https://tva1.sinaimg.cn/large/008eGmZEly1gomv0rscf4j31c00u0adk.jpg',
           created: 1603612539
         },
         {
@@ -310,7 +307,7 @@ export default {
           bvid: 'BV1qK4y1J7DD',
           title: '91 天学算法第三期视频会议',
           cover:
-            'http://i0.hdslb.com/bfs/archive/e34ebf4c0492ed2171e2d0723b71156f27f036b0.jpg',
+            'https://tva1.sinaimg.cn/large/008eGmZEly1gomv0sq1fdj30w00k0wgj.jpg',
           link:
             'https://mp.weixin.qq.com/s?__biz=MzI4MzUxNjI3OA==&mid=2247487620&idx=1&sn=5f2b73c5b57c6451ca1fe1bcbb036a80&chksm=eb88dc9ddcff558bf74c367b6c71055cb190cd72b60a08664e11c216183f716f689f176cf3b9&token=1676518002&lang=zh_CN#rd'
         },
@@ -320,7 +317,7 @@ export default {
           bvid: 'BV1fy4y1r7pX',
           title: '【力扣加加】 二分图',
           cover:
-            'http://i0.hdslb.com/bfs/archive/36d6e1555831615a1187d02a13bf9e028ab2cf3a.jpg',
+            'https://tva1.sinaimg.cn/large/008eGmZEly1gomv0te7nsj31bz0u0jvr.jpg',
           created: 1603612713
         },
         {
@@ -329,7 +326,7 @@ export default {
           bvid: 'BV11f4y127Se',
           title: '【哈希表~双指针】 141. 环形链表 142. 环形链表 II  LeetCode',
           cover:
-            'http://i1.hdslb.com/bfs/archive/cbf54f882261167938353e0c77e5e458420e006e.jpg',
+            'https://tva1.sinaimg.cn/large/008eGmZEly1gomv0u8vhkj31hc0u0glp.jpg',
           created: 1591802077
         },
         {
@@ -338,7 +335,7 @@ export default {
           bvid: 'BV1UK4y1x7zj',
           title: '帮助你高效刷题的插件了解一下？',
           cover:
-            'http://i1.hdslb.com/bfs/archive/61d32eb509ef1822884c4ee48c644f9b97dfcada.jpg',
+            'https://tva1.sinaimg.cn/large/008eGmZEly1gomv0v3ie1j31hc0u0q6s.jpg',
           created: 1591438281,
           link: 'https://lucifer.ren/blog/2020/08/16/leetcode-cheat/'
         },
@@ -349,7 +346,7 @@ export default {
           title:
             '【递归，分治】 236.最近公共祖先 (Lowest Common Ancestor of a Binary Tree) LeetCode',
           cover:
-            'http://i0.hdslb.com/bfs/archive/a81f712aa09b26ca48aae4018137899ecd5d2a3e.jpg',
+            'https://tva1.sinaimg.cn/large/008eGmZEly1gomv0w051mj31hc0u0grh.jpg',
           created: 1589107045
         },
         {
@@ -359,7 +356,7 @@ export default {
           title:
             '【记忆化递归，动态规划】 44.通配符匹配（wildcard-matching） LeetCode',
           cover:
-            'http://i2.hdslb.com/bfs/archive/40c54e786225780b04a2c6905ba891e91cfc39c7.jpg',
+            'https://tva1.sinaimg.cn/large/008eGmZEly1gomv0whgsxj31hc0u00vu.jpg',
           created: 1587205244
         },
         {
@@ -368,7 +365,7 @@ export default {
           bvid: 'BV1f5411t7cF',
           title: '【栈，中心扩展】 32.最长有效括号 LeetCode',
           cover:
-            'http://i1.hdslb.com/bfs/archive/3313371f0f1e7d4ba0937ee58c08faa4cf9ae725.jpg',
+            'https://tva1.sinaimg.cn/large/008eGmZEly1gomv0xehnij31cw0u0q4b.jpg',
           created: 1586798500
         },
         {
@@ -377,7 +374,7 @@ export default {
           bvid: 'BV1N54y197Xe',
           title: '【树】 1367.二叉树中的列表  LeetCode',
           cover:
-            'http://i1.hdslb.com/bfs/archive/cab8977ce7f830be929c97b2540f56e4961b4fb6.jpg',
+            'https://tva1.sinaimg.cn/large/008eGmZEly1gomv0yguvdj31hc0u0jvf.jpg',
           created: 1586442654
         },
         {
@@ -386,7 +383,7 @@ export default {
           bvid: 'BV1Rk4y197AJ',
           title: '【二叉树的搜索】 1379. 找出克隆二叉树中的相同节点 LeetCode',
           cover:
-            'http://i0.hdslb.com/bfs/archive/1ce7bec2be397f6688569e220aa396f89442be78.jpg',
+            'https://tva1.sinaimg.cn/large/008eGmZEly1gomv0zhsjxj31hc0u0gq2.jpg',
           created: 1586182368
         }
       ]).then(vlist =>
