@@ -223,7 +223,8 @@ export default {
           cover:
             'https://tva1.sinaimg.cn/large/008eGmZEly1gomv0lfjvuj31c00u0alc.jpg',
           created: 1615889895,
-          link: 'https://lucifer.ren/blog/2021/03/11/school-02/'
+          link:
+            'https://mp.weixin.qq.com/s?__biz=MzI4MzUxNjI3OA==&mid=2247487829&idx=1&sn=f31b4741853c3f51317c1a980a15b05c&chksm=eb88dd4cdcff545a7a9740d9658883f0aa711df24772cb3cda3701bac3c0c4b67a83d1f005d9&token=1929867466&lang=zh_CN#rd'
         },
         {
           aid: 79269711,
