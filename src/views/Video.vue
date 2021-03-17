@@ -221,6 +221,15 @@ export default {
             'https://mp.weixin.qq.com/s?__biz=MzI4MzUxNjI3OA==&mid=2247487632&idx=1&sn=830fe267d835e5acbfc417787f85f1c1&chksm=eb88dc89dcff559f49913c0f2dec77b1d06c2ddbe2c6c299b32b3e49c2efaf8b11ac0aedce8f&token=1676518002&lang=zh_CN#rd'
         },
         {
+          aid: 799648825,
+          tid: 6,
+          title: '搞定春招之腾讯&钉钉篇）',
+          cover:
+            'http://i1.hdslb.com/bfs/archive/13547a8934c66ec0bf69b4518715b17194485315.jpg',
+          created: 1615889895,
+          link: 'https://lucifer.ren/blog/2021/03/11/school-02/'
+        },
+        {
           aid: 79269711,
           tid: 1,
           title: '【大前端模拟面试】- 2019-12-14',
