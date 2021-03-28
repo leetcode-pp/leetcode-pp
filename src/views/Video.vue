@@ -205,6 +205,17 @@ export default {
     getAllVideos() {
       return Promise.resolve([
         {
+          aid: 417281451,
+          bvid: 'BV14V411e7MF',
+          tid: 6, // 春招/秋招
+          title: '搞定春招之网易篇',
+          cover:
+            'https://tva1.sinaimg.cn/large/008eGmZEly1gozkit5v53j31c00u0jzl.jpg',
+          created: 1616907618,
+          link:
+            'https://mp.weixin.qq.com/s?__biz=MzI4MzUxNjI3OA==&mid=2247488066&idx=1&sn=5e2c82b324c8ca63e0071cd5405c71a8&chksm=eb88de5bdcff574da03bc95fce53f37b2795ba635496cdb2ddfcea34a8305d2401c48d89e414&token=1873896266&lang=zh_CN#rd'
+        },
+        {
           aid: 971961728,
           bvid: 'BV1bp4y1H7KT',
           tid: 6, // 春招/秋招
