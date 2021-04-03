@@ -267,6 +267,16 @@ export default {
           link: 'https://github.com/azl397985856/mac-setup'
         },
         {
+          aid: 417406606,
+          bvid: 'BV1qV411n7Qc',
+          tid: 4,
+          title: 'lucifer的面试之路（一)',
+          cover:
+            'https://tva1.sinaimg.cn/large/008eGmZEly1gp6wa1ctavj31c00u0aun.jpg',
+          created: 1617453475,
+          link: 'https://lucifer.ren/blog/2021/04/03/interview-road/'
+        },
+        {
           aid: 64313957,
           bvid: 'BV1V4411o7AP',
           tid: 4,
