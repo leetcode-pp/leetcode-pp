@@ -40,7 +40,7 @@ export default {
       logined: false, // 是否登录
       pay: false, // 是否为付费用户
       loginUrl: `
-            https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=http://localhost:8080/91`
+            https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=https://leetcode-solution.cn/91`
     }
   },
   async mounted() {
