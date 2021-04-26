@@ -1,9 +1,19 @@
 <template>
   <div class="download-container">
     <div class="download-nav">
-      <a-button type="primary">anki</a-button>
-      <a-button class="card-action" disabled>drawio（敬请期待）</a-button>
-      <a-button class="card-action" disabled>电子书（敬请期待）</a-button>
+      <a-radio-group v-model="current" button-style="solid">
+        <a-radio-button value="book">
+          电子书
+        </a-radio-button>
+
+        <a-radio-button value="leetcode-cheat">
+          刷题插件
+        </a-radio-button>
+
+        <a-radio-button value="anki">
+          anki
+        </a-radio-button>
+      </a-radio-group>
     </div>
 
     <div class="card-container">
@@ -38,11 +48,22 @@
 </template>
 
 <script language="typescript">
-import cards from './download-data.js'
+import { anki, book, leetcodeCheat } from './download-data.js'
+
 export default {
   data() {
     return {
-      cards: cards
+      current: 'book',
+      book,
+      leetcodeCheat,
+      anki
+    }
+  },
+  computed: {
+    cards() {
+      if (this.current === 'book') return this.book
+      if (this.current === 'leetcode-cheat') return this.leetcodeCheat
+      return this.anki
     }
   }
 }

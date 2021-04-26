@@ -21,12 +21,22 @@ const solutionData = [
     isNew: true
   },
   {
-    title: '二分专题',
-    url: '/91/binary-search.md'
+    title: '二分专题（上）',
+    url: '/thinkings/binary-search-1.md'
   },
   {
-    title: '双指针专题',
-    url: '/91/two-pointers.md'
+    title: '二分专题（下）',
+    url: '/thinkings/binary-2.md',
+    isNew: true
+  },
+  {
+    title: '动态规划专题',
+    url: '/thinkings/dynamic-programming.md',
+    isNew: true
+  },
+  {
+    title: '二叉树遍历',
+    url: '/thinkings/binary-tree-traversal.md'
   }
 ]
 
