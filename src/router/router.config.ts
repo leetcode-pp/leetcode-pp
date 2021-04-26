@@ -48,9 +48,14 @@ export const asyncRouterMap = [
           import(/* webpackChunkName: "view-video" */ '@/views/Video.vue')
       },
       {
-        path: '91',
+        path: '91-intro',
         component: () =>
           import(/* webpackChunkName: "view-91" */ '@/views/91.vue')
+      },
+      {
+        path: '91',
+        component: () =>
+          import(/* webpackChunkName: "view-91algo" */ '@/views/91algo.vue')
       },
       {
         path: 'book',
