@@ -51,16 +51,6 @@
             </a-list-item>
           </a-list>
         </a-tab-pane>
-        <a-tab-pane key="jy1" tab="讲义（基础篇）" :disabled="!pay">
-          <card :cards="basicLecturs" />
-        </a-tab-pane>
-        <a-tab-pane key="jy2" tab="讲义（专题篇）" disabled>
-          尚未开启
-        </a-tab-pane>
-        <a-tab-pane key="jy3" tab="讲义（进阶篇）" disabled>
-          尚未开启
-        </a-tab-pane>
-
         <a-tab-pane key="sign" tab="打卡" :disabled="!pay">
           <!-- 后期考虑使用 https://microsoft.github.io/monaco-editor/index.html 来进行本地打卡 -->
           本期暂时不支持在此打卡，还请大家去
@@ -72,6 +62,22 @@
           >
           找到当天的题目进行打卡~
         </a-tab-pane>
+        <a-tab-pane key="jy0" tab="讲义（先导篇）" :disabled="!pay">
+          <card :cards="introLectures" />
+        </a-tab-pane>
+        <a-tab-pane key="jy1" tab="讲义（基础篇）" :disabled="!pay">
+          <card :cards="basicLecturs" />
+        </a-tab-pane>
+        <a-tab-pane key="jy2" tab="讲义（专题篇）" disabled>
+          尚未开启
+        </a-tab-pane>
+        <a-tab-pane key="jy3" tab="讲义（进阶篇）" disabled>
+          尚未开启
+        </a-tab-pane>
+
+        <a-tab-pane key="ebbok" tab="电子书" disabled>
+          尚未开启
+        </a-tab-pane>
       </a-tabs>
     </div>
   </div>
@@ -81,7 +87,7 @@
 import counter from '@/components/Counter'
 import request from '@/apis/request'
 import Card from '@/components/Card'
-import { getBasicLecture } from '@/apis/91'
+import { getBasicLecture, getIntroLecture } from '@/apis/91'
 import { logout } from '@/apis/user'
 
 const clientId = 'c16b80e7b58a5a007157'
@@ -107,6 +113,7 @@ export default {
       name: '', // 当前登录人
       avatar: '',
       basicLecturs: [],
+      introLectures: [],
       teachers: [
         {
           title: '西法',
@@ -178,6 +185,14 @@ export default {
       this.activeTab = 'jy1'
       getBasicLecture().then(data => {
         this.basicLecturs = data.map(q => ({
+          ...q,
+          viewUrl: `/solutionDetail?type=2&id=${q.id}`,
+          external: false
+        }))
+      })
+
+      getIntroLecture().then(data => {
+        this.introLectures = data.map(q => ({
           ...q,
           viewUrl: `/solutionDetail?type=2&id=${q.id}`,
           external: false
