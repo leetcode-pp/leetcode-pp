@@ -21,10 +21,14 @@
 import axios from 'axios'
 import { Base64 } from 'js-base64'
 import MarkdownIt from 'markdown-it'
+import markdownItLatex from '@iktakahiro/markdown-it-katex'
 import hljs from 'highlight.js'
 import 'highlight.js/styles/github.css'
+import { getBasicLectureDetails } from '@/apis/91'
 
 const md = new MarkdownIt()
+md.use(markdownItLatex)
+
 const URL_REGEX = /(\s+)(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/g
 const LINK_REGRX = /\[(.*)\]\(\.\.\/(.*)\)/g
 const WAREHOURSE_ADDRESS =
@@ -34,7 +38,7 @@ const ERROR_MSG_DISPLAY_DURATION = 5000
 export default {
   data() {
     return {
-      type: 0,
+      type: 0, // 0 :题解 1: 专题 2: 91讲义
       loading: true,
       hasError: false,
       desc: '',
@@ -51,17 +55,25 @@ export default {
     },
     async getSolution() {
       try {
-        const res = await axios.get(this.$route.query.url)
-        this.loading = false
-        this.desc = md.render(
-          this.addLinkMarkdown(Base64.decode(res.data.content))
-        )
+        if (this.type === '2') {
+          const data = await getBasicLectureDetails(this.$route.query.id)
+
+          this.loading = false
+          this.desc = md.render(data.content)
+        } else {
+          const res = await axios.get(this.$route.query.url)
+          this.loading = false
+          this.desc = md.render(
+            this.addLinkMarkdown(Base64.decode(res.data.content))
+          )
+        }
       } catch (error) {
         this.showError()
         this.loading = false
       }
     },
     addLinkMarkdown(content) {
+      // 仓库的 markdown 中仓库地址用的相对地址，所以需要 replace 成绝对地址
       return content
         .replace(URL_REGEX, '<$2>')
         .replace(LINK_REGRX, `[$1](${WAREHOURSE_ADDRESS}$2)`)
