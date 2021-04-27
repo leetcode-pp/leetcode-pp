@@ -6,6 +6,7 @@ const host =
     : 'http://localhost:3000'
 export default function(options) {
   return axios({ ...options, url: `${host}${options.url}` })
+    .then(res => res.data)
     .then(res => {
       if (res.success) return res.data
       throw res

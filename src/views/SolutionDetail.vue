@@ -56,10 +56,10 @@ export default {
     async getSolution() {
       try {
         if (this.type === '2') {
-          const data = await getBasicLectureDetails(this.$route.query.id)
+          const { content } = await getBasicLectureDetails(this.$route.query.id)
 
           this.loading = false
-          this.desc = md.render(data.content)
+          this.desc = md.render(content)
         } else {
           const res = await axios.get(this.$route.query.url)
           this.loading = false

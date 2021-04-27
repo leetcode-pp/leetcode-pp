@@ -8,8 +8,14 @@
 
     <div v-if="!pay">
       <a-alert :message="errorMessage" type="error" />
-      <a-button type="link" :href="loginUrl">Github 登录</a-button>
+      <a-button v-if="!name" type="link" :href="loginUrl">Github 登录</a-button>
       <a-button type="link" href="/91-intro">活动介绍及报名方式</a-button>
+    </div>
+    <a-avatar v-else :size="64" :src="avatar" />
+    <div class="hello">
+      欢迎回来，{{ name }} ~ 今天有没有比昨天进步一点点呢？
+
+      <a-button type="link" @click="handlLogoutClick">退出登录</a-button>
     </div>
 
     <div>
@@ -71,8 +77,10 @@
 
 <script>
 import counter from '@/components/Counter'
+import request from '@/apis/request'
 import Card from '@/components/Card'
 import { getBasicLecture } from '@/apis/91'
+import { logout } from '@/apis/user'
 
 const clientId = 'c16b80e7b58a5a007157'
 const host = 'https://a91algo.herokuapp.com'
@@ -94,6 +102,8 @@ export default {
   },
   data() {
     return {
+      name: '', // 当前登录人
+      avatar: '',
       basicLecturs: [],
       teachers: [
         {
@@ -136,36 +146,41 @@ export default {
       started: new Date().getTime() >= time.getTime(),
       time: time.getTime(),
       errorMessage: '很抱歉，当前页面部分内容需要付费且登录后才能访问~',
-      //    logined: false, // 是否登录
+      // logined: false, // 是否登录
       pay: false, // 是否为付费用户
       loginUrl: `
             https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=https://leetcode-solution.cn/91`
     }
   },
+  methods: {
+    handlLogoutClick() {
+      logout().then(() => {
+        window.location.reload()
+      })
+    }
+  },
   async mounted() {
-    if (this.$route.query.code) {
-      const { pay, message } = await fetch(
-        `${host}/api/v1/user?code=${this.$route.query.code}`,
-        {
-          credentials: 'include'
-        }
-      ).then(res => res.json())
+    const { pay, message, name, avatar_url: avatar } = await request({
+      url: `/api/v1/user?code=${this.$route.query.code || '-'}`,
+      withCredentials: true
+    })
 
-      if (message === 'Bad credentials') {
-        this.errorMessage = '登录已过期，请重新登录~'
-      }
-      this.pay = pay
+    if (message === 'Bad credentials') {
+      this.errorMessage = '登录已过期，请重新登录~'
+    }
+    this.avatar = avatar
+    this.pay = pay
+    this.name = name
 
-      if (pay) {
-        this.activeTab = 'jy1'
-        getBasicLecture().then(res => {
-          this.basicLecturs = res.data.map(q => ({
-            ...q,
-            viewUrl: `/solutionDetail?type=2&id=${q.id}`,
-            external: false
-          }))
-        })
-      }
+    if (pay) {
+      this.activeTab = 'jy1'
+      getBasicLecture().then(data => {
+        this.basicLecturs = data.map(q => ({
+          ...q,
+          viewUrl: `/solutionDetail?type=2&id=${q.id}`,
+          external: false
+        }))
+      })
     }
 
     // this.activeTab = 'jy1'
@@ -189,6 +204,9 @@ export default {
   color: #00a6dd;
 }
 .teachers {
+  margin: 20px auto;
+}
+.hello {
   margin: 20px auto;
 }
 </style>
