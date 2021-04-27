@@ -5,7 +5,11 @@ const host =
     ? 'https://a91algo.herokuapp.com'
     : 'http://localhost:3000'
 export default function(options) {
-  return axios({ ...options, url: `${host}${options.url}` })
+  return axios({
+    ...options,
+    withCredentials: true,
+    url: `${host}${options.url}`
+  })
     .then(res => res.data)
     .then(res => {
       if (res.success) return res.data
