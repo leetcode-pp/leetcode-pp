@@ -39,15 +39,22 @@
                 <a slot="title" :href="item.homepage">{{ item.title }}</a>
                 <a-avatar slot="avatar" :src="item.avatar" />
               </a-list-item-meta>
-              <a-button
-                class="homepage"
-                type="link"
-                v-if="item.homepage"
-                :href="item.homepage"
-                target="_blank"
-                >关注 ta</a-button
-              >
-              <div v-else class="homepage">连主页都没有呢~</div>
+              <div class="more">
+                <a-tag
+                  :color="item.color"
+                  :key="item.name"
+                  v-for="item in item.modules"
+                >
+                  {{ item.name }}
+                </a-tag>
+                <a-button
+                  type="link"
+                  v-if="item.homepage"
+                  :href="item.homepage"
+                  target="_blank"
+                  >关注 ta</a-button
+                >
+              </div>
             </a-list-item>
           </a-list>
         </a-tab-pane>
@@ -121,34 +128,76 @@ export default {
           avatar:
             'https://tva1.sinaimg.cn/large/008i3skNly1gpy3e38277j30cs0csjso.jpg',
           description:
-            'Github 40K star 的架构师，同时也是刷题插件 leetcode-cheatsheet 作者'
+            'Github 40K star 的架构师，同时也是刷题插件 leetcode-cheatsheet 作者',
+          modules: [
+            {
+              name: 'Python',
+              color: '#87d068'
+            }
+          ]
         },
         {
           title: '宝石叔叔',
           description: '我也不知道，代码都是百度抄来的，复制过来怎么会有错误',
           homepage: 'https://github.com/unclegem',
           avatar:
-            'https://tva1.sinaimg.cn/large/008i3skNly1gpy65g2jf2j316g0u0dz2.jpg'
+            'https://tva1.sinaimg.cn/large/008i3skNly1gpy65g2jf2j316g0u0dz2.jpg',
+          modules: [
+            {
+              name: '哈希表',
+              color: '#f50'
+            },
+            {
+              name: 'Java',
+              color: 'cyan'
+            }
+          ]
         },
         {
           title: '表哥',
           homepage: 'https://feiker.xyz',
           avatar:
-            'https://tva1.sinaimg.cn/large/008i3skNly1gpy68il2fmj30rw0ru0t8.jpg'
+            'https://tva1.sinaimg.cn/large/008i3skNly1gpy68il2fmj30rw0ru0t8.jpg',
+          modules: [
+            {
+              name: 'JS',
+              color: 'orange'
+            }
+          ]
           // description: '建站中'
         },
         {
           title: '漾哥',
           avatar:
             'https://tva1.sinaimg.cn/large/008i3skNly1gpy7a1u5rtj30cs0csglt.jpg',
-          homepage: 'https://github.com/suukii'
+          homepage: 'https://github.com/suukii',
+          modules: [
+            {
+              name: '链表',
+              color: '#108ee9'
+            },
+            {
+              name: 'JS',
+              color: 'orange'
+            },
+            {
+              name: 'Python',
+              color: '#87d068'
+            }
+          ]
         },
         {
           title: '三天',
           description: '这只窑鸡太懒了，什么也没写',
           avatar:
             'https://tva1.sinaimg.cn/large/008i3skNly1gpy7afqfzmj30qn0qnt98.jpg',
-          homepage: 'https://github.com/threedayAAAAA'
+          homepage: 'https://github.com/threedayAAAAA',
+          modules: [
+            {
+              name: 'JS',
+              color: 'orange'
+            }
+          ]
         }
       ],
       activeTab: 'teachers',
@@ -212,9 +261,15 @@ export default {
 }
 </script>
 
-<style scoped>
-.homepage {
-  width: 120px;
+<style lang="less" scoped>
+.more {
+  display: flex;
+  justify-content: flex-end;
+  width: 200px;
+  span {
+    height: 24px;
+    line-height: 24px;
+  }
 }
 .time {
   font-size: 24px;
