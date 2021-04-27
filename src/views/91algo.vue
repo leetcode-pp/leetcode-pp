@@ -11,11 +11,13 @@
       <a-button v-if="!name" type="link" :href="loginUrl">Github 登录</a-button>
       <a-button type="link" href="/91-intro">活动介绍及报名方式</a-button>
     </div>
-    <a-avatar v-else :size="64" :src="avatar" />
-    <div class="hello">
-      欢迎回来，{{ name }} ~ 今天有没有比昨天进步一点点呢？
 
-      <a-button type="link" @click="handlLogoutClick">退出登录</a-button>
+    <div v-else class="hello">
+      <a-avatar :size="64" :src="avatar" />
+      <div>
+        欢迎回来，{{ name }} ~ 今天有没有比昨天进步一点点呢？
+        <a-button type="link" @click="handlLogoutClick">退出登录</a-button>
+      </div>
     </div>
 
     <div>
