@@ -11,6 +11,7 @@
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -w -r 0"
   },
   "dependencies": {
+    "@iktakahiro/markdown-it-katex": "^4.0.1",
     "@vue/composition-api": "^0.3.4",
     "ant-design-vue": "^1.4.11",
     "axios": "^0.19.2",
