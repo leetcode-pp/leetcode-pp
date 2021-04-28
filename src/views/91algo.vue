@@ -566,7 +566,9 @@ export default {
             ][i]
           ] = data.map(q => ({
             ...q,
-            viewUrl: `/solutionDetail?type=2&id=${q.id}`,
+            viewUrl: q.external
+              ? q.externalLink
+              : `/solutionDetail?type=2&id=${q.id}`,
             external: !!q.external
           }))
         })

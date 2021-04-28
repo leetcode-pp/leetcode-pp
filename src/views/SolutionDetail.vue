@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div class="wrapper" id="nice">
     <div v-if="loading" class="spinner-container">
       <a-spin size="large"></a-spin>
     </div>
@@ -25,9 +25,13 @@ import markdownItLatex from '@iktakahiro/markdown-it-katex'
 import hljs from 'highlight.js'
 import 'highlight.js/styles/github.css'
 import { getBasicLectureDetails } from '@/apis/91'
+import markdownItSpan from '../utils/markdown-it-span'
+
+import '../themes/blue.less'
 
 const md = new MarkdownIt()
 md.use(markdownItLatex)
+md.use(markdownItSpan)
 
 const URL_REGEX = /(\s+)(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/g
 const LINK_REGRX = /\[(.*)\]\(\.\.\/(.*)\)/g
