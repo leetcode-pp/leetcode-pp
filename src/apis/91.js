@@ -12,6 +12,18 @@ export function getBasicLecture() {
   })
 }
 
+export function getTopicLecture() {
+  return request({
+    url: '/api/v1/lectures/topic'
+  })
+}
+
+export function getAdvanceLecture() {
+  return request({
+    url: '/api/v1/lectures/advance'
+  })
+}
+
 export function getBasicLectureDetails(id) {
   return request({
     url: `/api/v1/lectures/${id}`

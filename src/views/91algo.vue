@@ -58,6 +58,39 @@
             </a-list-item>
           </a-list>
         </a-tab-pane>
+        <a-tab-pane key="agenda" tab="目录">
+          <div class="timeline">
+            <a-timeline mode="alternate">
+              <a-timeline-item color="green">
+                <h3>先导篇（2021-06-01 前）</h3>
+                <p v-for="lecture in introLectures" :key="lecture.id">
+                  {{ lecture.title }}
+                </p>
+
+                <p />
+              </a-timeline-item>
+              <a-timeline-item color="green">
+                <h3>基础篇 （2021-06-01 - 2021-06-30）</h3>
+                <p v-for="lecture in basicLectures" :key="lecture.id">
+                  {{ lecture.title }}
+                </p>
+              </a-timeline-item>
+
+              <a-timeline-item color="gray">
+                <h3>专题篇 （2021-07-01 - 待定）</h3>
+                <p v-for="lecture in topicLectures" :key="lecture.id">
+                  {{ lecture.title }}
+                </p>
+              </a-timeline-item>
+              <a-timeline-item color="gray">
+                <h3>进阶篇 （待定）</h3>
+                <p v-for="lecture in advanceLectures" :key="lecture.id">
+                  {{ lecture.title }}
+                </p>
+              </a-timeline-item>
+            </a-timeline>
+          </div>
+        </a-tab-pane>
         <a-tab-pane key="sign" tab="打卡" :disabled="!pay">
           <!-- 后期考虑使用 https://microsoft.github.io/monaco-editor/index.html 来进行本地打卡 -->
           本期暂时不支持在此打卡，还请大家去
@@ -73,7 +106,7 @@
           <card :cards="introLectures" />
         </a-tab-pane>
         <a-tab-pane key="jy1" tab="讲义（基础篇）" :disabled="!pay">
-          <card :cards="basicLecturs" />
+          <card :cards="basicLectures" />
         </a-tab-pane>
         <a-tab-pane key="jy2" tab="讲义（专题篇）" disabled>
           尚未开启
@@ -85,6 +118,41 @@
         <a-tab-pane key="ebbok" tab="电子书" disabled>
           尚未开启
         </a-tab-pane>
+
+        <a-tab-pane key="faq" tab="FAQ">
+          <div class="faq">
+            Q：零基础人群可以学习吗？<br />
+            A：只要掌握一门编程语言就可以学习。<br /><br />
+            Q：课程是用什么语言教学的？<br />
+            A：Java， Python，JS
+            都可能，不过算法涉及到的语言都比较基础，即使不了解，也完全可以学习。另外算法重要的是思想，
+            语言不重要，思路理解了比什么都重要。 <br /><br />
+            Q：讲义和题解能够观看多久？<br />
+            A:为了有效督促学习，如果大家被违反规则被清退（<b>规则包括长时间群里闲聊和连续七天不打卡</b>），则不可以继续观看，否则可以长期观看。<br /><br />
+            Q：我该怎么学习？<br />
+            A：每一个小节开始之前都会提前把讲义公布到这里，大家可以关注一下，提前预习。每天都会有一道题，第二天会公布前一天的题解，所有<b>打卡和题解</b>都在仓库中查看。另外我还介绍了一些学习方法，
+            具体先导篇的视频。<br /><br />
+            Q：我该怎么打卡？<br />
+            A：打卡只需要在对应讲义新建的 issue
+            下留言即可，注意格式要求。格式模板在先导篇哦~ <br /><br />
+            Q: 只能当天打卡吗？ 如果一周补打卡算吗？<br />
+            A: 是的。必须当天才能打卡，比如第七天的题，
+            那么只有那一天打卡才算打卡成功。如果你连续打卡七天可以获取一张补签卡，补签卡是虚拟计算用的（不会实际发放），每月结束我们会统计当月满勤的同学，如果你不满勤，但是使用补签卡后满勤也是可以的。也就是说必须当天打卡，需要补卡的必须有补签卡，补签卡的获得方式是连续打卡七天。<br /><br />
+            Q：微信群的作用是什么？<br />
+            A：重要信息都在群公告和仓库，大家注意这两个信息渠道即可。微信群用来交流一下简单的，容易回答的问题。一些复杂的问题大家可以提
+            issue。 <br /><br />
+            Q：虽然你这么说，但是我还是不想错过微信群的重要信息怎么办？<br />
+            A：重要信息在仓库和群公告。如果大家还是怕错过重要群信息，可以按如下操作，仅看群主即可。
+            首先点击微信群右上角的按钮进入群设置，并翻到最下方。
+            点击“查找聊天内容”，然后进入“按群成员查找”。
+            找到需要查找聊天记录的人，比如 lucifer。<br /><br />
+            Q：Github 收到很多邮件，怎么取消？<br />
+            A：参考 https://www.bpteach.com/knowledge-base/1047564/ <br /><br />
+            Q：仓库在哪里？怎么进？<br />
+            A：仓库地址： https://github.com/leetcode-pp/91alg-4
+            进入之前需要进入组织，而进入组织的方式等待活动开始报名后（<b>预计5.1到6.1之间</b>）通知大家，大家保持关注即可。
+          </div>
+        </a-tab-pane>
       </a-tabs>
     </div>
   </div>
@@ -94,7 +162,12 @@
 import counter from '@/components/Counter'
 import request from '@/apis/request'
 import Card from '@/components/Card'
-import { getBasicLecture, getIntroLecture } from '@/apis/91'
+import {
+  getBasicLecture,
+  getIntroLecture,
+  getTopicLecture,
+  getAdvanceLecture
+} from '@/apis/91'
 import { logout } from '@/apis/user'
 
 const clientId = 'c16b80e7b58a5a007157'
@@ -119,8 +192,10 @@ export default {
     return {
       name: '', // 当前登录人
       avatar: '',
-      basicLecturs: [],
+      basicLectures: [],
       introLectures: [],
+      topicLectures: [],
+      advanceLectures: [],
       teachers: [
         {
           title: '西法',
@@ -230,37 +305,41 @@ export default {
     this.name = name
 
     if (pay) {
-      this.activeTab = 'jy1'
-      getBasicLecture().then(data => {
-        this.basicLecturs = data.map(q => ({
-          ...q,
-          viewUrl: `/solutionDetail?type=2&id=${q.id}`,
-          external: false
-        }))
-      })
-
-      getIntroLecture().then(data => {
-        this.introLectures = data.map(q => ({
-          ...q,
-          viewUrl: `/solutionDetail?type=2&id=${q.id}`,
-          external: false
-        }))
+      this.activeTab = 'jy0'
+      ;[
+        getIntroLecture(),
+        getBasicLecture(),
+        getTopicLecture(),
+        getAdvanceLecture()
+      ].forEach((p, i) => {
+        p.then(data => {
+          this[
+            [
+              'introLectures',
+              'basicLectures',
+              'topicLectures',
+              'advanceLectures'
+            ][i]
+          ] = data.map(q => ({
+            ...q,
+            viewUrl: `/solutionDetail?type=2&id=${q.id}`,
+            external: !!q.external
+          }))
+        })
       })
     }
-
-    // this.activeTab = 'jy1'
-    // getBasicLecture().then(res => {
-    //   this.basicLecturs = res.data.map(q => ({
-    //     ...q,
-    //     viewUrl: `/solutionDetail?type=2&id=${q.id}`,
-    //     external: false
-    //   }))
-    // })
   }
 }
 </script>
 
 <style lang="less" scoped>
+.timeline {
+  margin: 0 auto;
+  // width: 400px;
+}
+.faq {
+  text-align: left;
+}
 .more {
   display: flex;
   justify-content: flex-end;

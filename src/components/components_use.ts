@@ -46,7 +46,8 @@ import {
   message,
   notification,
   Pagination,
-  Carousel
+  Carousel,
+  Timeline
 } from 'ant-design-vue'
 
 Vue.use(LocaleProvider)
@@ -88,6 +89,7 @@ Vue.use(Skeleton)
 Vue.use(Popconfirm)
 Vue.use(Pagination)
 Vue.use(Carousel)
+Vue.use(Timeline)
 Vue.prototype.$confirm = Modal.confirm
 Vue.prototype.$message = message
 Vue.prototype.$notification = notification
