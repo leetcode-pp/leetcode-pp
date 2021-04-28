@@ -532,7 +532,7 @@ export default {
   methods: {
     handlLogoutClick() {
       logout().then(() => {
-        window.location.reload()
+        window.location.href = 'https://leetcode-solution.cn/91'
       })
     }
   },
