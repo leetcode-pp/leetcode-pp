@@ -538,7 +538,7 @@ export default {
   },
   async mounted() {
     const { pay, message, name, avatar_url: avatar } = await request({
-      url: `/api/v1/user?code=${this.$route.query.code || '-'}`
+      url: `/api/v1/user?code=${this.$route.query.code || ''}`
     })
 
     if (message === 'Bad credentials') {
