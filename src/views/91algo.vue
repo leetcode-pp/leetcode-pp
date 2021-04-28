@@ -237,6 +237,10 @@ export default {
             {
               name: 'JS',
               color: 'orange'
+            },
+            {
+              name: '树',
+              color: 'green'
             }
           ]
           // description: '建站中'
