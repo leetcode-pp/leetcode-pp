@@ -1,3 +1,5 @@
+export default ({ withoutGrid = false }) => ({
+  content: `
 /*自定义样式，实时生效*/
 
 /* 全局属性
@@ -12,12 +14,16 @@ color:#2b2b2b;
   font-family: Optima-Regular, Optima, PingFangTC-Light, PingFangSC-light,
     PingFangTC-light;
   letter-spacing: 2px;
-  background-image: linear-gradient(
-      90deg,
-      rgba(50, 0, 0, 0.04) 3%,
-      rgba(0, 0, 0, 0) 3%
-    ),
-    linear-gradient(360deg, rgba(50, 0, 0, 0.04) 3%, rgba(0, 0, 0, 0) 3%);
+  ${
+    withoutGrid
+      ? ''
+      : `background-image: linear-gradient(
+    90deg,
+    rgba(50, 0, 0, 0.04) 3%,
+    rgba(0, 0, 0, 0) 3%
+  ),
+  linear-gradient(360deg, rgba(50, 0, 0, 0.04) 3%, rgba(0, 0, 0, 0) 3%);`
+  }
   background-size: 20px 20px;
   background-position: center center;
 }
@@ -418,3 +424,6 @@ color:#2b2b2b;
   width: 100%;
   margin-bottom: 0;
 }
+
+  `
+})

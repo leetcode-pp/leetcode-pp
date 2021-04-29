@@ -1,3 +1,5 @@
+export default ({ withoutGrid = false }) => ({
+  content: `
 /*自定义样式，实时生效*/
 
 /* 全局属性
@@ -10,12 +12,16 @@
   font-family: Optima-Regular, Optima, PingFangTC-Light, PingFangSC-light,
     PingFangTC-light;
   letter-spacing: 2px;
-  background-image: linear-gradient(
-      90deg,
-      rgba(50, 0, 0, 0.05) 3%,
-      rgba(0, 0, 0, 0) 3%
-    ),
-    linear-gradient(360deg, rgba(50, 0, 0, 0.05) 3%, rgba(0, 0, 0, 0) 3%);
+  ${
+    withoutGrid
+      ? ''
+      : `background-image: linear-gradient(
+    90deg,
+    rgba(50, 0, 0, 0.04) 3%,
+    rgba(0, 0, 0, 0) 3%
+  ),
+  linear-gradient(360deg, rgba(50, 0, 0, 0.04) 3%, rgba(0, 0, 0, 0) 3%);`
+  }
   background-size: 20px 20px;
   background-position: center center;
 }
@@ -277,3 +283,6 @@
   */
 #nice .inline-equation svg {
 }
+
+  `
+})

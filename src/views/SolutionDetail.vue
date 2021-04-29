@@ -1,18 +1,41 @@
 <template>
-  <div class="wrapper" id="nice">
-    <div v-if="loading" class="spinner-container">
-      <a-spin size="large"></a-spin>
-    </div>
-    <div v-if="!loading" class="container">
-      <div class="max-width-800">
-        <a-alert
-          v-if="hasError"
-          message="很抱歉，目前请求无法执行，请稍候再试。"
-          type="error"
-        />
+  <div>
+    切换主题：<a-select
+      :value="currentTheme"
+      style="width: 240px"
+      @change="handleThemeChange"
+    >
+      <a-select-option value="empty">
+        simple
+      </a-select-option>
+      <a-select-option value="blue">
+        blue
+      </a-select-option>
+      <a-select-option value="bluew">
+        blue without grid
+      </a-select-option>
+      <a-select-option value="purple">
+        purple
+      </a-select-option>
+      <a-select-option value="purplew">
+        purple without grid
+      </a-select-option>
+    </a-select>
+    <div class="wrapper" id="nice">
+      <div v-if="loading" class="spinner-container">
+        <a-spin size="large"></a-spin>
       </div>
-      <h2 class="subtitle" v-if="type === 0">题解详情</h2>
-      <div class="desc text-align-left" v-html="desc"></div>
+      <div v-if="!loading" class="container">
+        <div class="max-width-800">
+          <a-alert
+            v-if="hasError"
+            message="很抱歉，目前请求无法执行，请稍候再试。"
+            type="error"
+          />
+        </div>
+        <h2 class="subtitle" v-if="type === 0">题解详情</h2>
+        <div class="desc text-align-left" v-html="desc"></div>
+      </div>
     </div>
   </div>
 </template>
@@ -27,10 +50,14 @@ import 'highlight.js/styles/github.css'
 import { getLectureDetails, getDailyProblemSolution } from '@/apis/91'
 import markdownItSpan from '../utils/markdown-it-span'
 import markdownItMultiquote from '../utils/markdown-it-multiquote'
+import { replaceStyle } from '../utils/style'
+import theme from '../themes/index'
+import { getStorage, setStorage } from '../utils/storage'
 
 import '../themes/atom-one-dark.less'
 import '../themes/base.less'
-import '../themes/blue.less'
+
+const { blue, purple } = theme
 
 const md = new MarkdownIt({
   html: true,
@@ -79,6 +106,7 @@ export default {
       // 1: 专题
       // 2: 91讲义
       // 3: 每日一题题解
+      currentTheme: 'empty',
       type: 0,
       loading: true,
       hasError: false,
@@ -88,6 +116,25 @@ export default {
     }
   },
   methods: {
+    handleThemeChange(v) {
+      this.currentTheme = v
+      if (v === 'purple' || v === 'purplew') {
+        replaceStyle(
+          'theme-style',
+          purple({ withoutGrid: v === 'purplew' }).content
+        )
+      }
+      if (v === 'blue' || v === 'bluew') {
+        replaceStyle(
+          'theme-style',
+          blue({ withoutGrid: v === 'bluew' }).content
+        )
+      }
+      if (v === 'empty') {
+        replaceStyle('theme-style', '')
+      }
+      setStorage('theme', v)
+    },
     showError(error) {
       this.hasError = true
       setTimeout(() => {
@@ -139,6 +186,12 @@ export default {
     //   // block.style.maxWidth = '340px'
     //   block.style.width = '100%'
     // })
+    getStorage('theme').then(v => {
+      if (v?.result?.value) {
+        this.handleThemeChange(v?.result?.value)
+        this.currentTheme = v?.result?.value
+      }
+    })
     document
       .getElementsByClassName('wrapper')[0]
       .querySelectorAll('a')
