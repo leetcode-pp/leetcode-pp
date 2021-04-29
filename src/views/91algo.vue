@@ -234,7 +234,13 @@ export default {
       colors: ['#f50', '#2db7f5', '#87d068', '#108ee9'],
       name: '', // 当前登录人
       avatar: '',
-      dailyProblem: {},
+      dailyProblem: {
+        title: '',
+        description: '',
+        link: '',
+        pres: [],
+        tags: []
+      },
       basicLectures,
       introLectures,
       advanceLectures,
