@@ -103,13 +103,16 @@
           找到当天的题目进行打卡~
           <div class="daily-problem">
             <div class="daily-problem-title">{{ dailyProblem.title }}</div>
+
             <a-button
               type="link"
               class="daily-problem-link"
               :href="dailyProblem.link"
               >{{ dailyProblem.link }}</a-button
             >
+
             <pre class="daily-problem-desc">{{ dailyProblem.description }}</pre>
+
             <div class="daily-problem-pres" v-if="dailyProblem.pres.length > 0">
               前置知识：<a-tag
                 :color="hashColor(pre)"
@@ -128,6 +131,17 @@
                 {{ tag }}
               </a-tag>
             </div>
+
+            <div class="daily-problem-whys" v-if="dailyProblem.whys.length > 0">
+              入选理由：
+              <div
+                v-for="why in dailyProblem.whys"
+                :key="why"
+                class="daily-problem-whys-item"
+              >
+                {{ why }}
+              </div>
+            </div>
           </div>
 
           <a-button
@@ -136,10 +150,10 @@
             >查看官方题解</a-button
           >
         </a-tab-pane>
-        <a-tab-pane key="jy0" tab="讲义（先导篇）" :disabled="!pay">
+        <a-tab-pane key="jy0" tab="讲义（先导篇）">
           <card :cards="introLectures" />
         </a-tab-pane>
-        <a-tab-pane key="jy1" tab="讲义（基础篇）" :disabled="!pay">
+        <a-tab-pane key="jy1" tab="讲义（基础篇）">
           <card :cards="basicLectures" />
         </a-tab-pane>
         <a-tab-pane key="jy2" tab="讲义（专题篇）" disabled>
@@ -239,7 +253,8 @@ export default {
         description: '',
         link: '',
         pres: [],
-        tags: []
+        tags: [],
+        whys: []
       },
       basicLectures,
       introLectures,
@@ -361,13 +376,24 @@ export default {
   text-align: left;
   min-height: 150px;
   line-height: 26px;
-  font-size: 16px;
-  color: #666;
+  font-size: 14px;
+  color: #abb2bf;
+  padding: 15px;
+  background: #282c34;
+  border-radius: 5px;
 }
 .daily-problem-pres,
+.daily-problem-whys,
 .daily-problem-tags {
-  font-size: 16px;
+  font-size: 14px;
   text-align: left;
   margin: 10px auto;
+}
+
+.daily-problem-whys-item {
+  font-size: 14px;
+  color: #666;
+  line-height: 30px;
+  font-weight: bold;
 }
 </style>
