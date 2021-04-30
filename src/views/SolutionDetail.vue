@@ -37,6 +37,25 @@
         <div class="desc text-align-left" v-html="desc"></div>
       </div>
     </div>
+
+    <div class="pagination" v-if="type === '2' || type === '3'">
+      <a-button
+        class="pagination-button"
+        :disabled="disabledPre"
+        size="small"
+        type="primary"
+        @click="handlePreClick"
+        >上一页</a-button
+      >
+      <a-button
+        size="small"
+        :disabled="disabledNext"
+        class="pagination-button"
+        type="primary"
+        @click="handleNextClick"
+        >下一页</a-button
+      >
+    </div>
   </div>
 </template>
 
@@ -102,10 +121,10 @@ const ERROR_MSG_DISPLAY_DURATION = 5000
 export default {
   data() {
     return {
-      // 0 :题解
-      // 1: 专题
-      // 2: 91讲义
-      // 3: 每日一题题解
+      // 0 : 题解(github api)
+      // 1: 专题(github api)
+      // 2: 91讲义 (leetcode-pp-node api)
+      // 3: 91每日一题题解(leetcode-pp-node api)
       currentTheme: 'empty',
       type: 0,
       loading: true,
@@ -115,7 +134,35 @@ export default {
       labels: []
     }
   },
+  computed: {
+    disabledPre() {
+      return this.type === 2
+        ? +this.$route.query.id <= -4
+        : +this.$route.query.id <= 1
+    },
+    disabledNext() {
+      return +this.$route.query.id >= this.$route.query.max_id
+    }
+  },
   methods: {
+    handleNextClick() {
+      this.$router.push({
+        path: 'solutionDetail',
+        query: {
+          ...this.$route.query,
+          id: +this.$route.query.id + 1
+        }
+      })
+    },
+    handlePreClick() {
+      this.$router.push({
+        path: 'solutionDetail',
+        query: {
+          ...this.$route.query,
+          id: +this.$route.query.id - 1
+        }
+      })
+    },
     handleThemeChange(v) {
       this.currentTheme = v
       if (v === 'purple' || v === 'purplew') {
@@ -205,6 +252,9 @@ export default {
 <style lang="less" scoped>
 /deep/ p > code {
   display: inline;
+}
+.pagination-button {
+  margin: 10px;
 }
 .wrapper {
   width: 100%;

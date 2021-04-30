@@ -173,7 +173,9 @@
 
           <a-button
             type="link"
-            :href="'/solutionDetail?type=3&id=' + dailyProblem.day"
+            :href="
+              '/solutionDetail?type=3&id=' + dailyProblem.day + '&max_id=2'
+            "
             >查看官方题解</a-button
           >
         </a-tab-pane>
@@ -369,7 +371,9 @@ export default {
             ...q,
             viewUrl: q.external
               ? q.externalLink
-              : `/solutionDetail?type=2&id=${q.id}`,
+              : `/solutionDetail?type=2&id=${q.id}&max_id=${Math.max(
+                  ...data.map(q => q.id)
+                )}`,
             external: !!q.external
           }))
         })

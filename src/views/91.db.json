@@ -223,6 +223,10 @@
         {
           "name": "Python",
           "color": "#87d068"
+        },
+        {
+          "name": "双指针",
+          "color": "#87d"
         }
       ]
     },
@@ -285,6 +289,10 @@
         {
           "name": "JS",
           "color": "orange"
+        },
+        {
+          "name": "数组",
+          "color": "#333"
         }
       ]
     }
