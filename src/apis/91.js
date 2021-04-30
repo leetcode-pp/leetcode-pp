@@ -6,15 +6,15 @@ export function getIntroLecture() {
   })
 }
 
-export function getDailyProblem() {
+export function getDailyProblem(timestamp) {
   return request({
-    url: '/api/v1/daily-problem'
+    url: `/api/v1/daily-problem?date=${timestamp || ''}`
   })
 }
 
-export function getDailyProblemSolution() {
+export function getDailyProblemSolution(day) {
   return request({
-    url: '/api/v1/daily-problem/solution'
+    url: `/api/v1/daily-problem/solution?day=${day}`
   })
 }
 

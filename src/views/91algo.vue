@@ -101,6 +101,20 @@
             >仓库</a-button
           >
           找到当天的题目进行打卡~
+
+          <a-button type="primary" size="small" @click="showHistory = true">
+            历史每日一题
+          </a-button>
+          <a-drawer
+            width="400"
+            title="历史每日一题"
+            placement="right"
+            :closable="true"
+            @close="showHistory = false"
+            :visible="showHistory"
+          >
+            <a-calendar :fullscreen="false" @change="onDateChanged" />
+          </a-drawer>
           <div class="daily-problem">
             <div class="daily-problem-title">{{ dailyProblem.title }}</div>
 
@@ -113,7 +127,10 @@
 
             <pre class="daily-problem-desc">{{ dailyProblem.description }}</pre>
 
-            <div class="daily-problem-pres" v-if="dailyProblem.pres.length > 0">
+            <div
+              class="daily-problem-pres"
+              v-if="dailyProblem.pres && dailyProblem.pres.length > 0"
+            >
               前置知识：<a-tag
                 :color="hashColor(pre)"
                 :key="pre"
@@ -122,7 +139,10 @@
                 {{ pre }}
               </a-tag>
             </div>
-            <div class="daily-problem-tags" v-if="dailyProblem.tags.length > 0">
+            <div
+              class="daily-problem-tags"
+              v-if="dailyProblem.tags && dailyProblem.tags.length > 0"
+            >
               标签：<a-tag
                 :color="hashColor(tag)"
                 :key="tag"
@@ -132,7 +152,10 @@
               </a-tag>
             </div>
 
-            <div class="daily-problem-whys" v-if="dailyProblem.whys.length > 0">
+            <div
+              class="daily-problem-whys"
+              v-if="dailyProblem.whys && dailyProblem.whys.length > 0"
+            >
               入选理由：
               <div
                 v-for="why in dailyProblem.whys"
@@ -215,8 +238,7 @@ import {
   getIntroLecture,
   getTopicLecture,
   getAdvanceLecture,
-  getDailyProblem,
-  getDailyProblemSolution
+  getDailyProblem
 } from '@/apis/91'
 import { logout } from '@/apis/user'
 import {
@@ -245,6 +267,7 @@ export default {
   },
   data() {
     return {
+      showHistory: false,
       colors: ['#f50', '#2db7f5', '#87d068', '#108ee9'],
       name: '', // 当前登录人
       avatar: '',
@@ -273,6 +296,11 @@ export default {
   },
 
   methods: {
+    getDailyProblem(day) {
+      getDailyProblem(day).then(dailyProblem => {
+        this.dailyProblem = dailyProblem
+      })
+    },
     hashColor(text) {
       if (!text) return ''
       let acc = 0
@@ -280,6 +308,9 @@ export default {
         acc = (acc + text.charCodeAt(i)) % this.colors.length
       }
       return this.colors[acc]
+    },
+    onDateChanged(v) {
+      this.getDailyProblem(v.valueOf())
     },
     handlLogoutClick() {
       logout().then(() => {
@@ -303,12 +334,7 @@ export default {
     if (pay) {
       this.activeTab = 'sign'
 
-      getDailyProblem().then(dailyProblem => {
-        this.dailyProblem = dailyProblem
-      })
-      getDailyProblemSolution().then(dailyProblemSolution => {
-        this.dailyProblemSolution = dailyProblemSolution
-      })
+      this.getDailyProblem()
       ;[
         getIntroLecture(),
         getBasicLecture(),
