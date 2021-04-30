@@ -174,7 +174,10 @@
           <a-button
             type="link"
             :href="
-              '/solutionDetail?type=3&id=' + dailyProblem.day + '&max_id=2'
+              '/solutionDetail?type=3&id=' +
+                dailyProblem.day +
+                '&max_id=' +
+                2 || getDay()
             "
             >查看官方题解</a-button
           >
@@ -265,7 +268,7 @@ time.setMinutes(0)
 time.setSeconds(0)
 
 const MS_PER_DAY = 24 * 60 * 60 * 1000
-function getDay(date) {
+function getDay(date = new Date().getTime()) {
   return ((date - time.getTime() + MS_PER_DAY - 1) / MS_PER_DAY) >> 0
 }
 
@@ -307,6 +310,7 @@ export default {
   },
 
   methods: {
+    getDay,
     getDailyProblem(day) {
       getDailyProblem(day).then(dailyProblem => {
         this.dailyProblem = dailyProblem
