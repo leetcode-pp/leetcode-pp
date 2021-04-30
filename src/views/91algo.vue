@@ -113,7 +113,11 @@
             @close="showHistory = false"
             :visible="showHistory"
           >
-            <a-calendar :fullscreen="false" @change="onDateChanged" />
+            <a-calendar
+              :disabledDate="disabledDate"
+              :fullscreen="false"
+              @change="onDateChanged"
+            />
           </a-drawer>
           <div class="daily-problem">
             <div class="daily-problem-title">{{ dailyProblem.title }}</div>
@@ -258,6 +262,11 @@ time.setHours(0)
 time.setMinutes(0)
 time.setSeconds(0)
 
+const MS_PER_DAY = 24 * 60 * 60 * 1000
+function getDay(date) {
+  return ((date - time.getTime() + MS_PER_DAY - 1) / MS_PER_DAY) >> 0
+}
+
 // console.log(time.getTime())
 
 export default {
@@ -300,6 +309,13 @@ export default {
       getDailyProblem(day).then(dailyProblem => {
         this.dailyProblem = dailyProblem
       })
+    },
+    disabledDate(moment) {
+      const d = getDay(moment.valueOf())
+      const curD = getDay(new Date().getTime())
+      // if (d > curD) return true
+      // return d < 1 || d > 91
+      return d < 1 || d > 2
     },
     hashColor(text) {
       if (!text) return ''

@@ -17,5 +17,6 @@ export default function(options) {
     })
     .catch(err => {
       message.error(err.message || '系统开小差~')
+      throw err
     })
 }
