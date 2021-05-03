@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-if="!started">
-      <div>我们 <span class="time">2021-06-01</span> 见~</div>
+      <div>我们 <span class="time">2021-05-10</span> 见~</div>
 
       <counter :time="time" />
     </div>
@@ -129,7 +129,9 @@
               >{{ dailyProblem.link }}</a-button
             >
 
-            <pre class="daily-problem-desc">{{ dailyProblem.description }}</pre>
+            <pre class="daily-problem-desc" v-if="dailyProblem.description">{{
+              dailyProblem.description
+            }}</pre>
 
             <div
               class="daily-problem-pres"
@@ -173,6 +175,7 @@
 
           <a-button
             type="link"
+            v-if="dailyProblem.day"
             :href="
               '/solutionDetail?type=3&id=' +
                 dailyProblem.day +
@@ -229,8 +232,10 @@
             Q：Github 收到很多邮件，怎么取消？<br />
             A：参考 https://www.bpteach.com/knowledge-base/1047564/ <br /><br />
             Q：仓库在哪里？怎么进？<br />
-            A：仓库地址： https://github.com/leetcode-pp/91alg-4
-            进入之前需要进入组织，而进入组织的方式等待活动开始报名后（<b>预计5.1到6.1之间</b>）通知大家，大家保持关注即可。
+            A：仓库在 91
+            天学算法官网中的打卡模块中可以看到，官网地址：https://leetcode-solution.cn/91。如果你提示
+            404， 请耐心等待，我会在活动开始前给大家加。如果活动已经开始，请联系
+            lucifer 处理。
           </div>
         </a-tab-pane>
       </a-tabs>
@@ -257,19 +262,11 @@ import {
   topicLectures,
   teachers
 } from './91.db.json'
-
-const clientId = 'c16b80e7b58a5a007157'
-const time = new Date()
-
-time.setMonth(5)
-time.setDate(1)
-time.setHours(0)
-time.setMinutes(0)
-time.setSeconds(0)
+import { clientId, startTime } from '../config/index'
 
 const MS_PER_DAY = 24 * 60 * 60 * 1000
 function getDay(date = new Date().getTime()) {
-  return ((date - time.getTime() + MS_PER_DAY - 1) / MS_PER_DAY) >> 0
+  return ((date - startTime + MS_PER_DAY - 1) / MS_PER_DAY) >> 0
 }
 
 // console.log(time.getTime())
@@ -299,8 +296,8 @@ export default {
       topicLectures,
       teachers,
       activeTab: 'teachers',
-      started: new Date().getTime() >= time.getTime(),
-      time: time.getTime(),
+      started: new Date().getTime() >= startTime,
+      time: startTime,
       errorMessage: '很抱歉，当前页面部分内容需要付费且登录后才能访问~',
       // logined: false, // 是否登录
       pay: false, // 是否为付费用户
@@ -318,10 +315,9 @@ export default {
     },
     disabledDate(moment) {
       const d = getDay(moment.valueOf())
-      const curD = getDay(new Date().getTime())
-      // if (d > curD) return true
-      // return d < 1 || d > 91
-      return d < 1 || d > 2
+      // TODO: 活动开始去除下面注释
+      // if (moment.valueOf() > new Date().getTime()) return true
+      return d < 1 || d > 91
     },
     hashColor(text) {
       if (!text) return ''
