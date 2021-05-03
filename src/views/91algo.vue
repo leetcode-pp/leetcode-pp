@@ -9,7 +9,9 @@
     <div v-if="!pay">
       <a-alert :message="errorMessage" type="error" />
       <a-button v-if="!name" type="link" :href="loginUrl">Github 登录</a-button>
-      <a-button type="link" href="/91-intro">活动介绍及报名方式</a-button>
+      <a-button type="link" href="https://lucifer.ren/blog/2021/05/02/91algo-4/"
+        >活动介绍及报名方式</a-button
+      >
     </div>
 
     <div v-else class="hello">
