@@ -264,7 +264,12 @@ import {
   topicLectures,
   teachers
 } from './91.db.json'
-import { clientId, startTime } from '../config/index'
+import {
+  clientId,
+  originalHostname,
+  hostname,
+  startTime
+} from '../config/index'
 
 const MS_PER_DAY = 24 * 60 * 60 * 1000
 function getDay(date = new Date().getTime()) {
@@ -334,11 +339,15 @@ export default {
     },
     handlLogoutClick() {
       logout().then(() => {
-        window.location.href = 'https://leetcode-solution.cn/91'
+        window.location.href = `https://${hostname}/91`
       })
     }
   },
   async mounted() {
+    if (window.location.hostname === originalHostname) {
+      window.location.href = `https://${hostname}/91`
+      return
+    }
     const { pay, message, name, avatar_url: avatar } =
       (await request({
         url: `/api/v1/user?code=${this.$route.query.code || ''}`
