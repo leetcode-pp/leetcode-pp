@@ -64,7 +64,7 @@
           <div class="timeline">
             <a-timeline mode="alternate">
               <a-timeline-item color="green">
-                <h3>先导篇（2021-06-01 前）</h3>
+                <h3>先导篇（2021-05-10 前）</h3>
                 <p v-for="lecture in introLectures" :key="lecture.id">
                   {{ lecture.title }}
                 </p>
@@ -72,14 +72,14 @@
                 <p />
               </a-timeline-item>
               <a-timeline-item color="gray">
-                <h3>基础篇 （2021-06-01 - 2021-06-30）</h3>
+                <h3>基础篇 （2021-05-10 - 2021-06-07）</h3>
                 <p v-for="lecture in basicLectures" :key="lecture.id">
                   {{ lecture.title }}
                 </p>
               </a-timeline-item>
 
               <a-timeline-item color="gray">
-                <h3>专题篇 （2021-07-01 - 待定）</h3>
+                <h3>专题篇 （2021-06-08 - 待定）</h3>
                 <p v-for="lecture in topicLectures" :key="lecture.id">
                   {{ lecture.title }}
                 </p>
