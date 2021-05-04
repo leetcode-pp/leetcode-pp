@@ -10,5 +10,5 @@ module.exports = {
   startTime: startTime.getTime(),
   clientId: 'c16b80e7b58a5a007157',
   originalHostname: 'leetcode-solution.cn',
-  hostname: 'a91algo.herokuapp.com'
+  hostname: 'algo91.herokuapp.com'
 }

@@ -344,10 +344,7 @@ export default {
     }
   },
   async mounted() {
-    if (
-      process.env.NODE_ENV !== 'development' &&
-      window.location.hostname === originalHostname
-    ) {
+    if (window.location.hostname === originalHostname) {
       window.location.href = `https://${hostname}/91`
       return
     }
