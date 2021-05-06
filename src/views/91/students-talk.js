@@ -5,7 +5,7 @@ module.exports = [
     tags: ['美团', '携程', '字节', '硕士', '后端'],
     description: '无ACM经验，今年2月底开始刷Leetcode准备面试。',
     avatar:
-      'https://tva1.sinaimg.cn/large/008i3skNly1gq8q986d1pj30u0140773.jpg',
+      'https://tva1.sinaimg.cn/large/008i3skNly1gq8r3su6wqj30og0o879n.jpg',
     body: `
 - 时间：2021-05-05
 - 被采访人：kieda-tamashi
