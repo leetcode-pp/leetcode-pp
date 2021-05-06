@@ -73,6 +73,8 @@ import { replaceStyle } from '../utils/style'
 import theme from '../themes/index'
 import { getStorage, setStorage } from '../utils/storage'
 
+import students from './91/students-talk'
+
 import '../themes/atom-one-dark.less'
 import '../themes/base.less'
 
@@ -125,6 +127,7 @@ export default {
       // 1: 专题(github api)
       // 2: 91讲义 (leetcode-pp-node api)
       // 3: 91每日一题题解(leetcode-pp-node api)
+      // 4: 个人访谈
       currentTheme: 'empty',
       type: 0,
       loading: true,
@@ -203,12 +206,30 @@ export default {
           )
           this.loading = false
           this.desc = md.render(content)
-        } else {
+        } else if (this.type === '4') {
+          //
+          this.loading = false
+          const student = students.find(
+            student => student.id === this.$route.query.id
+          )
+          if (student) {
+            this.desc = md.render(student.body)
+          } else {
+            this.showError({
+              message: 'id 不存在'
+            })
+          }
+        } else if (this.type === 1) {
           const res = await axios.get(this.$route.query.url)
           this.loading = false
           this.desc = md.render(
             this.addLinkMarkdown(Base64.decode(res.data.content))
           )
+        } else {
+          this.loading = false
+          this.showError({
+            message: '不支持的 type'
+          })
         }
       } catch (error) {
         this.loading = false

@@ -200,9 +200,46 @@
           尚未开启
         </a-tab-pane>
 
-        <a-tab-pane key="ebbok" tab="电子书" disabled>
+        <!-- <a-tab-pane key="ebook" tab="电子书" disabled>
           尚未开启
+        </a-tab-pane> -->
+
+        <a-tab-pane key="top-students" tab="上榜墙">
+          <a-list
+            item-layout="horizontal"
+            :data-source="students"
+            class="students"
+          >
+            <a-list-item slot="renderItem" slot-scope="item">
+              <a-list-item-meta
+                :description="item.description || '这个人太懒了，什么也没有写'"
+              >
+                <a slot="title" :href="item.homepage">{{ item.title }}</a>
+                <a-avatar slot="avatar" :src="item.avatar" />
+              </a-list-item-meta>
+              <div class="more">
+                <a-tag
+                  :color="hashColor(item)"
+                  :key="item"
+                  v-for="item in item.tags"
+                >
+                  {{ item }}
+                </a-tag>
+                <a-button
+                  type="link"
+                  :href="
+                    `/solutionDetail?type=4&id=${item.id}&max_id=${Math.max(
+                      ...students.map(q => q.id)
+                    )}`
+                  "
+                  target="_blank"
+                  >听听 ta 的故事</a-button
+                >
+              </div>
+            </a-list-item>
+          </a-list>
         </a-tab-pane>
+
         <a-tab-pane key="my" tab="我的" :disabled="!pay">
           <div v-if="mySolutions.length === 0">活动尚未开始</div>
           <div
@@ -221,45 +258,7 @@
           </div>
         </a-tab-pane>
 
-        <a-tab-pane key="faq" tab="FAQ">
-          <div class="faq">
-            Q：提示没有登录或者付费是怎么回事？<br />
-            A：顾名思义，它的意思是你没有登录或者没有付费。如果你确认已经付费，请检查群公告中的表格是否已经添加了你且<b>名字拼接正确</b>。如果全部检查没有问题，
-            可以尝试清除 cookie 后再试。<br />
-            <br />
-            Q：零基础人群可以学习吗？<br />
-            A：只要掌握一门编程语言就可以学习。<br /><br />
-            Q：课程是用什么语言教学的？<br />
-            A：Java， Python，JS
-            都可能，不过算法涉及到的语言都比较基础，即使不了解，也完全可以学习。另外算法重要的是思想，
-            语言不重要，思路理解了比什么都重要。 <br /><br />
-            Q：讲义和题解能够观看多久？<br />
-            A:为了有效督促学习，如果大家被违反规则被清退（<b>规则包括长时间群里闲聊和连续七天不打卡</b>），则不可以继续观看，否则可以长期观看。<br /><br />
-            Q：我该怎么学习？<br />
-            A：每一个小节开始之前都会提前把讲义公布到这里，大家可以关注一下，提前预习。每天都会有一道题，第二天会公布前一天的题解，所有<b>打卡和题解</b>都在仓库中查看。另外我还介绍了一些学习方法，
-            具体先导篇的视频。<br /><br />
-            Q：我该怎么打卡？<br />
-            A：打卡只需要在对应讲义新建的 issue
-            下留言即可，注意格式要求。格式模板在先导篇哦~ <br /><br />
-            Q: 只能当天打卡吗？ 如果一周补打卡算吗？<br />
-            A: 是的。必须当天才能打卡，比如第七天的题，
-            那么只有那一天打卡才算打卡成功。如果你连续打卡七天可以获取一张补签卡，补签卡是虚拟计算用的（不会实际发放），每月结束我们会统计当月满勤的同学，如果你不满勤，但是使用补签卡后满勤也是可以的。也就是说必须当天打卡，需要补卡的必须有补签卡，补签卡的获得方式是连续打卡七天。<br /><br />
-            Q：微信群的作用是什么？<br />
-            A：重要信息都在群公告和仓库，大家注意这两个信息渠道即可。微信群用来交流一下简单的，容易回答的问题。一些复杂的问题大家可以提
-            issue。 <br /><br />
-            Q：虽然你这么说，但是我还是不想错过微信群的重要信息怎么办？<br />
-            A：重要信息在仓库和群公告。如果大家还是怕错过重要群信息，可以按如下操作，仅看群主即可。
-            首先点击微信群右上角的按钮进入群设置，并翻到最下方。
-            点击“查找聊天内容”，然后进入“按群成员查找”。
-            找到需要查找聊天记录的人，比如 lucifer。<br /><br />
-            Q：Github 收到很多邮件，怎么取消？<br />
-            A：参考 https://www.bpteach.com/knowledge-base/1047564/ <br /><br />
-            Q：仓库在哪里？怎么进？<br />
-            A：仓库在 91
-            天学算法官网中的打卡模块中可以看到，官网地址：https://leetcode-solution.cn/91。如果你提示
-            404， 请检查你的邮箱是否有一个邀请邮件。如果有，请接收之。
-          </div>
-        </a-tab-pane>
+        <a-tab-pane key="faq" tab="FAQ"> <faq /> </a-tab-pane>
       </a-tabs>
     </div>
   </div>
@@ -269,6 +268,7 @@
 import counter from '@/components/Counter'
 import request from '@/apis/request'
 import Card from '@/components/Card'
+import Faq from './faq'
 import {
   getBasicLecture,
   getIntroLecture,
@@ -285,12 +285,13 @@ import {
   topicLectures,
   teachers
 } from './91.db.json'
+import students from './students-talk'
 import {
   clientId,
   originalHostname,
   hostname,
   startTime
-} from '../config/index'
+} from '../../config/index'
 
 const MS_PER_DAY = 24 * 60 * 60 * 1000
 function getDay(date = new Date().getTime()) {
@@ -302,6 +303,7 @@ function getDay(date = new Date().getTime()) {
 export default {
   components: {
     counter,
+    faq: Faq,
     card: Card
   },
   data() {
@@ -324,6 +326,7 @@ export default {
       advanceLectures,
       topicLectures,
       teachers,
+      students,
       activeTab: 'teachers',
       started: new Date().getTime() >= startTime,
       time: startTime,
@@ -431,9 +434,7 @@ export default {
   margin: 0 auto;
   // width: 400px;
 }
-.faq {
-  text-align: left;
-}
+
 .more {
   display: flex;
   justify-content: flex-end;
@@ -447,7 +448,8 @@ export default {
   font-size: 24px;
   color: #00a6dd;
 }
-.teachers {
+.teachers,
+.students {
   margin: 20px auto;
 }
 .hello {

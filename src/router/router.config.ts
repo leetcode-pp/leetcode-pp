@@ -50,12 +50,12 @@ export const asyncRouterMap = [
       {
         path: '91-intro',
         component: () =>
-          import(/* webpackChunkName: "view-91" */ '@/views/91.vue')
+          import(/* webpackChunkName: "view-91" */ '@/views/91/91.vue')
       },
       {
         path: '91',
         component: () =>
-          import(/* webpackChunkName: "view-91algo" */ '@/views/91algo.vue')
+          import(/* webpackChunkName: "view-91algo" */ '@/views/91/91algo.vue')
       },
       {
         path: 'book',
