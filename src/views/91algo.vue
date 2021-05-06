@@ -203,9 +203,30 @@
         <a-tab-pane key="ebbok" tab="电子书" disabled>
           尚未开启
         </a-tab-pane>
+        <a-tab-pane key="my" tab="我的" :disabled="!pay">
+          <div v-if="mySolutions.length === 0">活动尚未开始</div>
+          <div
+            :key="i"
+            v-for="(solution, i) in mySolutions"
+            class="my-solution"
+          >
+            <div v-if="solution">
+              <a-button v-if="solution.url" type="link" :href="solution.url">
+                {{ solution.title }}
+              </a-button>
+              <span v-else>{{ solution.title }}</span>
+              <a-icon style="color: green" v-if="solution.body" type="check" />
+              <a-icon style="color: red" v-else type="close" />
+            </div>
+          </div>
+        </a-tab-pane>
 
         <a-tab-pane key="faq" tab="FAQ">
           <div class="faq">
+            Q：提示没有登录或者付费是怎么回事？<br />
+            A：顾名思义，它的意思是你没有登录或者没有付费。如果你确认已经付费，请检查群公告中的表格是否已经添加了你且<b>名字拼接正确</b>。如果全部检查没有问题，
+            可以尝试清除 cookie 后再试。<br />
+            <br />
             Q：零基础人群可以学习吗？<br />
             A：只要掌握一门编程语言就可以学习。<br /><br />
             Q：课程是用什么语言教学的？<br />
@@ -236,8 +257,7 @@
             Q：仓库在哪里？怎么进？<br />
             A：仓库在 91
             天学算法官网中的打卡模块中可以看到，官网地址：https://leetcode-solution.cn/91。如果你提示
-            404， 请耐心等待，我会在活动开始前给大家加。如果活动已经开始，请联系
-            lucifer 处理。
+            404， 请检查你的邮箱是否有一个邀请邮件。如果有，请接收之。
           </div>
         </a-tab-pane>
       </a-tabs>
@@ -254,7 +274,8 @@ import {
   getIntroLecture,
   getTopicLecture,
   getAdvanceLecture,
-  getDailyProblem
+  getDailyProblem,
+  getMySolutions
 } from '@/apis/91'
 import { logout } from '@/apis/user'
 import {
@@ -285,6 +306,7 @@ export default {
   },
   data() {
     return {
+      mySolutions: [],
       showHistory: false,
       colors: ['#f50', '#2db7f5', '#87d068', '#108ee9'],
       name: '', // 当前登录人
@@ -318,6 +340,11 @@ export default {
     getDailyProblem(day) {
       getDailyProblem(day).then(dailyProblem => {
         this.dailyProblem = dailyProblem
+      })
+    },
+    getMySolutions() {
+      getMySolutions().then(data => {
+        this.mySolutions = data.filter((_, i) => getDay() >= i + 1)
       })
     },
     disabledDate(moment) {
@@ -364,6 +391,7 @@ export default {
       this.activeTab = 'sign'
 
       this.getDailyProblem()
+      this.getMySolutions()
       ;[
         getIntroLecture(),
         getBasicLecture(),
@@ -395,6 +423,10 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.my-solution {
+  text-align: right;
+  margin: 10px 0;
+}
 .timeline {
   margin: 0 auto;
   // width: 400px;

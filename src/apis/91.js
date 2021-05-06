@@ -41,3 +41,9 @@ export function getLectureDetails(id) {
     url: `/api/v1/lectures/${id}`
   })
 }
+
+export function getMySolutions() {
+  return request({
+    url: '/api/v1/my/solutions'
+  })
+}
