@@ -6,19 +6,22 @@
       @change="handleThemeChange"
     >
       <a-select-option value="empty">
-        simple
+        默认主题
       </a-select-option>
       <a-select-option value="blue">
-        blue
+        蓝调
       </a-select-option>
       <a-select-option value="bluew">
-        blue without grid
+        蓝调（无网格）
       </a-select-option>
       <a-select-option value="purple">
-        purple
+        紫调
       </a-select-option>
       <a-select-option value="purplew">
-        purple without grid
+        紫调（无网格）
+      </a-select-option>
+      <a-select-option value="wechat">
+        wechat
       </a-select-option>
     </a-select>
     <div class="wrapper" id="nice">
@@ -78,7 +81,7 @@ import students from './91/students-talk'
 import '../themes/atom-one-dark.less'
 import '../themes/base.less'
 
-const { blue, purple } = theme
+const { blue, purple, wechat } = theme
 
 const md = new MarkdownIt({
   html: true,
@@ -182,6 +185,9 @@ export default {
       }
       if (v === 'empty') {
         replaceStyle('theme-style', '')
+      }
+      if (v === 'wechat') {
+        replaceStyle('theme-style', wechat().content)
       }
       setStorage('theme', v)
     },
