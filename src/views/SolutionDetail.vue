@@ -23,6 +23,9 @@
       <a-select-option value="wechat">
         wechat
       </a-select-option>
+      <a-select-option value="vue">
+        vue
+      </a-select-option>
     </a-select>
     <div class="wrapper" id="nice">
       <div v-if="loading" class="spinner-container">
@@ -81,7 +84,7 @@ import students from './91/students-talk'
 import '../themes/atom-one-dark.less'
 import '../themes/base.less'
 
-const { blue, purple, wechat } = theme
+const { blue, purple, wechat, vue } = theme
 
 const md = new MarkdownIt({
   html: true,
@@ -188,6 +191,9 @@ export default {
       }
       if (v === 'wechat') {
         replaceStyle('theme-style', wechat().content)
+      }
+      if (v === 'vue') {
+        replaceStyle('theme-style', vue().content)
       }
       setStorage('theme', v)
     },
