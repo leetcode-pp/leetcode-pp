@@ -241,7 +241,7 @@
         </a-tab-pane>
 
         <a-tab-pane key="my" tab="我的" :disabled="!pay">
-          <div v-if="mySolutions.length === 0">活动尚未开始</div>
+          <div v-if="mySolutions.length === 0">暂无打卡记录~</div>
           <div
             :key="i"
             v-for="(solution, i) in mySolutions"
