@@ -1,9 +1,7 @@
 export function getStorage(k) {
   return new Promise((resolve, reject) => {
     try {
-      // eslint-disable-next-line
-      if (window.chrome.storage) {
-        // eslint-disable-next-line
+      if (window.chrome && window.chrome.storage) {
         window.chrome.storage.get([k], resolve)
       } else if (localStorage) {
         resolve({
@@ -23,9 +21,7 @@ export function getStorage(k) {
 export function setStorage(k, v) {
   return new Promise((resolve, reject) => {
     try {
-      // eslint-disable-next-line
-      if (window.chrome.storage) {
-        // eslint-disable-next-line
+      if (window.chrome && window.chrome.storage) {
         window.chrome.storage.sync.set(
           {
             [k]: v
