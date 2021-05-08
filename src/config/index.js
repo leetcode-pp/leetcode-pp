@@ -1,10 +1,4 @@
-const startTime = new Date()
-
-startTime.setMonth(4)
-startTime.setDate(9)
-startTime.setHours(16)
-startTime.setMinutes(0)
-startTime.setSeconds(0)
+const startTime = new Date('2021-05-09 16:00:00 GMT')
 
 module.exports = {
   startTime: startTime.getTime(),
