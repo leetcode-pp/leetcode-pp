@@ -1,8 +1,8 @@
 const startTime = new Date()
 
 startTime.setMonth(4)
-startTime.setDate(10)
-startTime.setHours(0)
+startTime.setDate(9)
+startTime.setHours(16)
 startTime.setMinutes(0)
 startTime.setSeconds(0)
 
