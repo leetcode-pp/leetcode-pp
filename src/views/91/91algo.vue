@@ -1,7 +1,13 @@
 <template>
   <div>
     <div v-if="!started">
-      <div>我们 <span class="time">2021-05-10</span> 见~</div>
+      <div>
+        我们
+        <span class="time">{{
+          new Date(startTime).toLocaleDateString('en-CA')
+        }}</span>
+        见~
+      </div>
 
       <counter :time="time" />
     </div>
@@ -71,20 +77,20 @@
 
                 <p />
               </a-timeline-item>
-              <a-timeline-item color="gray">
+              <a-timeline-item :color="basicActive() ? 'green' : 'gray'">
                 <h3>基础篇 （2021-05-10 - 2021-06-07）</h3>
                 <p v-for="lecture in basicLectures" :key="lecture.id">
                   {{ lecture.title }}
                 </p>
               </a-timeline-item>
 
-              <a-timeline-item color="gray">
+              <a-timeline-item :color="topicActive() ? 'green' : 'gray'">
                 <h3>专题篇 （2021-06-08 - 待定）</h3>
                 <p v-for="lecture in topicLectures" :key="lecture.id">
                   {{ lecture.title }}
                 </p>
               </a-timeline-item>
-              <a-timeline-item color="gray">
+              <a-timeline-item :color="advanceActive() ? 'green' : 'gray'">
                 <h3>进阶篇 （待定）</h3>
                 <p v-for="lecture in advanceLectures" :key="lecture.id">
                   {{ lecture.title }}
@@ -313,6 +319,7 @@ export default {
       colors: ['#f50', '#2db7f5', '#87d068', '#108ee9'],
       name: '', // 当前登录人
       avatar: '',
+      startTime,
       dailyProblem: {
         title: '',
         description: '',
@@ -340,6 +347,15 @@ export default {
 
   methods: {
     getDay,
+    basicActive() {
+      return new Date().getTime() >= startTime
+    },
+    topicActive() {
+      return new Date().getTime() >= new Date('2021-06-07 16:00:00 GMT')
+    },
+    advanceActive() {
+      return false
+    },
     getDailyProblem(day) {
       getDailyProblem(day).then(dailyProblem => {
         this.dailyProblem = dailyProblem
