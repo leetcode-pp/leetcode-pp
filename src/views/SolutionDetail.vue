@@ -70,6 +70,7 @@ import axios from 'axios'
 import { Base64 } from 'js-base64'
 import MarkdownIt from 'markdown-it'
 import markdownItLatex from '@iktakahiro/markdown-it-katex'
+import highlightLines from '../utils/highlight-lines'
 import hljs from '../utils/langHighlight'
 import 'highlight.js/styles/github.css'
 import { getLectureDetails, getDailyProblemSolution } from '@/apis/91'
@@ -85,40 +86,31 @@ import '../themes/atom-one-dark.less'
 import '../themes/base.less'
 
 const { blue, purple, wechat, vue } = theme
-
-const md = new MarkdownIt({
-  html: true,
-  highlight: (str, lang) => {
-    if (lang === undefined || lang === '') {
-      lang = 'bash'
-    }
-    // 加上custom则表示自定义样式，而非微信专属，避免被remove pre
-    if (lang && hljs.getLanguage(lang)) {
-      try {
-        const formatted = hljs
-          .highlight(lang, str, true)
-          .value.replace(/\n/g, '<br/>') // 换行用br表示
-          .replace(/\s/g, '&nbsp;') // 用nbsp替换空格
-          .replace(/span&nbsp;/g, 'span ') // span标签修复
-        return (
-          '<pre class="custom"><code class="hljs">' +
-          formatted +
-          '</code></pre>'
-        )
-      } catch (e) {
-        console.log(e)
-      }
-    }
-    return (
-      '<pre class="custom"><code class="hljs">' +
-      md.utils.escapeHtml(str) +
-      '</code></pre>'
-    )
-  }
-})
+const options = {
+  html: true
+}
+const md = new MarkdownIt(options)
+md.use(highlightLines)
 md.use(markdownItLatex)
 md.use(markdownItSpan)
 md.use(markdownItMultiquote)
+
+md.options.highlight = (str, lang) => {
+  if (lang === undefined || lang === '') {
+    lang = 'bash'
+  }
+  // 加上custom则表示自定义样式，而非微信专属，避免被remove pre
+  if (hljs.getLanguage(lang)) {
+    const formatted = hljs
+      .highlight(lang, str, true)
+      .value.replace(/\n/g, '<br/>') // 换行用br表示
+      .replace(/\s/g, '&nbsp;') // 用nbsp替换空格
+      .replace(/span&nbsp;/g, 'span ') // span标签修复
+    return (
+      '<pre class="custom"><code class="hljs">' + formatted + '</code></pre>'
+    )
+  }
+}
 
 const URL_REGEX = /(\s+)(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/g
 const LINK_REGRX = /\[(.*)\]\(\.\.\/(.*)\)/g
