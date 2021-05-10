@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="!started">
+    <!-- <div v-if="!started">
       <div>
         我们
         <span class="time">{{
@@ -10,7 +10,7 @@
       </div>
 
       <counter :time="time" />
-    </div>
+    </div> -->
 
     <div v-if="!pay">
       <a-alert :message="errorMessage" type="error" />
@@ -271,7 +271,7 @@
 </template>
 
 <script>
-import counter from '@/components/Counter'
+// import counter from '@/components/Counter'
 import request from '@/apis/request'
 import Card from '@/components/Card'
 import Faq from './faq'
@@ -308,7 +308,7 @@ function getDay(date = new Date().getTime()) {
 
 export default {
   components: {
-    counter,
+    // counter,
     faq: Faq,
     card: Card
   },
