@@ -394,7 +394,7 @@ export default {
       window.location.href = `https://${hostname}/91`
       return
     }
-    const { pay, message, name, avatar_url: avatar } =
+    const { pay, message, name, login, avatar_url: avatar } =
       (await request({
         url: `/api/v1/user?code=${this.$route.query.code || ''}`
       })) || {}
@@ -404,7 +404,7 @@ export default {
     }
     this.avatar = avatar
     this.pay = pay
-    this.name = name
+    this.name = name || login
 
     if (pay) {
       this.activeTab = 'sign'
