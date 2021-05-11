@@ -2,7 +2,9 @@ import { message } from 'ant-design-vue'
 import axios from 'axios'
 
 const host =
-  process.env.NODE_ENV === 'production' ? '' : 'http://localhost:3000'
+  process.env.NODE_ENV === 'production'
+    ? 'https://algo91.herokuapp.com'
+    : 'http://localhost:3000'
 export default function(options) {
   return axios({
     ...options,
