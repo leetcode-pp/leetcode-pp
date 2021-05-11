@@ -72,7 +72,7 @@ function getSolution(comments) {
     comment => comment.user.login === 'azl397985856'
   )
   if (lucifer) return lucifer.body
-  return comments[0].body || ''
+  return comments[0] ? comments[0].body : '暂无'
 }
 export default {
   data() {
