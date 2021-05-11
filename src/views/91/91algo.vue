@@ -267,18 +267,32 @@
         </a-tab-pane>
 
         <a-tab-pane key="my" tab="我的" :disabled="!pay">
-          <div>
+          <div style="margin: 10px 0;">
             这里的打卡记录
             <b>不是实时的</b
             >，而是第二天收集前一天的打卡情况，也就是说当天的打卡会在第二天才能看到。如果你刚打完卡，这里没有看到是正常的。
           </div>
           <div v-if="mySolutions.length === 0">暂无打卡记录~</div>
+
+          <a-radio-group v-model="selectedTag" @change="onSelectedTagChange">
+            <a-radio-button v-for="tag in allTags" :value="tag" :key="tag">
+              {{ tag }}
+            </a-radio-button>
+          </a-radio-group>
+
           <div
             :key="i"
-            v-for="(solution, i) in mySolutions"
+            v-for="(solution, i) in mySolutions.filter(
+              s => selectedTag === '全部' || s.tags.includes(selectedTag)
+            )"
             class="my-solution"
           >
             <div v-if="solution">
+              {{
+                solution.tags.length > 0
+                  ? '【' + solution.tags.join('，') + '】'
+                  : ''
+              }}
               <a-button v-if="solution.url" type="link" :href="solution.url">
                 {{ solution.title }}
               </a-button>
@@ -341,6 +355,8 @@ export default {
   },
   data() {
     return {
+      selectedTag: '全部',
+      allTags: ['全部'],
       currentStudentTab: 'interview',
       doneList: [
         {
@@ -391,6 +407,9 @@ export default {
 
   methods: {
     getDay,
+    onSelectedTagChange(e) {
+      this.selectedTag = e.target.value
+    },
     basicActive() {
       return new Date().getTime() >= startTime
     },
@@ -408,6 +427,12 @@ export default {
     getMySolutions() {
       getMySolutions().then(data => {
         this.mySolutions = data.filter((_, i) => getDay() >= i + 1)
+        this.allTags = data
+          .map(q => q.tags)
+          .reduce((acc, tags) => {
+            tags.forEach(tag => acc.add(tag))
+            return acc
+          }, new Set(['全部']))
       })
     },
     disabledDate(moment) {
