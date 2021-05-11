@@ -199,6 +199,7 @@
         <a-tab-pane key="jy1" tab="讲义（基础篇）">
           <card :cards="basicLectures" />
         </a-tab-pane>
+
         <a-tab-pane key="jy2" tab="讲义（专题篇）" disabled>
           尚未开启
         </a-tab-pane>
@@ -211,39 +212,58 @@
         </a-tab-pane> -->
 
         <a-tab-pane key="top-students" tab="上榜墙">
-          <a-list
-            item-layout="horizontal"
-            :data-source="students"
-            class="students"
+          <a-radio-group
+            v-model="currentStudentTab"
+            @change="e => (currentStudentTab = e.target.value)"
           >
-            <a-list-item slot="renderItem" slot-scope="item">
-              <a-list-item-meta
-                :description="item.description || '这个人太懒了，什么也没有写'"
-              >
-                <a slot="title" :href="item.homepage">{{ item.title }}</a>
-                <a-avatar slot="avatar" :src="item.avatar" />
-              </a-list-item-meta>
-              <div class="more">
-                <a-tag
-                  :color="hashColor(item)"
-                  :key="item"
-                  v-for="item in item.tags"
-                >
-                  {{ item }}
-                </a-tag>
-                <a-button
-                  type="link"
-                  :href="
-                    `/solutionDetail?type=4&id=${item.id}&max_id=${Math.max(
-                      ...students.map(q => q.id)
-                    )}`
+            <a-radio-button value="ranking" disabled>
+              打卡排行榜
+            </a-radio-button>
+            <a-radio-button value="interview">
+              往期优秀学员专访
+            </a-radio-button>
+          </a-radio-group>
+
+          <div v-if="currentStudentTab === 'ranking'">
+            <ranking :doneList="doneList" :rankings="rankings" />
+          </div>
+          <div v-else>
+            <a-list
+              item-layout="horizontal"
+              :data-source="students"
+              class="students"
+            >
+              <a-list-item slot="renderItem" slot-scope="item">
+                <a-list-item-meta
+                  :description="
+                    item.description || '这个人太懒了，什么也没有写'
                   "
-                  target="_blank"
-                  >听听 ta 的故事</a-button
                 >
-              </div>
-            </a-list-item>
-          </a-list>
+                  <a slot="title" :href="item.homepage">{{ item.title }}</a>
+                  <a-avatar slot="avatar" :src="item.avatar" />
+                </a-list-item-meta>
+                <div class="more">
+                  <a-tag
+                    :color="hashColor(item)"
+                    :key="item"
+                    v-for="item in item.tags"
+                  >
+                    {{ item }}
+                  </a-tag>
+                  <a-button
+                    type="link"
+                    :href="
+                      `/solutionDetail?type=4&id=${item.id}&max_id=${Math.max(
+                        ...students.map(q => q.id)
+                      )}`
+                    "
+                    target="_blank"
+                    >听听 ta 的故事</a-button
+                  >
+                </div>
+              </a-list-item>
+            </a-list>
+          </div>
         </a-tab-pane>
 
         <a-tab-pane key="my" tab="我的" :disabled="!pay">
@@ -279,6 +299,7 @@
 // import counter from '@/components/Counter'
 import request from '@/apis/request'
 import Card from '@/components/Card'
+import Rank from './ranking'
 import Faq from './faq'
 import {
   getBasicLecture,
@@ -315,10 +336,28 @@ export default {
   components: {
     // counter,
     faq: Faq,
+    ranking: Rank,
     card: Card
   },
   data() {
     return {
+      currentStudentTab: 'interview',
+      doneList: [
+        {
+          name: 'lucifer',
+          login: 'azl397985856',
+          avatar: 'https://avatars.githubusercontent.com/u/12479470?v=4',
+          count: 35
+        }
+      ], // 全勤列表
+      rankings: [
+        {
+          name: 'lucifer',
+          login: 'azl397985856',
+          avatar: 'https://avatars.githubusercontent.com/u/12479470?v=4',
+          count: 35
+        }
+      ], // 打卡排行。未来可能增加其他排行，比如点赞精选排行
       mySolutions: [],
       showHistory: false,
       colors: ['#f50', '#2db7f5', '#87d068', '#108ee9'],
