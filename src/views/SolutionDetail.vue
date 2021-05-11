@@ -223,8 +223,12 @@ export default {
               message: 'id 不存在'
             })
           }
-        } else if (this.type === 1) {
-          const res = await axios.get(this.$route.query.url)
+        } else if (this.type === '1') {
+          const res = await axios.get(this.$route.query.url, {
+            headers: {
+              Authorization: `token ${process.env.token || ''}`
+            }
+          })
           this.loading = false
           this.desc = md.render(
             this.addLinkMarkdown(Base64.decode(res.data.content))
