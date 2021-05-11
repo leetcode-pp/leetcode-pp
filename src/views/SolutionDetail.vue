@@ -66,7 +66,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 import { Base64 } from 'js-base64'
 import MarkdownIt from 'markdown-it'
 import markdownItLatex from '@iktakahiro/markdown-it-katex'
@@ -79,6 +78,7 @@ import markdownItMultiquote from '../utils/markdown-it-multiquote'
 import { replaceStyle } from '../utils/style'
 import theme from '../themes/index'
 import { getStorage, setStorage } from '../utils/storage'
+import { getGithubContent } from '../apis/github'
 
 import students from './91/students-talk'
 
@@ -224,14 +224,10 @@ export default {
             })
           }
         } else if (this.type === '1') {
-          const res = await axios.get(this.$route.query.url, {
-            headers: {
-              Authorization: `token ${process.env.token || ''}`
-            }
-          })
+          const res = await getGithubContent(this.$route.query.url)
           this.loading = false
           this.desc = md.render(
-            this.addLinkMarkdown(Base64.decode(res.data.content))
+            this.addLinkMarkdown(Base64.decode(res.content))
           )
         } else {
           this.loading = false
