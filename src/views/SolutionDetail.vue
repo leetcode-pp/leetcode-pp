@@ -39,7 +39,7 @@
             type="error"
           />
         </div>
-        <h2 class="subtitle" v-if="type === 0">题解详情</h2>
+        <h2 class="subtitle" v-if="type === '0'">题解详情</h2>
         <div class="desc text-align-left" v-html="desc"></div>
       </div>
     </div>
@@ -137,7 +137,7 @@ export default {
   },
   computed: {
     disabledPre() {
-      return this.type === 2
+      return this.type === '2'
         ? +this.$route.query.id <= -4
         : +this.$route.query.id <= 1
     },
