@@ -76,7 +76,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+import { getGithubContent } from '../apis/github'
 
 // const - Column names for the table header
 const COLUMNS = [
@@ -124,12 +124,12 @@ export default {
     },
     async getAllLabels() {
       try {
-        const tags = await axios.get(
+        const tags = await getGithubContent(
           'https://api.github.com/repos/azl397985856/leetcode/labels'
         )
-
-        this.tags = tags.data
+        this.tags = tags
       } catch (error) {
+        console.log(error)
         this.showError()
       }
     },
@@ -179,19 +179,20 @@ export default {
       const config = {
         params: {
           state: 'all',
-          githubClientSecret: '64ec9c15ee608c201f0b5f4b3fde881b07d2bc31',
-          githubClientId: 'e6dafd54b96fcef74c56',
           page: pageNumber,
           // eslint-disable-next-line @typescript-eslint/camelcase
           per_page: DEFAULT_PAGE_SIZE
         }
       }
       keyword = keyword ? `+"${keyword}"` : ''
-      const url = `https://api.github.com/search/issues?q=【每日一题】 ${keyword}${label ||
-        ''}+repo:azl397985856/leetcode+in%3Atitle+is:issue`
-      const result = await axios.get(url, config)
-      const items = result.data.items
-      const totalCount = result.data.total_count
+      const url = encodeURI(
+        `https://api.github.com/search/issues?q=【每日一题】 ${keyword}${label ||
+          ''}+repo:azl397985856/leetcode`
+      )
+      const result = await getGithubContent(url, config)
+      console.log(result)
+      const items = result.items
+      const totalCount = result.total_count
 
       return {
         data: items.map(item => {

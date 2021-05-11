@@ -1,10 +1,11 @@
 import request from './request'
 
-export function getGithubContent(url) {
+export function getGithubContent(url, config = {}) {
   return request({
     url: '/api/v1/github/content',
     params: {
-      url
+      url,
+      ...config.params
     }
   })
 }

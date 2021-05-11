@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+import { getGithubContent } from '../apis/github'
 import MarkdownIt from 'markdown-it'
 import hljs from 'highlight.js'
 import 'highlight.js/styles/github.css'
@@ -65,6 +65,15 @@ const COLORS = [
   'purple',
   '#87d068'
 ]
+
+function getSolution(comments) {
+  // 优先选择 lucifer 的，如果没有，选第一个好了。
+  const lucifer = comments.find(
+    comment => comment.user.login === 'azl397985856'
+  )
+  if (lucifer) return lucifer.body
+  return comments[0].body || ''
+}
 export default {
   data() {
     return {
@@ -91,16 +100,17 @@ export default {
     },
     async getProlem() {
       try {
-        const res = await axios.get(
+        const res = await getGithubContent(
           `https://api.github.com/repos/azl397985856/leetcode/issues/${this.$route.params.id}?githubClientId=e6dafd54b96fcef74c56&githubClientSecret=64ec9c15ee608c201f0b5f4b3fde881b07d2bc31`
         )
         this.loading = false
-        this.title = res.data.title
-        this.desc = md.render(this.addLinkMarkdown(res.data.body))
-        this.createDate = res.data.created_at
-        this.issueUrl = res.data.comments_url
-        this.labels = res.data.labels
+        this.title = res.title
+        this.desc = md.render(this.addLinkMarkdown(res.body))
+        this.createDate = res.created_at
+        this.issueUrl = res.comments_url
+        this.labels = res.labels
       } catch (error) {
+        console.log(error)
         this.showError()
         this.loading = false
       }
@@ -110,13 +120,14 @@ export default {
     },
     async getSolution() {
       try {
-        const res = await axios.get(this.issueUrl)
+        const comments = await getGithubContent(this.issueUrl)
         this.loading = false
-        this.solution = (res.data[0] && res.data[0].body) || ''
+        this.solution = getSolution(comments)
 
         // Markdown to HTML
         this.solution = md.render(this.solution)
       } catch (error) {
+        console.log(error)
         this.showError()
         this.loading = false
       }
