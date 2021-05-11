@@ -247,6 +247,11 @@
         </a-tab-pane>
 
         <a-tab-pane key="my" tab="我的" :disabled="!pay">
+          <div>
+            这里的打卡记录
+            <b>不是实时的</b
+            >，而是第二天收集前一天的打卡情况，也就是说当天的打卡会在第二天才能看到。如果你刚打完卡，这里没有看到是正常的。
+          </div>
           <div v-if="mySolutions.length === 0">暂无打卡记录~</div>
           <div
             :key="i"
