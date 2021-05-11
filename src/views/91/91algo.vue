@@ -368,8 +368,9 @@ export default {
     },
     disabledDate(moment) {
       const d = getDay(moment.valueOf())
-      // TODO: 活动开始去除下面注释
-      // if (moment.valueOf() > new Date().getTime()) return true
+      // 活动开始去除下面注释
+      if (moment.valueOf() > new Date().getTime()) return true
+      console.log(d)
       return d < 1 || d > 91
     },
     hashColor(text) {
