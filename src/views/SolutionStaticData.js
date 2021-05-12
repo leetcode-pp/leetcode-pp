@@ -26,7 +26,7 @@ const solutionData = [
   },
   {
     title: '二分专题（下）',
-    url: '/thinkings/binary-2.md',
+    url: '/thinkings/binary-search-2.md',
     isNew: true
   },
   {
