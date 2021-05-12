@@ -248,7 +248,7 @@ export default {
     }
   },
   async mounted() {
-    this.type = this.$route.query.type
+    this.type = this.$route.query.type.toString()
     await this.getSolution()
     // hljs.configure({ useBR: false })
     // document.querySelectorAll('code').forEach(block => {
