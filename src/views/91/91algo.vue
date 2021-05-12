@@ -293,6 +293,10 @@
                   ? '【' + solution.tags.join('，') + '】'
                   : ''
               }}
+
+              <span :class="getDifficultyClass(solution.difficulty)">
+                {{ getDifficulty(solution.difficulty) }}
+              </span>
               <a-button v-if="solution.url" type="link" :href="solution.url">
                 {{ solution.title }}
               </a-button>
@@ -407,6 +411,20 @@ export default {
 
   methods: {
     getDay,
+    getDifficulty(difficulty) {
+      if (!difficulty) return ''
+      if (difficulty.includes('简单')) return '简单'
+      if (difficulty.includes('中等')) return '中等'
+      if (difficulty.includes('困难')) return '困难'
+      return ''
+    },
+    getDifficultyClass(difficulty) {
+      if (!difficulty) return ''
+      if (difficulty.includes('简单')) return 'easy'
+      if (difficulty.includes('中等')) return 'medium'
+      if (difficulty.includes('困难')) return 'hard'
+      return ''
+    },
     onSelectedTagChange(e) {
       this.selectedTag = e.target.value
     },
@@ -512,6 +530,15 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.easy {
+  color: green;
+}
+.medium {
+  color: orange;
+}
+.hard {
+  color: red;
+}
 .my-solution {
   text-align: right;
   margin: 10px 0;
