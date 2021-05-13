@@ -25,7 +25,7 @@
     />
 
     <a-button
-      v-show="dest"
+      :disabled="!dest"
       type="link"
       :href="`/solutionDetail?type=1&url=${dest}`"
       target="_blank"
@@ -41,6 +41,13 @@
 <script>
 const getURL = ({ owner, repo, path }) =>
   `https://api.github.com/repos/${owner}/${repo}/contents/${path}`
+function getEXT(filename) {
+  if (!filename) return ''
+  return filename
+    .split('.')
+    .pop()
+    .toLowerCase()
+}
 function getOwnerAndRepo(url) {
   if (!url) return {}
   const parts = url.split('/')
@@ -71,6 +78,7 @@ export default {
   computed: {
     dest() {
       const { owner, repo, path } = getOwnerAndRepo(this.keyword)
+      if (getEXT(path) !== 'md') return ''
       return getURL({ owner, repo, path })
     }
   }
