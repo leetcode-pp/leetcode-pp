@@ -66,7 +66,7 @@
             </a-list-item>
           </a-list>
         </a-tab-pane>
-        <a-tab-pane key="agenda" tab="目录">
+        <a-tab-pane key="agenda" tab="时间表">
           <div class="timeline">
             <a-timeline mode="alternate">
               <a-timeline-item color="green">
