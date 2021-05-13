@@ -109,10 +109,23 @@
             >仓库</a-button
           >
           找到当天的题目进行打卡~
+          <div>
+            <a-button
+              type="link"
+              v-if="dailyProblem.day"
+              :href="
+                '/solutionDetail?type=3&id=' +
+                  dailyProblem.day +
+                  '&max_id=' +
+                  2 || getDay()
+              "
+              >查看官方题解</a-button
+            >
 
-          <a-button type="primary" size="small" @click="showHistory = true">
-            历史每日一题
-          </a-button>
+            <a-button type="primary" size="small" @click="showHistory = true">
+              历史每日一题
+            </a-button>
+          </div>
           <a-drawer
             width="400"
             title="历史每日一题"
@@ -180,18 +193,6 @@
               </div>
             </div>
           </div>
-
-          <a-button
-            type="link"
-            v-if="dailyProblem.day"
-            :href="
-              '/solutionDetail?type=3&id=' +
-                dailyProblem.day +
-                '&max_id=' +
-                2 || getDay()
-            "
-            >查看官方题解</a-button
-          >
         </a-tab-pane>
         <a-tab-pane key="jy0" tab="讲义（先导篇）">
           <card :cards="introLectures" />
