@@ -476,6 +476,7 @@ export default {
       window.location.href = `https://${hostname}/91`
       return
     }
+    getRankings().then(rankings => (this.rankings = rankings))
     const { pay, message, name, login, avatar_url: avatar } =
       (await request({
         url: `/api/v1/user?code=${this.$route.query.code || ''}`
@@ -487,7 +488,6 @@ export default {
     this.avatar = avatar
     this.pay = pay
     this.name = name || login
-    getRankings().then(rankings => (this.rankings = rankings))
 
     if (pay) {
       this.activeTab = 'sign'
