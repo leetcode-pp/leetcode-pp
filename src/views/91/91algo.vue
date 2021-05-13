@@ -274,7 +274,11 @@
           </div>
           <div v-if="mySolutions.length === 0">暂无打卡记录~</div>
 
-          <a-radio-group v-model="selectedTag" @change="onSelectedTagChange">
+          <a-radio-group
+            v-else
+            v-model="selectedTag"
+            @change="onSelectedTagChange"
+          >
             <a-radio-button v-for="tag in allTags" :value="tag" :key="tag">
               {{ tag }}
             </a-radio-button>
