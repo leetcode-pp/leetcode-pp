@@ -30,6 +30,11 @@
               >91算法(第四期)</router-link
             >
           </a-menu-item>
+          <a-menu-item key="github">
+            <router-link to="/github" class="nav-font">
+              Github Reader</router-link
+            >
+          </a-menu-item>
           <a-menu-item key="solution-code">
             <router-link to="/solution-code" class="nav-font"
               >题解配套代码</router-link
