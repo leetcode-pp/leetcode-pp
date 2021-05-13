@@ -371,14 +371,7 @@ export default {
           count: 35
         }
       ], // 全勤列表
-      rankings: [
-        {
-          name: 'lucifer',
-          login: 'azl397985856',
-          avatar: 'https://avatars.githubusercontent.com/u/12479470?v=4',
-          count: 35
-        }
-      ], // 打卡排行。未来可能增加其他排行，比如点赞精选排行
+      rankings: [], // 打卡排行。未来可能增加其他排行，比如点赞精选排行
       mySolutions: [],
       showHistory: false,
       colors: ['#f50', '#2db7f5', '#87d068', '#108ee9'],
