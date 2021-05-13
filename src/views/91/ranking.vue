@@ -5,7 +5,7 @@
         <a slot="title" :href="'https://github.com/' + item.login">{{
           item.name || item.login
         }}</a>
-        <a-avatar slot="avatar" :src="item.avatar" />
+        <a-avatar slot="avatar" :src="item.avatar_url" />
       </a-list-item-meta>
       <div class="more">
         <a-button

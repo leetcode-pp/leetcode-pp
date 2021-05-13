@@ -47,3 +47,9 @@ export function getMySolutions() {
     url: '/api/v1/my/solutions'
   })
 }
+
+export function getRankings() {
+  return request({
+    url: '/api/v1/daily-problem/ranking'
+  })
+}

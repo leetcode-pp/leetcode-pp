@@ -216,7 +216,7 @@
             v-model="currentStudentTab"
             @change="e => (currentStudentTab = e.target.value)"
           >
-            <a-radio-button value="ranking" disabled>
+            <a-radio-button value="ranking">
               打卡排行榜
             </a-radio-button>
             <a-radio-button value="interview">
@@ -270,7 +270,7 @@
           <div style="margin: 10px 0;">
             这里的打卡记录
             <b>不是实时的</b
-            >，而是第二天收集前一天的打卡情况，也就是说当天的打卡会在第二天才能看到。如果你刚打完卡，这里没有看到是正常的。
+            >，而是每整点更新一次，也就是说打完卡需要至少下一个整点才能更新记录。如果你刚打完卡，这里没有看到是正常的。
           </div>
           <div v-if="mySolutions.length === 0">暂无打卡记录~</div>
 
@@ -325,7 +325,8 @@ import {
   getTopicLecture,
   getAdvanceLecture,
   getDailyProblem,
-  getMySolutions
+  getMySolutions,
+  getRankings
 } from '@/apis/91'
 import { logout } from '@/apis/user'
 import {
@@ -361,7 +362,7 @@ export default {
     return {
       selectedTag: '全部',
       allTags: ['全部'],
-      currentStudentTab: 'interview',
+      currentStudentTab: 'ranking',
       doneList: [
         {
           name: 'lucifer',
@@ -493,6 +494,7 @@ export default {
     this.avatar = avatar
     this.pay = pay
     this.name = name || login
+    getRankings().then(rankings => (this.rankings = rankings))
 
     if (pay) {
       this.activeTab = 'sign'
