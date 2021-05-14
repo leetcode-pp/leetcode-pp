@@ -108,7 +108,7 @@
             target="_blank"
             >仓库</a-button
           >
-          找到当天的题目进行打卡~
+          找到当天的题目进行打卡~ (如果出现 404 请参考 FAQ 的解决方案)
           <div>
             <a-button
               type="link"
