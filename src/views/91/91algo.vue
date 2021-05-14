@@ -20,7 +20,7 @@
       >
     </div>
 
-    <div v-else class="hello">
+    <div class="hello">
       <a-avatar :size="64" :src="avatar" />
       <div>
         欢迎回来，{{ name }} ~ 今天有没有比昨天进步一点点呢？
