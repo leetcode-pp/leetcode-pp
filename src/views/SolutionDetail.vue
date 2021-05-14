@@ -75,6 +75,11 @@ import 'highlight.js/styles/github.css'
 import { getLectureDetails, getDailyProblemSolution } from '@/apis/91'
 import markdownItSpan from '../utils/markdown-it-span'
 import markdownItMultiquote from '../utils/markdown-it-multiquote'
+import markdownItImageflow from '../utils/markdown-it-imageflow'
+import markdownItLinkfoot from '../utils/markdown-it-linkfoot'
+import markdownItLi from '../utils/markdown-it-li'
+import markdownItRemovepre from '../utils/markdown-it-removepre'
+import markdownItTableContainer from '../utils/markdown-it-table-container'
 import { replaceStyle } from '../utils/style'
 import theme from '../themes/index'
 import { getStorage, setStorage } from '../utils/storage'
@@ -94,6 +99,11 @@ md.use(highlightLines)
 md.use(markdownItLatex)
 md.use(markdownItSpan)
 md.use(markdownItMultiquote)
+md.use(markdownItImageflow)
+md.use(markdownItLinkfoot)
+md.use(markdownItLi)
+md.use(markdownItRemovepre)
+md.use(markdownItTableContainer)
 
 md.options.highlight = (str, lang) => {
   if (lang === undefined || lang === '') {
