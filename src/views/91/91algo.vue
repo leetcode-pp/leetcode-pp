@@ -306,8 +306,21 @@
                 {{ solution.title }}
               </a-button>
               <span v-else>{{ solution.title }}</span>
-              <a-icon style="color: green" v-if="solution.body" type="check" />
-              <a-icon style="color: red" v-else type="close" />
+              <div class="icon">
+                <a-icon
+                  style="color: green"
+                  v-if="solution.body"
+                  type="check"
+                />
+                <a-tooltip v-else-if="getDay() === i + 1">
+                  <template slot="title">
+                    未打卡或者正在更新打卡状态（打卡后一般一个小时之内会更新）
+                  </template>
+                  <a-icon type="clock-circle" />
+                </a-tooltip>
+
+                <a-icon style="color: red" v-else type="close" />
+              </div>
             </div>
           </div>
         </a-tab-pane>
@@ -456,7 +469,6 @@ export default {
       const d = getDay(moment.valueOf())
       // 活动开始去除下面注释
       if (moment.valueOf() > new Date().getTime()) return true
-      console.log(d)
       return d < 1 || d > 91
     },
     hashColor(text) {
@@ -560,6 +572,10 @@ export default {
 .time {
   font-size: 24px;
   color: #00a6dd;
+}
+.icon {
+  display: inline-block;
+  margin: 0 10px;
 }
 .teachers,
 .students {
