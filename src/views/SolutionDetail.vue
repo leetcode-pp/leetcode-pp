@@ -69,6 +69,8 @@
 import { Base64 } from 'js-base64'
 import MarkdownIt from 'markdown-it'
 import markdownItLatex from '@iktakahiro/markdown-it-katex'
+import markdownItImplicitFigures from 'markdown-it-implicit-figures'
+
 import highlightLines from '../utils/highlight-lines'
 import hljs from '../utils/langHighlight'
 import 'highlight.js/styles/github.css'
@@ -95,6 +97,7 @@ const options = {
   html: true
 }
 const md = new MarkdownIt(options)
+md.use(markdownItImplicitFigures, { figcaption: true })
 md.use(highlightLines)
 md.use(markdownItLatex)
 md.use(markdownItSpan)
@@ -136,6 +139,7 @@ export default {
       // 2: 91讲义 (leetcode-pp-node api)
       // 3: 91每日一题题解(leetcode-pp-node api)
       // 4: 个人访谈
+      // 5: github reader
       currentTheme: 'empty',
       type: 0,
       loading: true,
@@ -239,6 +243,10 @@ export default {
           this.desc = md.render(
             this.addLinkMarkdown(Base64.decode(res.content))
           )
+        } else if (this.type === '5') {
+          const res = await getStorage('github-reader')
+          this.loading = false
+          this.desc = md.render(res?.result?.value)
         } else {
           this.loading = false
           this.showError({

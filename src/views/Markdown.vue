@@ -32,6 +32,24 @@
       >前往阅读</a-button
     >
 
+    <div style="margin: 10px 0">没有 URL ？？ 那直接输入 markdown 源码吧！</div>
+
+    <a-input
+      style="width: 800px; flex: 1;"
+      :value="raw"
+      @input="handleRawInputChange"
+      type="textarea"
+      rows="10"
+      placeholder="请输入 Markdown 原文"
+    />
+    <a-button
+      :disabled="!raw"
+      type="link"
+      @click="goToRenderRaw"
+      target="_blank"
+      >前往阅读</a-button
+    >
+
     <div class="footer">
       大家可以根据自己的喜好挑选自己的主题，目前内置了几种，后续考虑增加更多主题~
     </div>
@@ -39,6 +57,7 @@
 </template>
 
 <script>
+import { setStorage } from '../utils/storage'
 const getURL = ({ owner, repo, path }) =>
   `https://api.github.com/repos/${owner}/${repo}/contents/${path}`
 function getEXT(filename) {
@@ -67,12 +86,20 @@ function getOwnerAndRepo(url) {
 export default {
   data() {
     return {
-      keyword: ''
+      keyword: '',
+      raw: ''
     }
   },
   methods: {
+    async goToRenderRaw() {
+      await setStorage('github-reader', this.raw)
+      this.$router.push('/solutionDetail?type=5')
+    },
     handleInputChange(e) {
       this.keyword = e.target.value
+    },
+    handleRawInputChange(e) {
+      this.raw = e.target.value
     }
   },
   computed: {
