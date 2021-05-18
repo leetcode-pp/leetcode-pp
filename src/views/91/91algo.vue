@@ -101,14 +101,22 @@
         </a-tab-pane>
         <a-tab-pane key="sign" tab="打卡" :disabled="!pay">
           <!-- 后期考虑使用 https://microsoft.github.io/monaco-editor/index.html 来进行本地打卡 -->
-          本期暂时不支持在此打卡，还请大家去
-          <a-button
-            type="link"
-            href="https://github.com/leetcode-pp/91alg-4/issues"
-            target="_blank"
-            >仓库</a-button
-          >
-          找到当天的题目进行打卡~ (如果出现 404 请参考 FAQ 的解决方案)
+          <div v-if="dailyProblem.issue_number">
+            本期暂时不支持在此打卡，还请大家去
+            <a-button
+              type="link"
+              :href="
+                'https://github.com/leetcode-pp/91alg-4/issues/' +
+                  dailyProblem.issue_number
+              "
+              target="_blank"
+              >仓库</a-button
+            >
+            找到当天的题目进行打卡~ (如果出现 404 请参考 FAQ 的解决方案)
+          </div>
+          <div v-else>
+            仓库暂时没有更新今天的题目，会有大约一个小时以内的延迟，大家耐心等待下哦~
+          </div>
           <div>
             <a-button
               type="link"
@@ -302,10 +310,16 @@
               <span :class="getDifficultyClass(solution.difficulty)">
                 {{ getDifficulty(solution.difficulty) }}
               </span>
-              <a-button v-if="solution.url" type="link" :href="solution.url">
+              <a-button
+                type="link"
+                :href="
+                  solution.url ||
+                    'https://github.com/leetcode-pp/91alg-4/issues/' +
+                      solution.issue_number
+                "
+              >
                 {{ solution.title }}
               </a-button>
-              <span v-else>{{ solution.title }}</span>
               <div class="icon">
                 <a-icon
                   style="color: green"
