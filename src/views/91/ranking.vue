@@ -1,10 +1,16 @@
 <template>
   <a-list item-layout="horizontal" :data-source="rankings" class="teachers">
     <a-list-item slot="renderItem" slot-scope="item">
-      <a-list-item-meta :description="'累计打卡' + item.count + '次'">
-        <a slot="title" :href="'https://github.com/' + item.login">{{
-          item.name || item.login
-        }}</a>
+      <a-list-item-meta>
+        <div slot="description">
+          累计打卡 {{ item.count }} 次
+          <a-icon v-if="item.allCheck" class="all-check" type="carry-out" />
+        </div>
+        <div slot="title">
+          <a :href="'https://github.com/' + item.login"
+            >{{ item.name || item.login }}
+          </a>
+        </div>
         <a-avatar slot="avatar" :src="item.avatar_url" />
       </a-list-item-meta>
       <div class="more">
@@ -37,5 +43,9 @@ export default {
     height: 24px;
     line-height: 24px;
   }
+}
+.all-check {
+  margin-left: 10px;
+  font-size: 20px;
 }
 </style>
