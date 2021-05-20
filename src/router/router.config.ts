@@ -54,6 +54,7 @@ export const asyncRouterMap = [
       },
       {
         path: '91',
+        name: '91',
         component: () =>
           import(/* webpackChunkName: "view-91algo" */ '@/views/91/91algo.vue')
       },

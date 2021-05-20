@@ -33,7 +33,7 @@
       Github（做到如果不打卡，
       用这个网站就够了就行了。再多一点新花样，比如上面提到的讲师介绍等等） -->
 
-      <a-tabs v-model="activeTab">
+      <a-tabs :activeKey="activeTab" @change="handleActiveTabChange">
         <a-tab-pane key="teachers" tab="讲师介绍">
           <a-list
             item-layout="horizontal"
@@ -436,6 +436,17 @@ export default {
   },
 
   methods: {
+    handleActiveTabChange(v) {
+      this.activeTab = v
+      const newurl =
+        window.location.protocol +
+        '//' +
+        window.location.host +
+        window.location.pathname +
+        '?tab=' +
+        this.activeTab
+      window.history.pushState({ path: newurl }, '', newurl)
+    },
     getDay,
     getDifficulty(difficulty) {
       if (!difficulty) return ''
@@ -507,6 +518,9 @@ export default {
       window.location.href = `https://${hostname}/91`
       return
     }
+    const urlTab = new URLSearchParams(
+      new URL(window.location.href).search
+    ).get('tab')
     getRankings().then(rankings => (this.rankings = rankings))
     const { pay, message, name, login, avatar_url: avatar } =
       (await request({
@@ -521,7 +535,7 @@ export default {
     this.name = name || login
 
     if (pay) {
-      this.activeTab = 'sign'
+      this.activeTab = urlTab || 'sign'
 
       this.getDailyProblem()
       this.getMySolutions()
@@ -550,6 +564,8 @@ export default {
           }))
         })
       })
+    } else if (urlTab) {
+      this.activeTab = urlTab
     }
   }
 }
