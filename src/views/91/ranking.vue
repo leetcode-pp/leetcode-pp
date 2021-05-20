@@ -24,7 +24,15 @@
               >{{ item.name || item.login }}
             </a>
           </div>
-          <a-avatar slot="avatar" :src="item.avatar_url" />
+          <div slot="avatar">
+            <a-avatar
+              shape="square"
+              size="small"
+              class="rank"
+              :class="'rank-' + item.rank"
+              >{{ item.rank }}</a-avatar
+            ><a-avatar :src="item.avatar_url"> </a-avatar>
+          </div>
         </a-list-item-meta>
         <div class="more">
           {{ item.bio }}
@@ -67,5 +75,17 @@ export default {
 }
 .no-check {
   color: rgba(255, 0, 0, 0.664);
+}
+.rank {
+  margin: 0 10px;
+}
+.rank-1 {
+  background: rgb(242, 192, 86);
+}
+.rank-2 {
+  background: rgb(233, 233, 216);
+}
+.rank-3 {
+  background: rgb(186, 110, 64);
 }
 </style>
