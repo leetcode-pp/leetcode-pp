@@ -27,12 +27,7 @@
           <a-avatar slot="avatar" :src="item.avatar_url" />
         </a-list-item-meta>
         <div class="more">
-          <a-button
-            type="link"
-            :href="'https://github.com/' + item.login"
-            target="_blank"
-            >关注 ta</a-button
-          >
+          {{ item.bio }}
         </div>
       </a-list-item>
     </a-list>
