@@ -4,7 +4,7 @@ module.exports = [
     title: '小漾',
     tags: ['转码', '女神', '前端'],
     description:
-      '只要参加过 91 天学算法的人都会知道的一个女神级人物，如今也是第四界 91 天学算法的讲师',
+      '只要参加过 91 天学算法的人都会知道的一个女神级人物，如今也是第四届 《91 天学算法》的讲师',
     avatar:
       'https://tva1.sinaimg.cn/large/008i3skNly1gpy7a1u5rtj30cs0csglt.jpg',
     body: `
