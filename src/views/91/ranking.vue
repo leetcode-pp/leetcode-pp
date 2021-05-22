@@ -25,13 +25,25 @@
             </a>
           </div>
           <div slot="avatar">
-            <a-avatar
-              shape="square"
-              size="small"
+            <img
+              v-if="item.rank === 1"
               class="rank"
-              :class="'rank-' + item.rank"
-              >{{ item.rank }}</a-avatar
-            ><a-avatar :src="item.avatar_url"> </a-avatar>
+              src="../../assets/golden_metal.svg"
+            />
+            <img
+              v-else-if="item.rank === 2"
+              class="rank"
+              src="../../assets/silver_metal.svg"
+            />
+            <img
+              v-else-if="item.rank === 3"
+              class="rank"
+              src="../../assets/bronze_metal.svg"
+            />
+            <a-avatar v-else shape="square" size="small" class="rank">{{
+              item.rank
+            }}</a-avatar>
+            <a-avatar :src="item.avatar_url"> </a-avatar>
           </div>
         </a-list-item-meta>
         <div class="more">
@@ -78,15 +90,8 @@ export default {
 }
 .rank {
   margin: 0 10px;
-  background: rgb(51, 40, 40);
-}
-.rank.rank-1 {
-  background: rgb(242, 192, 86);
-}
-.rank.rank-2 {
-  background: rgb(233, 233, 216);
-}
-.rank.rank-3 {
-  background: rgb(186, 110, 64);
+  width: 36px;
+  height: 36px;
+  line-height: 36px;
 }
 </style>
