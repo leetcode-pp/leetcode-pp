@@ -78,14 +78,15 @@ export default {
 }
 .rank {
   margin: 0 10px;
+  background: rgb(51, 40, 40);
 }
-.rank-1 {
+.rank.rank-1 {
   background: rgb(242, 192, 86);
 }
-.rank-2 {
+.rank.rank-2 {
   background: rgb(233, 233, 216);
 }
-.rank-3 {
+.rank.rank-3 {
   background: rgb(186, 110, 64);
 }
 </style>
