@@ -326,7 +326,7 @@
               <div class="icon">
                 <a-icon
                   style="color: green"
-                  v-if="solution.body"
+                  v-if="solution.onTime === true"
                   type="check"
                 />
                 <a-tooltip v-else-if="getDay() === i + 1">
@@ -335,6 +335,12 @@
                   </template>
                   <a-icon type="clock-circle" />
                 </a-tooltip>
+
+                <a-icon
+                  style="color: orange"
+                  v-else-if="solution.onTime === false"
+                  type="issues-close"
+                />
 
                 <a-icon style="color: red" v-else type="close" />
               </div>
