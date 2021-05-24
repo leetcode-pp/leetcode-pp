@@ -1,23 +1,29 @@
 <template>
   <div>
-    <div class="info">
-      满勤：<a-icon class="all-check" type="carry-out" />
-      注：如果未满勤会自动使用补签卡，使用后满勤也算满勤
-    </div>
+    <div class="info">满勤：<a-icon class="all-check" type="carry-out" /></div>
     <div class="info">
       七天内未打卡：<a-icon class="no-check" type="exclamation-circle" />
     </div>
+    <div class="info">
+      剩余补签卡：<img class="rank card" src="../../assets/card.svg" />
+    </div>
+
+    注：如果未满勤会自动使用补签卡，使用后满勤也算满勤
     <a-list item-layout="horizontal" :data-source="rankings" class="teachers">
       <a-list-item slot="renderItem" slot-scope="item">
         <a-list-item-meta>
           <div slot="description">
-            累计打卡 {{ item.count }} 次
-            <a-icon v-if="item.allCheck" class="all-check" type="carry-out" />
-            <a-icon
-              v-if="item.noCheck"
-              class="no-check"
-              type="exclamation-circle"
-            />
+            <div>累计打卡 {{ item.count }} 次</div>
+            <div>
+              <a-icon v-if="item.allCheck" class="all-check" type="carry-out" />
+              <a-icon
+                v-if="item.noCheck"
+                class="no-check"
+                type="exclamation-circle"
+              />
+              <img class="rank card" src="../../assets/card.svg" /> x
+              {{ item.card || 0 }}
+            </div>
           </div>
           <div slot="title">
             <a :href="'https://github.com/' + item.login"
@@ -93,5 +99,9 @@ export default {
   width: 36px;
   height: 36px;
   line-height: 36px;
+}
+.rank.card {
+  width: 18px;
+  height: 18px;
 }
 </style>
