@@ -329,18 +329,18 @@
                   v-if="solution.onTime === true"
                   type="check"
                 />
+                <a-icon
+                  style="color: orange"
+                  v-else-if="solution.onTime === false"
+                  type="issues-close"
+                />
+
                 <a-tooltip v-else-if="getDay() === i + 1">
                   <template slot="title">
                     未打卡或者正在更新打卡状态（打卡后一般一个小时之内会更新）
                   </template>
                   <a-icon type="clock-circle" />
                 </a-tooltip>
-
-                <a-icon
-                  style="color: orange"
-                  v-else-if="solution.onTime === false"
-                  type="issues-close"
-                />
 
                 <a-icon style="color: red" v-else type="close" />
               </div>
