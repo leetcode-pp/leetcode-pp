@@ -43,6 +43,9 @@
         <div class="desc text-align-left" v-html="desc"></div>
       </div>
     </div>
+    <!-- <a-button size="small" type="primary" @click="handleCopyClick"
+      >复制内容</a-button
+    > -->
 
     <div class="pagination" v-if="type === '2' || type === '3'">
       <a-button
@@ -83,6 +86,7 @@ import markdownItLi from '../utils/markdown-it-li'
 import markdownItRemovepre from '../utils/markdown-it-removepre'
 import markdownItTableContainer from '../utils/markdown-it-table-container'
 import { replaceStyle } from '../utils/style'
+import { copyToClipboard } from '../utils/browser'
 import theme from '../themes/index'
 import { getStorage, setStorage } from '../utils/storage'
 import { getGithubContent } from '../apis/github'
@@ -160,6 +164,19 @@ export default {
     }
   },
   methods: {
+    handleCopyClick() {
+      try {
+        copyToClipboard(this.desc)
+        this.$message.success({
+          message: '复制成功'
+        })
+      } catch (err) {
+        this.$message.error({
+          message: '浏览器太旧了~'
+        })
+        console.log(err)
+      }
+    },
     handleNextClick() {
       this.$router.push({
         path: 'solutionDetail',
