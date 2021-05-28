@@ -7,11 +7,17 @@ const host =
     ? `https://${hostname}`
     : 'http://localhost:3000'
 const promisePool = {}
-export default function(options) {
+export default function(options = {}) {
   const url = `${host}${options.url}`
-  if (url in promisePool) {
-    return promisePool[url]
+  const can = !options.method || options.method.toUpperCase() === 'GET'
+  let k = ''
+  if (can) {
+    k = `${url}-${JSON.stringify(options.params)}`
+    if (k in promisePool) {
+      return promisePool[k]
+    }
   }
+
   const p = axios({
     ...options,
     withCredentials: true,
@@ -26,7 +32,9 @@ export default function(options) {
       message.error(err.message || '系统开小差~')
       throw err
     })
-  promisePool[url] = p
+  if (can) {
+    promisePool[k] = p
+  }
 
   return p
 }
