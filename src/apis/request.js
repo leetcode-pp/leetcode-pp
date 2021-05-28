@@ -6,11 +6,16 @@ const host =
   process.env.NODE_ENV === 'production'
     ? `https://${hostname}`
     : 'http://localhost:3000'
+const promisePool = {}
 export default function(options) {
-  return axios({
+  const url = `${host}${options.url}`
+  if (url in promisePool) {
+    return promisePool[url]
+  }
+  const p = axios({
     ...options,
     withCredentials: true,
-    url: `${host}${options.url}`
+    url
   })
     .then(res => res.data)
     .then(res => {
@@ -21,4 +26,7 @@ export default function(options) {
       message.error(err.message || '系统开小差~')
       throw err
     })
+  promisePool[url] = p
+
+  return p
 }

@@ -455,6 +455,42 @@ export default {
         '?tab=' +
         this.activeTab
       window.history.pushState({ path: newurl }, '', newurl)
+      if (v === 'top-students') {
+        getRankings().then(rankings => (this.rankings = rankings))
+      }
+      if (v === 'sign') {
+        this.getDailyProblem()
+      }
+      if (v === 'my') {
+        this.getMySolutions()
+      }
+      if (v.includes('jy')) {
+        ;[
+          getIntroLecture(),
+          getBasicLecture()
+          // getTopicLecture(),
+          // getAdvanceLecture()
+        ].forEach((p, i) => {
+          p.then(data => {
+            this[
+              [
+                'introLectures',
+                'basicLectures',
+                'topicLectures',
+                'advanceLectures'
+              ][i]
+            ] = data.map(q => ({
+              ...q,
+              viewUrl: q.external
+                ? q.externalLink
+                : `/solutionDetail?type=2&id=${q.id}&max_id=${Math.max(
+                    ...data.map(q => q.id)
+                  )}`,
+              external: !!q.external
+            }))
+          })
+        })
+      }
     },
     getDay,
     getDifficulty(difficulty) {
@@ -530,7 +566,7 @@ export default {
     const urlTab = new URLSearchParams(
       new URL(window.location.href).search
     ).get('tab')
-    getRankings().then(rankings => (this.rankings = rankings))
+
     const { pay, message, name, login, avatar_url: avatar } =
       (await request({
         url: `/api/v1/user?code=${this.$route.query.code || ''}`
@@ -542,40 +578,14 @@ export default {
     this.avatar = avatar
     this.pay = pay
     this.name = name || login
+    let activeTab = ''
 
     if (pay) {
-      this.activeTab = urlTab || 'sign'
-
-      this.getDailyProblem()
-      this.getMySolutions()
-      ;[
-        getIntroLecture(),
-        getBasicLecture(),
-        getTopicLecture(),
-        getAdvanceLecture()
-      ].forEach((p, i) => {
-        p.then(data => {
-          this[
-            [
-              'introLectures',
-              'basicLectures',
-              'topicLectures',
-              'advanceLectures'
-            ][i]
-          ] = data.map(q => ({
-            ...q,
-            viewUrl: q.external
-              ? q.externalLink
-              : `/solutionDetail?type=2&id=${q.id}&max_id=${Math.max(
-                  ...data.map(q => q.id)
-                )}`,
-            external: !!q.external
-          }))
-        })
-      })
+      activeTab = urlTab || 'sign'
     } else if (urlTab) {
-      this.activeTab = urlTab
+      activeTab = urlTab
     }
+    this.handleActiveTabChange(activeTab)
   }
 }
 </script>
