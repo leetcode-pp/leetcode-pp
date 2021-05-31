@@ -4,12 +4,18 @@ export function logout() {
     url: '/api/v1/user/logout'
   })
 }
-
+const TOKEN_PEROID = 1 * 24 * 60 * 60 * 1000
 export function getUserInfo(code) {
   return request({
     url: `/api/v1/user?code=${code || ''}`
   }).then(r => {
-    window.sessionStorage.setItem('token', r.token)
+    window.localStorage.setItem(
+      'token',
+      JSON.stringify({
+        expireAt: new Date().getTime() + TOKEN_PEROID,
+        value: r.token
+      })
+    )
     return r
   })
 }

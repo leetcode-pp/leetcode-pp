@@ -18,12 +18,22 @@ export default function(options = {}) {
     }
   }
   const originalHeaders = options.headers || {}
+  let token = null
+  try {
+    token = JSON.parse(window.localStorage.getItem('token'))
+  } catch (err) {
+    console.log(err)
+  }
+
+  if (token && new Date().getTime() >= token.expireAt) {
+    window.localStorage.removeItem('token')
+  }
 
   const p = axios({
     ...options,
     headers: {
       ...originalHeaders,
-      token: window.sessionStorage.getItem('token')
+      token: token?.value || 'empty'
     },
     withCredentials: true,
     url
