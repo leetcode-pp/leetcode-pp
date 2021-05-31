@@ -362,8 +362,8 @@ import Faq from './faq'
 import {
   getBasicLecture,
   getIntroLecture,
-  getTopicLecture,
-  getAdvanceLecture,
+  // getTopicLecture,
+  // getAdvanceLecture,
   getDailyProblem,
   getMySolutions,
   getRankings
@@ -380,7 +380,7 @@ import students from './students-talk'
 import {
   clientId,
   originalHostname,
-  hostname,
+  // hostname,
   startTime
 } from '../../config/index'
 
@@ -403,14 +403,7 @@ export default {
       selectedTag: '全部',
       allTags: ['全部'],
       currentStudentTab: 'ranking',
-      doneList: [
-        {
-          name: 'lucifer',
-          login: 'azl397985856',
-          avatar: 'https://avatars.githubusercontent.com/u/12479470?v=4',
-          count: 35
-        }
-      ], // 全勤列表
+      doneList: [], // 全勤列表
       rankings: [], // 打卡排行。未来可能增加其他排行，比如点赞精选排行
       mySolutions: [],
       showHistory: false,
@@ -439,7 +432,7 @@ export default {
       // logined: false, // 是否登录
       pay: false, // 是否为付费用户
       loginUrl: `
-            https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=https://${hostname}/91`
+            https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=https://${originalHostname}/91`
     }
   },
 
@@ -553,15 +546,15 @@ export default {
     },
     handlLogoutClick() {
       logout().then(() => {
-        window.location.href = `https://${hostname}/91`
+        window.location.href = `https://${originalHostname}/91`
       })
     }
   },
   async mounted() {
-    if (window.location.hostname === originalHostname) {
-      window.location.href = `https://${hostname}/91`
-      return
-    }
+    // if (window.location.hostname === originalHostname) {
+    //   window.location.href = `https://${hostname}/91`
+    //   return
+    // }
     const urlTab = new URLSearchParams(
       new URL(window.location.href).search
     ).get('tab')
