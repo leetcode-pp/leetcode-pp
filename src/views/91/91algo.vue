@@ -356,7 +356,6 @@
 
 <script>
 // import counter from '@/components/Counter'
-import request from '@/apis/request'
 import Card from '@/components/Card'
 import Rank from './ranking'
 import Faq from './faq'
@@ -369,7 +368,7 @@ import {
   getMySolutions,
   getRankings
 } from '@/apis/91'
-import { logout } from '@/apis/user'
+import { logout, getUserInfo } from '@/apis/user'
 import {
   basicLectures,
   introLectures,
@@ -568,9 +567,7 @@ export default {
     ).get('tab')
 
     const { pay, message, name, login, avatar_url: avatar } =
-      (await request({
-        url: `/api/v1/user?code=${this.$route.query.code || ''}`
-      })) || {}
+      (await getUserInfo(this.$route.query.code)) || {}
 
     if (message === 'Bad credentials') {
       this.errorMessage = '登录已过期，请重新登录~'

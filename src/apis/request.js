@@ -17,9 +17,14 @@ export default function(options = {}) {
       return promisePool[k]
     }
   }
+  const originalHeaders = options.headers || {}
 
   const p = axios({
     ...options,
+    headers: {
+      ...originalHeaders,
+      token: window.sessionStorage.getItem('token')
+    },
     withCredentials: true,
     url
   })
