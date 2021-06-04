@@ -212,8 +212,8 @@
           <card :cards="basicLectures" />
         </a-tab-pane>
 
-        <a-tab-pane key="jy2" tab="讲义（专题篇）" disabled>
-          尚未开启
+        <a-tab-pane key="jy2" tab="讲义（专题篇）">
+          <card :cards="topicLectures" />
         </a-tab-pane>
         <a-tab-pane key="jy3" tab="讲义（进阶篇）" disabled>
           尚未开启
@@ -362,7 +362,7 @@ import Faq from './faq'
 import {
   getBasicLecture,
   getIntroLecture,
-  // getTopicLecture,
+  getTopicLecture,
   // getAdvanceLecture,
   getDailyProblem,
   getMySolutions,
@@ -459,8 +459,8 @@ export default {
       if (v.includes('jy')) {
         ;[
           getIntroLecture(),
-          getBasicLecture()
-          // getTopicLecture(),
+          getBasicLecture(),
+          getTopicLecture()
           // getAdvanceLecture()
         ].forEach((p, i) => {
           p.then(data => {

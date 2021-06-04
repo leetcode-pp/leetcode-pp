@@ -156,7 +156,7 @@ export default {
   computed: {
     disabledPre() {
       return this.type === '2'
-        ? +this.$route.query.id <= -4
+        ? ['1001', '2001', '3001', '4001'].includes(this.$route.query.id)
         : +this.$route.query.id <= 1
     },
     disabledNext() {
