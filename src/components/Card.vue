@@ -55,7 +55,7 @@ export default {
 }
 .card-img {
   max-width: 200px;
-  height: 200px;
+  // height: 200px;
 }
 .card-desc {
   display: -webkit-box;
