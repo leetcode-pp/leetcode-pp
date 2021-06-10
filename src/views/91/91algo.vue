@@ -324,16 +324,19 @@
                 {{ solution.title }}
               </a-button>
               <div class="icon">
-                <a-icon
-                  style="color: green"
-                  v-if="solution.onTime === true"
-                  type="check"
-                />
-                <a-icon
-                  style="color: orange"
-                  v-else-if="solution.onTime === false"
-                  type="issues-close"
-                />
+                <a-tooltip v-if="solution.onTime === true">
+                  <template slot="title">
+                    打卡成功
+                  </template>
+                  <a-icon style="color: green" type="check" />
+                </a-tooltip>
+
+                <a-tooltip v-else-if="solution.onTime === false">
+                  <template slot="title">
+                    补卡成功
+                  </template>
+                  <a-icon style="color: orange" type="issues-close" />
+                </a-tooltip>
 
                 <a-tooltip v-else-if="getDay() === i + 1">
                   <template slot="title">
