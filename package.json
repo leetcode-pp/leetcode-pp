@@ -17,6 +17,7 @@
     "axios": "^0.19.2",
     "babel-plugin-transform-remove-console": "^6.9.4",
     "core-js": "^3.6.4",
+    "document-outliner": "^1.1.3",
     "highlight.js": "^9.18.1",
     "js-base64": "^2.5.2",
     "markdown-it": "^10.0.0",

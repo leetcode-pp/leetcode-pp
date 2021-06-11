@@ -27,6 +27,7 @@
         vue
       </a-select-option>
     </a-select>
+    <div class="outline"></div>
     <div class="wrapper" id="nice">
       <div v-if="loading" class="spinner-container">
         <a-spin size="large"></a-spin>
@@ -73,6 +74,7 @@ import { Base64 } from 'js-base64'
 import MarkdownIt from 'markdown-it'
 import markdownItLatex from '@iktakahiro/markdown-it-katex'
 import markdownItImplicitFigures from 'markdown-it-implicit-figures'
+// import DocumentOutliner from 'document-outliner'
 
 import highlightLines from '../utils/highlight-lines'
 import hljs from '../utils/langHighlight'
@@ -95,6 +97,7 @@ import students from './91/students-talk'
 
 import '../themes/atom-one-dark.less'
 import '../themes/base.less'
+import '../themes/outline-base.less'
 
 const { blue, purple, wechat, vue } = theme
 const options = {
@@ -285,6 +288,14 @@ export default {
   async mounted() {
     this.type = this.$route.query.type.toString()
     await this.getSolution()
+    // const outliner = new DocumentOutliner('#nice')
+    // outliner.makeList('.outline', {
+    //   link: true,
+    //   listType: 'ul',
+    //   listClassName: 'list-group',
+    //   itemClassName: 'list-group-item',
+    //   anchorName: 'heading-$1'
+    // })
     // hljs.configure({ useBR: false })
     // document.querySelectorAll('code').forEach(block => {
     //   hljs.highlightBlock(block)
