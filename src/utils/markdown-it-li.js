@@ -2,11 +2,11 @@ function makeRule(md) {
   return function replaceListItem() {
     // eslint-disable-next-line
     md.renderer.rules.list_item_open = function replaceOpen() {
-      return '<li><section>'
+      return '<li><p class="md-p">'
     }
     // eslint-disable-next-line
     md.renderer.rules.list_item_close = function replaceClose() {
-      return '</section></li>'
+      return '</p></li>'
     }
   }
 }

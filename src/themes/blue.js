@@ -180,7 +180,7 @@ color:#2b2b2b;
 
 /* 列表内容，不要设置li
 */
-#nice li section {
+#nice li .md-p{
   font-size: 14px;
   font-weight: normal;
   color: #595959;

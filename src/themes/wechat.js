@@ -86,7 +86,7 @@ export default () => ({
  
  /* 列表内容，不要设置li
   */
- #nice li section {
+ #nice li .md-p{
  }
  
  /* 引用

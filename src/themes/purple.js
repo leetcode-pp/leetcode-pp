@@ -113,7 +113,7 @@ export default ({ withoutGrid = false }) => ({
 
 /* 列表内容，不要设置li
   */
-#nice li section {
+#nice li .md-p{
   font-size: 14px;
   font-weight: normal;
 }
