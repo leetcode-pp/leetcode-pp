@@ -204,6 +204,63 @@
               </div>
             </div>
           </div>
+
+          <div v-show="isTestUse">
+            <a-form
+              v-show="lcAccountFormShow"
+              :form="form"
+              @submit="handleLcAccountLogin"
+            >
+              <a-form-item
+                label="leetcode用户名"
+                :label-col="{ span: 5 }"
+                :wrapper-col="{ span: 12 }"
+              >
+                <a-input v-decorator="['login']" />
+              </a-form-item>
+              <a-form-item
+                label="leetcode密码"
+                :label-col="{ span: 5 }"
+                :wrapper-col="{ span: 12 }"
+              >
+                <a-input type="password" v-decorator="['password']" />
+              </a-form-item>
+              <a-form-item :wrapper-col="{ span: 12, offset: 5 }">
+                <a-button type="primary" html-type="submit">提交</a-button>
+              </a-form-item>
+            </a-form>
+
+            <div class="code-btns">
+              <a-select
+                :disabled="lcAccountFormShow"
+                :default-value="codeLanguage"
+                style="width: 120px"
+                v-model="codeLanguage"
+              >
+                <a-select-option
+                  v-for="item in supportLanguage"
+                  :value="item"
+                  :key="item"
+                >
+                  {{ item }}
+                </a-select-option>
+              </a-select>
+              <a-button
+                :disabled="lcAccountFormShow"
+                @click="submitCode"
+                type="primary"
+              >
+                提交代码
+              </a-button>
+            </div>
+
+            <code-editor
+              :theme="codeTheme"
+              :language="codeLanguage"
+              ref="codeEditor"
+              class="code-panel"
+            ></code-editor>
+          </div>
         </a-tab-pane>
         <a-tab-pane key="jy0" tab="讲义（先导篇）">
           <card :cards="introLectures" />
@@ -359,6 +416,7 @@
 
 <script>
 // import counter from '@/components/Counter'
+import request from '@/apis/request'
 import Card from '@/components/Card'
 import Rank from './ranking'
 import Faq from './faq'
@@ -384,25 +442,41 @@ import {
   clientId,
   originalHostname,
   // hostname,
-  startTime
+  startTime,
+  leetcodeConfig
 } from '../../config/index'
+const {
+  _91UsernameLsName,
+  _91PwdLsName,
+  lcSeesionCookieName,
+  lcCsrftokenCookieName
+} = leetcodeConfig
+const lcDataKeys = [
+  _91UsernameLsName,
+  _91PwdLsName,
+  lcSeesionCookieName,
+  lcCsrftokenCookieName
+]
+import CodeEditor from '../../components/Code'
+import { message } from 'ant-design-vue'
 
 const MS_PER_DAY = 24 * 60 * 60 * 1000
 function getDay(date = new Date().getTime()) {
   return ((date - startTime + MS_PER_DAY - 1) / MS_PER_DAY) >> 0
 }
 
-// console.log(time.getTime())
-
 export default {
   components: {
     // counter,
     faq: Faq,
     ranking: Rank,
-    card: Card
+    card: Card,
+    CodeEditor
   },
   data() {
     return {
+      isTestUse: false,
+      form: this.$form.createForm(this),
       selectedTag: '全部',
       allTags: ['全部'],
       currentStudentTab: 'ranking',
@@ -435,7 +509,22 @@ export default {
       // logined: false, // 是否登录
       pay: false, // 是否为付费用户
       loginUrl: `
-            https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=https://${originalHostname}/91`
+            https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=https://${originalHostname}/91`,
+      codeInitValue: '',
+      codeReadOnly: false,
+      codeLanguage: 'javascript',
+      codeTheme: 'vs-dark',
+      lcAccountFormShow: false,
+      supportLanguage: [
+        'java',
+        'c++',
+        'c',
+        'javascript',
+        'php',
+        'python',
+        'sql',
+        'rust'
+      ]
     }
   },
 
@@ -551,6 +640,106 @@ export default {
       logout().then(() => {
         window.location.href = `https://${originalHostname}/91`
       })
+    },
+    submitCode() {
+      const { link, title } = this.dailyProblem
+      const id = +title.match(/[1-9]+/)[0]
+      if (!id) {
+        return message.error('当日讲义格式有误，请联系讲师!')
+      }
+      const slug = link
+        .split('/')
+        .reverse()
+        .find(item => item)
+      let needClearLcStorage = false
+      request({
+        method: 'post',
+        url: '/api/v1/lc/submitCode',
+        headers: this.getLcRequestHeader(),
+        data: {
+          link,
+          lang: this.codeLanguage,
+          id,
+          slug,
+          code: this.$refs.codeEditor.getEditorValue()
+        }
+      })
+        .then(data => {
+          const { submission_id: subMissionId } = data
+          if (subMissionId) {
+            message.info('题解提交成功')
+            this.setLcDataInLs(data)
+          } else {
+            throw data
+          }
+        })
+        .catch((data = {}) => {
+          message.destroy()
+          // 如果状态码为403,代表需要用户重新输入一遍账号与密码,这时需要清空一波缓存
+          needClearLcStorage = data.code === 403
+          message.error(data.message || '题解提交失败')
+        })
+        .finally(() => {
+          // 清空缓存
+          if (needClearLcStorage) {
+            this.clearLcDataInLs()
+          }
+          this.lcAccountFormShow = !this.hasLcRequstDataInLs()
+        })
+    },
+    handleLcAccountLogin(e) {
+      e.preventDefault()
+      const data = this.form.getFieldsValue()
+      let needClearLcStorage = false
+      request({
+        method: 'post',
+        url: '/api/v1/lc/submitLcAccount',
+        headers: this.getLcRequestHeader(),
+        data
+      })
+        .then(data => {
+          message.info(data.message || '登陆成功')
+          this.setLcDataInLs(data)
+        })
+        .catch((data = {}) => {
+          message.destroy()
+          message.error(data.message || '登陆失败')
+          // 如果状态码为403,代表需要用户重新输入一遍账号与密码,这时需要清空一波cookie
+          needClearLcStorage = data.code === 403
+        })
+        .finally(() => {
+          // 清空缓存
+          if (needClearLcStorage) {
+            this.clearLcDataInLs()
+          }
+          this.lcAccountFormShow = !this.hasLcRequstDataInLs()
+        })
+    },
+    getLcRequestHeader(header = {}) {
+      const arr = [
+        _91UsernameLsName,
+        _91PwdLsName,
+        lcSeesionCookieName,
+        lcCsrftokenCookieName
+      ]
+      const data = arr.reduce((obj, key) => {
+        const val = window.localStorage.getItem(key)
+        if (val) {
+          obj[key] = val
+        }
+        return obj
+      }, {})
+      return Object.assign(header, data)
+    },
+    setLcDataInLs(data) {
+      lcDataKeys.forEach(key => window.localStorage.setItem(key, data[key]))
+    },
+    clearLcDataInLs() {
+      lcDataKeys.forEach(key => window.localStorage.removeItem(key))
+    },
+    hasLcRequstDataInLs() {
+      const requestKeys = [_91UsernameLsName, _91PwdLsName]
+      return requestKeys.every(key => window.localStorage.getItem(key))
     }
   },
   async mounted() {
@@ -579,6 +768,10 @@ export default {
       activeTab = urlTab
     }
     this.handleActiveTabChange(activeTab)
+
+    this.isTestUse = this.$route.query.isTest
+
+    this.lcAccountFormShow = !this.hasLcRequstDataInLs()
   }
 }
 </script>
@@ -657,5 +850,16 @@ export default {
   color: #666;
   line-height: 30px;
   font-weight: bold;
+}
+
+.code-btns {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0px;
+}
+.code-panel {
+  margin-bottom: 20px;
+  border-radius: 6px;
+  overflow: hidden;
 }
 </style>
