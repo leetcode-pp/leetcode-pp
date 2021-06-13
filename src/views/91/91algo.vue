@@ -642,9 +642,9 @@ export default {
       })
     },
     submitCode() {
-      const { link, title } = this.dailyProblem
-      const id = +title.match(/[1-9]+/)[0]
-      if (!id) {
+      /* eslint-disable @typescript-eslint/camelcase */
+      const { link, question_id } = this.dailyProblem
+      if (!question_id) {
         return message.error('当日讲义格式有误，请联系讲师!')
       }
       const slug = link
@@ -659,7 +659,8 @@ export default {
         data: {
           link,
           lang: this.codeLanguage,
-          id,
+          question_id,
+          /* eslint-enable @typescript-eslint/camelcase */
           slug,
           code: this.$refs.codeEditor.getEditorValue()
         }
