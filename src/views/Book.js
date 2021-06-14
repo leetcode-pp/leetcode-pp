@@ -85,22 +85,22 @@ export default [
           {
             language: 'Cpp',
             content:
-              'class Solution {\npublic:\n  int numRescueBoats(vector<int> &people, int limit) {\n    int res = 0;\n    int l = 0;\n    int r = people.size() - 1;\n    sort(people.begin(), people.end());\n    while (l < r) {\n      int total = people[l] + people[r];\n      if (total > limit) {\n        r -= 1;\n        res += 1;\n      } else {\n        r -= 1;\n        l += 1;\n        res += 1;\n      }\n    }\n    if (l == r) {\n      return res + 1;\n    }\n    return res;\n  }\n};\n\n'
+              '\nint binarySearch(vector<int>& nums, int target){\n  if(nums.size() == 0)\n    return -1;\n\n  int left = 0, right = nums.size() - 1;\n  while(left <= right){\n    int mid = left + ((right - left) >> 1);\n    if(nums[mid] == target){ return mid; }\n    // 搜索区间变为 [mid+1, right]\n    else if(nums[mid] < target)\n  left = mid + 1;\n    // 搜索区间变为 [left, mid - 1]\n    else\n  right = mid - 1;\n  }\n  return -1;\n}\n          \n'
           },
           {
             language: 'Java',
             content:
-              'class Solution {\n  public int numRescueBoats(int[] people, int limit) {\n    int res = 0;\n    int l = 0;\n    int r = people.length - 1;\n    Arrays.sort(people);\n    while (l < r) {\n      int total = people[l] + people[r];\n      if (total > limit) {\n        r -= 1;\n        res += 1;\n      } else {\n        r -= 1;\n        l += 1;\n        res += 1;\n      }\n    }\n    if (l == r) {\n      return res + 1;\n    }\n    return res;\n  }\n}\n\n'
+              'public int binarySearch(int[] nums, int target) {\n    // 左右都闭合的区间 [l, r]\n    int left = 0;\n    int right = nums.length - 1;\n\n    while(left <= right) {\n        int mid = left + (right - left) / 2;\n        if(nums[mid] == target)\n            return mid;\n        if (nums[mid] < target)\n                // 搜索区间变为 [mid+1, right]\n            left = mid + 1;\n        if (nums[mid] > target)\n            // 搜索区间变为 [left, mid - 1]\n            right = mid - 1;\n    }\n    return -1;\n}\n'
           },
           {
             language: 'Js',
             content:
-              '/**\n * @param {number[]} people\n * @param {number} limit\n * @return {number}\n */\nvar numRescueBoats = function(people, limit) {\n  let res = 0;\n  let l = 0;\n  let r = people.length - 1;\n  people.sort((a, b) => a - b);\n  while (l < r) {\n    let total = people[l] + people[r];\n    if (total > limit) {\n      r -= 1;\n      res += 1;\n    } else {\n      r -= 1;\n      l += 1;\n      res += 1;\n    }\n  }\n  if (l == r) {\n    return res + 1;\n  }\n  return res;\n};\n\n'
+              'function binarySearch(nums, target) {\n  let left = 0;\n  let right = nums.length - 1;\n  while (left <= right) {\n    const mid = Math.floor(left + (right - left) / 2);\n    if (nums[mid] == target) return mid;\n    if (nums[mid] < target)\n      // 搜索区间变为 [mid+1, right]\n      left = mid + 1;\n    if (nums[mid] > target)\n      // 搜索区间变为 [left, mid - 1]\n      right = mid - 1;\n  }\n  return -1;\n}\n\n'
           },
           {
             language: 'Py',
             content:
-              'def numRescueBoats(self, people: List[int], limit: int) -> int:\n    res = 0\n    l = 0\n    r = len(people) - 1\n    people.sort()\n\n    while l < r:\n        total = people[l] + people[r]\n        if total > limit:\n            r -= 1\n            res += 1\n        else:\n            r -= 1\n            l += 1\n            res += 1\n    if l == r:\n        return res + 1\n    return res\n\n'
+              'def binarySearch(nums, target):\n    # 左右都闭合的区间 [l, r]\n    l, r = 0, len(nums) - 1\n    while l <= r:\n        mid = (left + right) >> 1\n        if nums[mid] == target:\n            return mid\n        # 搜索区间变为 [mid+1, right]\n        if nums[mid] < target:\n            l = mid + 1\n        # 搜索区间变为 [left, mid - 1]\n        if nums[mid] > target:\n            r = mid - 1\n    return -1\n'
           }
         ]
       },
@@ -887,7 +887,7 @@ export default [
           {
             language: 'Cpp',
             content:
-              '/**\n * Definition for a binary tree node.\n * struct TreeNode {\n *     int val;\n *     TreeNode *left;\n *     TreeNode *right;\n *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}\n * };\n */\nclass Solution {\npublic:\n    bool hasPathSum(TreeNode* root, int sum) {\n        if(root == NULL) return false;\n\n        if(root->left == NULL && root->right == NULL) {\n            if(root->val == sum) return true;\n        \n            return false;\n        }\n\n        return hasPathSum(root->left, sum - root->val) || hasPathSum(root->right, sum - root.val);\n    }\n\n};\n'
+              ' struct TreeNode {\n    int val;\n    TreeNode *left;\n    TreeNode *right;\n    TreeNode(int x) : val(x), left(NULL), right(NULL) {}\n};\nclass Solution {\npublic:\n    bool hasPathSum(TreeNode* root, int sum) {\n        if(root == NULL) return false;\n\n        if(root->left == NULL && root->right == NULL) {\n            if(root->val == sum) return true;\n        \n            return false;\n        }\n\n        return hasPathSum(root->left, sum - root->val) || hasPathSum(root->right, sum - root.val);\n    }\n\n};\n'
           },
           {
             language: 'Java',
@@ -904,6 +904,11 @@ export default [
       {
         title: '代码5.1.2',
         codes: [
+          {
+            language: 'Cpp',
+            content:
+              '/**\n * Definition for a binary tree node.\n * struct TreeNode {\n *     int val;\n *     TreeNode *left;\n *     TreeNode *right;\n *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}\n * };\n */\n struct TreeNode {\n    int val;\n    TreeNode *left;\n    TreeNode *right;\n    TreeNode(int x) : val(x), left(NULL), right(NULL) {}\n };\n \nclass Solution {\npublic:\n    bool hasPathSum(TreeNode* root, int sum) {\n        if(root == NULL) return false;\n\n        if(root->left == NULL && root->right == NULL) {\n            if(root->val == sum) return true;\n        \n            return false;\n        }\n\n        return hasPathSum(root->left, sum - root->val) || hasPathSum(root->right, sum - root.val);\n    }\n\n};\n'
+          },
           {
             language: 'Java',
             content:
@@ -1601,26 +1606,6 @@ export default [
     name: '第九章',
     list: [
       {
-        title: '代码9.1.1.1.two',
-        codes: [
-          {
-            language: 'Cpp',
-            content:
-              'class Solution {\npublic:\n    vector<int> twoSum(vector<int>& numbers, int target) {\n        vector<int> ret;\n        for (int i = 0; i <= numbers.size() - 1 - 1; i++) {\n            for (int j = i + 1; j <= numbers.size() - 1; j++) {\n                if (numbers[i] + numbers[j] == target) {\n                    ret.push_back(i + 1);\n                    ret.push_back(j + 1);\n                }\n            }\n        }\n        return ret;\n    }\n};\n\n'
-          },
-          {
-            language: 'Java',
-            content:
-              'class Solution {\n    public int[] twoSum(int[] nums, int target) {\n        for (int i = 0; i < nums.length; i++) {\n            for (int j = i + 1; j < nums.length; j++) {\n                if (nums[j] == target - nums[i])\n                    return new int[]{i+1, j+1};\n            }\n        }\n        return null;\n    }\n}\n'
-          },
-          {
-            language: 'Py',
-            content:
-              'class Solution:\n    def twoSum(self, numbers:List[int], target:int)->List[int]:\n        for i in range(0, len(numbers), 1):\n            for j in range(i + 1, len(numbers), 1):\n                if numbers[i] + numbers[j] == target:\n                    return [i + 1, j + 1]\n\n        return []\n'
-          }
-        ]
-      },
-      {
         title: '代码9.1.1.2.two',
         codes: [
           {
@@ -1637,6 +1622,26 @@ export default [
             language: 'Py',
             content:
               'class Solution:\n    def twoSum(self, number:List[int], target:int)->List[int]:\n        left, right = 0, len(numbers) - 1\n        while left < right:\n            if (numbers[left] + numbers[right] == target):\n                return [left + 1, right + 1]\n            elif (numbers[left] + numbers[right] < target):\n                left += 1\n            elif:\n                right -= 1\n\n        return []\n\n'
+          }
+        ]
+      },
+      {
+        title: '代码9.1.1.two',
+        codes: [
+          {
+            language: 'Cpp',
+            content:
+              'class Solution {\npublic:\n    vector<int> twoSum(vector<int>& numbers, int target) {\n        vector<int> ret;\n        for (int i = 0; i <= numbers.size() - 1 - 1; i++) {\n            for (int j = i + 1; j <= numbers.size() - 1; j++) {\n                if (numbers[i] + numbers[j] == target) {\n                    ret.push_back(i + 1);\n                    ret.push_back(j + 1);\n                }\n            }\n        }\n        return ret;\n    }\n};\n\n'
+          },
+          {
+            language: 'Java',
+            content:
+              'class Solution {\n    public int[] twoSum(int[] nums, int target) {\n        for (int i = 0; i < nums.length; i++) {\n            for (int j = i + 1; j < nums.length; j++) {\n                if (nums[j] == target - nums[i])\n                    return new int[]{i+1, j+1};\n            }\n        }\n        return null;\n    }\n}\n'
+          },
+          {
+            language: 'Py',
+            content:
+              'class Solution:\n    def twoSum(self, numbers:List[int], target:int)->List[int]:\n        for i in range(0, len(numbers), 1):\n            for j in range(i + 1, len(numbers), 1):\n                if numbers[i] + numbers[j] == target:\n                    return [i + 1, j + 1]\n\n        return []\n'
           }
         ]
       },
@@ -1845,19 +1850,74 @@ export default [
         title: '代码10.2.1',
         codes: [
           {
+            language: 'Cpp',
+            content:
+              '#include<iostream>\n#include<vector>\n#include<algorithm>\n\nusing namespace std;\n\nclass Solution {\npublic:\n    int helper(vector<int>& nums, int start) {\n        if(start >= nums.size()) return 0;\n\n        return max(helper(nums, start+1), nums[start] + helper(nums, start+2));\n    }\n    int rob(vector<int>& nums) {\n        return helper(nums, 0);\n    }\n};\n'
+          },
+          {
+            language: 'Java',
+            content:
+              'class Solution {\n    public int helper(int[] nums, int start) {\n        if(start >= nums.length) return 0;\n\n        return Math.max(helper(nums, start+1), nums[start] + helper(nums, start+2));\n    }\n    public int rob(int[] nums) {\n        return helper(nums, 0);\n    }\n}\n'
+          },
+          {
             language: 'Py',
             content:
               'from typing import List\n\n\nclass Solution:\n    def rob(self, nums: List[int]) -> int:\n        if len(nums) <= 0:\n            return 0\n        return max(self.rob(nums[1:]), nums[0] + self.rob(nums[2:]))\n\n'
+          }
+        ]
+      },
+      {
+        title: '代码10.2.2',
+        codes: [
+          {
+            language: 'Cpp',
+            content:
+              '#include<iostream>\n#include<vector>\n#include<algorithm>\n\nusing namespace std;\n\nclass Solution {\npublic:\n    int helper(vector<int>& nums, vector<int>&memo, int start) {\n        if(start >= nums.size()) return 0;\n        if(memo[start] != -1) return memo[start];\n\n        memo[start] = max(helper(nums, memo, start+1), nums[start] + helper(nums, memo, start+2));\n\n        return memo[start];\n    }\n    int rob(vector<int>& nums) {\n        vector<int> memo(nums.size(), -1);\n        return helper(nums, memo, 0);\n    }\n};\n'
+          },
+          {
+            language: 'Java',
+            content:
+              'class Solution {\n    public int helper(int[] nums, int[] memo, int start) {\n        if(start >= nums.length) return 0;\n        if(memo[start] != -1) return memo[start];\n\n        memo[start] = Math.max(helper(nums, memo, start+1), nums[start] + helper(nums,memo,  start+2));\n\n        return memo[start];\n    }\n    public int rob(int[] nums) {\n        int[] memo = new int[nums.length];\n\n        for (int i = 0; i < nums.length; i++) memo[i] = -1;\n        return helper(nums, memo, 0);\n    }\n}\n'
           },
           {
             language: 'Py',
             content:
               'from typing import List\n\n\nclass Solution:\n    def rob(self, nums: List[int]) -> int:\n        memo = [-1 for x in range(len(nums) + 1)]\n        memo[-1] = 0\n\n        return self.helper(0, nums, memo)\n\n    def helper(self, n: int, nums: List[int], memo: List[int]) -> int:\n        if n >= len(nums):\n            return 0\n        if memo[n] != -1:\n            return memo[n]\n\n        memo[n] = max(\n            self.helper(n + 1, nums, memo), self.helper(n + 2, nums, memo) + nums[n],\n        )\n        return memo[n]\n\n'
+          }
+        ]
+      },
+      {
+        title: '代码10.2.3',
+        codes: [
+          {
+            language: 'Cpp',
+            content:
+              '#include<iostream>\n#include<vector>\n#include<algorithm>\n\nusing namespace std;\n\nclass Solution {\npublic:\n    int rob(vector<int>& nums) {\n        if(nums.size() <= 0) return 0;\n\n        vector<int> memo(nums.size()+1);\n\n        memo[nums.size()-1] = nums[nums.size()-1];\n\n        for(int i = nums.size()-2; i >= 0; i--) {\n            memo[i] = max(memo[i+1], memo[i+2] + nums[i]);\n        }\n        return memo[0];\n    }\n};\n'
+          },
+          {
+            language: 'Java',
+            content:
+              'class Solution {\n\n    public int rob(int[] nums) {\n        if(nums.length <= 0) return 0;\n\n        int[] memo = new int[nums.length+1];\n        memo[nums.length-1] = nums[nums.length-1];\n\n        for (int i = nums.length-2; i >= 0; i--) {\n            memo[i] = Math.max(memo[i+1], memo[i+2]+nums[i]);\n        }\n        return memo[0];\n    }\n}\n'
           },
           {
             language: 'Py',
             content:
               'from typing import List\n\n\nclass Solution:\n    def rob(self, nums: List[int]) -> int:\n        if not nums:\n            return 0\n        memo = [0 for x in range(len(nums) + 1)]\n        memo[-2] = nums[-1]\n\n        for i in range(len(nums) - 2, -1, -1):\n            memo[i] = max(memo[i + 1], memo[i + 2] + nums[i])\n\n        return memo[0]\n\n'
+          }
+        ]
+      },
+      {
+        title: '代码10.2.4',
+        codes: [
+          {
+            language: 'Cpp',
+            content:
+              '#include<iostream>\n#include<vector>\n#include<algorithm>\n\nusing namespace std;\n\nclass Solution {\npublic:\n    int rob(vector<int>& nums) {\n        if(nums.size() <= 0) return 0;\n\n        int prev, curr;\n\n        for(int i = nums.size()-1; i >= 0; i--) {\n            int tmp = curr;\n            curr = max(curr, nums[i] + prev);\n            prev = tmp;\n        }\n        return curr;\n    }\n};\n'
+          },
+          {
+            language: 'Java',
+            content:
+              'class Solution {\n\n    public int rob(int[] nums) {\n        if(nums.length <= 0) return 0;\n\n        int prev = 0, curr = 0;\n\n        for (int i = nums.length-1; i >= 0; i--) {\n            int tmp = curr;\n            curr = Math.max(curr, nums[i] + prev);\n            prev = tmp;\n        }\n        return curr;\n    }\n}\n'
           },
           {
             language: 'Py',
@@ -1867,8 +1927,18 @@ export default [
         ]
       },
       {
-        title: '代码10.2.2',
+        title: '代码10.2.5',
         codes: [
+          {
+            language: 'Cpp',
+            content:
+              '#include<iostream>\n#include<vector>\n#include<algorithm>\n\nusing namespace std;\n\nclass Solution {\npublic:\n    int rob(vector<int>& nums) {\n        if(nums.size() == 1) return nums[0];\n\n        int prev = 0, curr = 0;\n\n        for(int i = 0; i < nums.size()-1; i++) {\n            int tmp = curr;\n            curr = max(curr, nums[i] + prev);\n            prev = tmp;\n        } \n        int res = curr;\n\n        prev = 0;\n        curr = 0;\n\n        for(int i = 1; i < nums.size(); i++) {\n            int tmp = curr;\n            curr = max(curr, nums[i] + prev);\n            prev = tmp;\n        }\n\n        return max(res, curr);\n    }\n};\n'
+          },
+          {
+            language: 'Java',
+            content:
+              'class Solution {\n    public int rob(int[] nums) {\n        if(nums.length == 1) return nums[0];\n\n        int prev = 0, curr = 0;\n\n        for(int i = 0; i < nums.length - 1; i++) {\n            int tmp = curr;\n            curr = Math.max(curr, nums[i] + prev);\n            prev = tmp;\n        }\n\n        int res = curr;\n\n        prev = 0;\n        curr = 0;\n\n        for(int i = 1; i < nums.length; i++) {\n            int tmp = curr;\n            curr = Math.max(curr, nums[i] + prev);\n            prev = tmp;\n        }\n\n        return Math.max(res, curr);\n    }\n}\n'
+          },
           {
             language: 'Py',
             content:
@@ -2088,7 +2158,7 @@ export default [
           {
             language: 'Py',
             content:
-              'class Solution:\n    def characterReplacement(self, s: str, k: int) -> int:\n        maxf = res = 0\n        count = collections.Counter()\n        for i in range(len(s)):\n            count[s[i]] += 1\n            maxf = max(maxf, count[s[i]])\n            \n            if res - maxf < k:\n                res += 1\n            else:\n                count[s[i - res]] -= 1\n                \n        return res\n\n'
+              'class Solution:\n    def characterReplacement(self, s: str, k: int) -> int:\n        max_char_n = res = 0\n        count = collections.Counter()\n        for i in range(len(s)):\n            count[s[i]] += 1\n            max_char_n = max(max_char_n, count[s[i]])\n\n            if res - max_char_n < k:\n                res += 1\n            else:\n                count[s[i - res]] -= 1\n\n        return res\n\n'
           }
         ]
       },

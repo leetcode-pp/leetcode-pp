@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://leetcode-solution.cn",
   "scripts": {
+    "bcode": "node scripts/generateBookCode.mjs",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
