@@ -27,7 +27,7 @@
         vue
       </a-select-option>
     </a-select>
-    <div class="outline"></div>
+    <div class="outline" v-show="false"></div>
     <div class="wrapper" id="nice">
       <div v-if="loading" class="spinner-container">
         <a-spin size="large"></a-spin>
