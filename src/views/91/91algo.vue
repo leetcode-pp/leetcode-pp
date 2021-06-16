@@ -556,8 +556,8 @@ export default {
         await this.getDailyProblem()
         // 加载评论
         const gitalk = new Gitalk({
-          clientID: 'cfdf765275c87df82fd5',
-          clientSecret: '260dc67f37f17c41679a72c0bedbc4d23b24a854',
+          clientID: process.env.clientID,
+          clientSecret: process.env.clientSecret,
           repo: 'leetcode-pp', // The repository of store comments,
           owner: 'leetcode-pp',
           admin: ['azl397985856'],
