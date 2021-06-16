@@ -212,21 +212,23 @@
               @submit="handleLcAccountLogin"
             >
               <a-form-item
-                label="leetcode用户名"
+                label="用户名"
                 :label-col="{ span: 5 }"
                 :wrapper-col="{ span: 12 }"
               >
                 <a-input v-decorator="['login']" />
               </a-form-item>
               <a-form-item
-                label="leetcode密码"
+                label="密码"
                 :label-col="{ span: 5 }"
                 :wrapper-col="{ span: 12 }"
               >
                 <a-input type="password" v-decorator="['password']" />
               </a-form-item>
               <a-form-item :wrapper-col="{ span: 12, offset: 5 }">
-                <a-button type="primary" html-type="submit">提交</a-button>
+                <a-button type="primary" html-type="submit"
+                  >登录 LeetCode</a-button
+                >
               </a-form-item>
             </a-form>
 
@@ -260,6 +262,8 @@
               ref="codeEditor"
               class="code-panel"
             ></code-editor>
+
+            <div id="gitalk-container" style="text-align: left"></div>
           </div>
         </a-tab-pane>
         <a-tab-pane key="jy0" tab="讲义（先导篇）">
@@ -416,6 +420,8 @@
 
 <script>
 // import counter from '@/components/Counter'
+import 'gitalk/dist/gitalk.css'
+import Gitalk from 'gitalk'
 import request from '@/apis/request'
 import Card from '@/components/Card'
 import Rank from './ranking'
@@ -512,7 +518,7 @@ export default {
             https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=https://${originalHostname}/91`,
       codeInitValue: '',
       codeReadOnly: false,
-      codeLanguage: 'javascript',
+      codeLanguage: 'python',
       codeTheme: 'vs-dark',
       lcAccountFormShow: false,
       supportLanguage: [
@@ -522,28 +528,44 @@ export default {
         'javascript',
         'php',
         'python',
-        'sql',
         'rust'
       ]
     }
   },
 
   methods: {
-    handleActiveTabChange(v) {
+    async handleActiveTabChange(v) {
       this.activeTab = v
-      const newurl =
+      let newurl = ''
+      const searches = new URLSearchParams(new URL(window.location.href).search)
+      searches.set('tab', v)
+
+      newurl =
         window.location.protocol +
         '//' +
         window.location.host +
         window.location.pathname +
-        '?tab=' +
-        this.activeTab
+        '?' +
+        searches.toString()
+
       window.history.pushState({ path: newurl }, '', newurl)
       if (v === 'top-students') {
         getRankings().then(rankings => (this.rankings = rankings))
       }
       if (v === 'sign') {
-        this.getDailyProblem()
+        await this.getDailyProblem()
+        // 加载评论
+        const gitalk = new Gitalk({
+          clientID: 'cfdf765275c87df82fd5',
+          clientSecret: '260dc67f37f17c41679a72c0bedbc4d23b24a854',
+          repo: 'leetcode-pp', // The repository of store comments,
+          owner: 'leetcode-pp',
+          admin: ['azl397985856'],
+          id: location.pathname, //  getDay()
+          distractionFreeMode: false // Facebook-like distraction free mode
+        })
+
+        gitalk.render('gitalk-container')
       }
       if (v === 'my') {
         this.getMySolutions()
@@ -604,7 +626,7 @@ export default {
       return false
     },
     getDailyProblem(day) {
-      getDailyProblem(day).then(dailyProblem => {
+      return getDailyProblem(day).then(dailyProblem => {
         this.dailyProblem = dailyProblem
       })
     },
@@ -669,6 +691,8 @@ export default {
           if (subMissionId) {
             message.info('题解提交成功')
             this.setLcDataInLs(data)
+            // 数据持久化。将当前用户的打卡信息入库
+            // TODO: 弹出写题解的弹窗（即使不写题解也算打卡成功）
           } else {
             throw data
           }
