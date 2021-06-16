@@ -421,7 +421,7 @@
 <script>
 // import counter from '@/components/Counter'
 import 'gitalk/dist/gitalk.css'
-import Gitalk from 'gitalk'
+import Gitalk from 'gitalk/dist/gitalk'
 import request from '@/apis/request'
 import Card from '@/components/Card'
 import Rank from './ranking'
