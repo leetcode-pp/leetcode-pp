@@ -561,7 +561,7 @@ export default {
           repo: 'leetcode-pp', // The repository of store comments,
           owner: 'leetcode-pp',
           admin: ['azl397985856'],
-          id: location.pathname, //  getDay()
+          id: this.dailyProblem.day,
           distractionFreeMode: false // Facebook-like distraction free mode
         })
 
