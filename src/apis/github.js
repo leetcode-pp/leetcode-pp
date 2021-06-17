@@ -9,3 +9,9 @@ export function getGithubContent(url, config = {}) {
     }
   })
 }
+
+export function getCommentApp() {
+  return request({
+    url: '/api/v1/github/comment-app'
+  })
+}

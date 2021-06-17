@@ -206,7 +206,7 @@
           </div>
 
           <div v-show="isTestUse">
-            <a-form
+            <!-- <a-form
               v-show="lcAccountFormShow"
               :form="form"
               @submit="handleLcAccountLogin"
@@ -261,7 +261,7 @@
               :language="codeLanguage"
               ref="codeEditor"
               class="code-panel"
-            ></code-editor>
+            ></code-editor> -->
 
             <div id="gitalk-container" style="text-align: left"></div>
           </div>
@@ -435,6 +435,7 @@ import {
   getMySolutions,
   getRankings
 } from '@/apis/91'
+import { getCommentApp } from '@/apis/github'
 import { logout, getUserInfo } from '@/apis/user'
 import {
   basicLectures,
@@ -463,7 +464,7 @@ const lcDataKeys = [
   lcSeesionCookieName,
   lcCsrftokenCookieName
 ]
-import CodeEditor from '../../components/Code'
+// import CodeEditor from '../../components/Code'
 import { message } from 'ant-design-vue'
 
 const MS_PER_DAY = 24 * 60 * 60 * 1000
@@ -471,13 +472,41 @@ function getDay(date = new Date().getTime()) {
   return ((date - startTime + MS_PER_DAY - 1) / MS_PER_DAY) >> 0
 }
 
+async function loadComment({
+  id,
+  tags = [],
+  title = '',
+  description = '',
+  link = ''
+}) {
+  const { clientID, clientSecret } = await getCommentApp()
+  const gitalk = new Gitalk({
+    clientID,
+    clientSecret,
+    repo: 'leetcode-pp', // The repository of store comments,
+    owner: 'leetcode-pp',
+    admin: ['azl39798585633'],
+    body: `
+${description}
+${link}
+`,
+    id,
+    title,
+    labels: tags,
+    distractionFreeMode: false // Facebook-like distraction free mode
+  })
+  document.querySelector('#gitalk-container').innerHTML = ''
+
+  gitalk.render('gitalk-container')
+}
+
 export default {
   components: {
     // counter,
     faq: Faq,
     ranking: Rank,
-    card: Card,
-    CodeEditor
+    card: Card
+    // CodeEditor
   },
   data() {
     return {
@@ -555,17 +584,10 @@ export default {
       if (v === 'sign') {
         await this.getDailyProblem()
         // 加载评论
-        const gitalk = new Gitalk({
-          clientID: process.env.clientID,
-          clientSecret: process.env.clientSecret,
-          repo: 'leetcode-pp', // The repository of store comments,
-          owner: 'leetcode-pp',
-          admin: ['azl397985856'],
-          id: this.dailyProblem.day,
-          distractionFreeMode: false // Facebook-like distraction free mode
+        loadComment({
+          id: String(this.dailyProblem.day),
+          ...this.dailyProblem
         })
-
-        gitalk.render('gitalk-container')
       }
       if (v === 'my') {
         this.getMySolutions()
@@ -655,8 +677,13 @@ export default {
       }
       return this.colors[acc]
     },
-    onDateChanged(v) {
-      this.getDailyProblem(v.valueOf())
+    async onDateChanged(v) {
+      await this.getDailyProblem(v.valueOf())
+
+      return loadComment({
+        id: String(this.dailyProblem.day),
+        ...this.dailyProblem
+      })
     },
     handlLogoutClick() {
       logout().then(() => {
