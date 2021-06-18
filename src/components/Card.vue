@@ -1,34 +1,36 @@
 <template>
-  <div class="card-container">
-    <a-card :key="card.id" hoverable class="card" v-for="card in cards">
-      <a
-        slot="extra"
-        v-if="card.viewUrl"
-        :href="card.viewUrl"
-        :target="card.external ? '_blank' : ''"
-      >
-        查看
-      </a>
-      <img
-        class="card-img"
-        :alt="card.image.alt || card.title"
-        :src="card.image.url"
-        slot="cover"
-      />
+  <a-spin :spinning="loading">
+    <div class="card-container">
+      <a-card :key="card.id" hoverable class="card" v-for="card in cards">
+        <a
+          slot="extra"
+          v-if="card.viewUrl"
+          :href="card.viewUrl"
+          :target="card.external ? '_blank' : ''"
+        >
+          查看
+        </a>
+        <img
+          class="card-img"
+          :alt="card.image.alt || card.title"
+          :src="card.image.url"
+          slot="cover"
+        />
 
-      <a-card-meta :title="card.title">
-        <template slot="description">
-          <div class="card-desc">{{ card.desc }}</div>
-          <a
-            v-if="card.downloadUrl"
-            :href="card.downloadUrl"
-            class="card-action"
-            >下载</a
-          >
-        </template>
-      </a-card-meta>
-    </a-card>
-  </div>
+        <a-card-meta :title="card.title">
+          <template slot="description">
+            <div class="card-desc">{{ card.desc }}</div>
+            <a
+              v-if="card.downloadUrl"
+              :href="card.downloadUrl"
+              class="card-action"
+              >下载</a
+            >
+          </template>
+        </a-card-meta>
+      </a-card>
+    </div>
+  </a-spin>
 </template>
 
 <script>
@@ -36,6 +38,10 @@ export default {
   props: {
     cards: {
       type: Array
+    },
+    loading: {
+      type: Boolean,
+      default: false
     }
   }
 }

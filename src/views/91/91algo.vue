@@ -11,22 +11,27 @@
 
       <counter :time="time" />
     </div> -->
-
-    <div v-if="!pay">
-      <a-alert :message="errorMessage" type="error" />
-      <a-button v-if="!name" type="link" :href="loginUrl">Github 登录</a-button>
-      <a-button type="link" href="https://lucifer.ren/blog/2021/05/02/91algo-4/"
-        >活动介绍及报名方式</a-button
-      >
-    </div>
-
-    <div class="hello" v-if="name">
-      <a-avatar :size="64" :src="avatar" />
-      <div>
-        欢迎回来，{{ name }} ~ 今天有没有比昨天进步一点点呢？
-        <a-button type="link" @click="handlLogoutClick">退出登录</a-button>
+    <a-spin :spinning="fetchingUserInfo">
+      <div v-if="!pay">
+        <a-alert :message="errorMessage" type="error" />
+        <a-button v-if="!name" type="link" :href="loginUrl"
+          >Github 登录</a-button
+        >
+        <a-button
+          type="link"
+          href="https://lucifer.ren/blog/2021/05/02/91algo-4/"
+          >活动介绍及报名方式</a-button
+        >
       </div>
-    </div>
+
+      <div class="hello" v-if="name">
+        <a-avatar :size="64" :src="avatar" />
+        <div>
+          欢迎回来，{{ name }} ~ 今天有没有比昨天进步一点点呢？
+          <a-button type="link" @click="handlLogoutClick">退出登录</a-button>
+        </div>
+      </div>
+    </a-spin>
 
     <div>
       <!-- 正在为大家准备讲义~ TODO: 讲师介绍，讲义查看，打卡跳到
@@ -151,59 +156,61 @@
               @change="onDateChanged"
             />
           </a-drawer>
-          <div class="daily-problem">
-            <div class="daily-problem-title">{{ dailyProblem.title }}</div>
+          <a-spin :spinning="fetchingDailyProblem">
+            <div class="daily-problem">
+              <div class="daily-problem-title">{{ dailyProblem.title }}</div>
 
-            <a-button
-              type="link"
-              class="daily-problem-link"
-              :href="dailyProblem.link"
-              >{{ dailyProblem.link }}</a-button
-            >
-
-            <pre class="daily-problem-desc" v-if="dailyProblem.description">{{
-              dailyProblem.description
-            }}</pre>
-
-            <div
-              class="daily-problem-pres"
-              v-if="dailyProblem.pres && dailyProblem.pres.length > 0"
-            >
-              前置知识：<a-tag
-                :color="hashColor(pre)"
-                :key="pre"
-                v-for="pre in dailyProblem.pres"
+              <a-button
+                type="link"
+                class="daily-problem-link"
+                :href="dailyProblem.link"
+                >{{ dailyProblem.link }}</a-button
               >
-                {{ pre }}
-              </a-tag>
-            </div>
-            <div
-              class="daily-problem-tags"
-              v-if="dailyProblem.tags && dailyProblem.tags.length > 0"
-            >
-              标签：<a-tag
-                :color="hashColor(tag)"
-                :key="tag"
-                v-for="tag in dailyProblem.tags"
-              >
-                {{ tag }}
-              </a-tag>
-            </div>
 
-            <div
-              class="daily-problem-whys"
-              v-if="dailyProblem.whys && dailyProblem.whys.length > 0"
-            >
-              入选理由：
+              <pre class="daily-problem-desc" v-if="dailyProblem.description">{{
+                dailyProblem.description
+              }}</pre>
+
               <div
-                v-for="why in dailyProblem.whys"
-                :key="why"
-                class="daily-problem-whys-item"
+                class="daily-problem-pres"
+                v-if="dailyProblem.pres && dailyProblem.pres.length > 0"
               >
-                {{ why }}
+                前置知识：<a-tag
+                  :color="hashColor(pre)"
+                  :key="pre"
+                  v-for="pre in dailyProblem.pres"
+                >
+                  {{ pre }}
+                </a-tag>
+              </div>
+              <div
+                class="daily-problem-tags"
+                v-if="dailyProblem.tags && dailyProblem.tags.length > 0"
+              >
+                标签：<a-tag
+                  :color="hashColor(tag)"
+                  :key="tag"
+                  v-for="tag in dailyProblem.tags"
+                >
+                  {{ tag }}
+                </a-tag>
+              </div>
+
+              <div
+                class="daily-problem-whys"
+                v-if="dailyProblem.whys && dailyProblem.whys.length > 0"
+              >
+                入选理由：
+                <div
+                  v-for="why in dailyProblem.whys"
+                  :key="why"
+                  class="daily-problem-whys-item"
+                >
+                  {{ why }}
+                </div>
               </div>
             </div>
-          </div>
+          </a-spin>
 
           <div v-show="isTestUse">
             <!-- <a-form
@@ -267,14 +274,14 @@
           </div>
         </a-tab-pane>
         <a-tab-pane key="jy0" tab="讲义（先导篇）">
-          <card :cards="introLectures" />
+          <card :cards="introLectures" :loading="fetchingLectures" />
         </a-tab-pane>
-        <a-tab-pane key="jy1" tab="讲义（基础篇）">
+        <a-tab-pane key="jy1" tab="讲义（基础篇）" :loading="fetchingLectures">
           <card :cards="basicLectures" />
         </a-tab-pane>
 
         <a-tab-pane key="jy2" tab="讲义（专题篇）">
-          <card :cards="topicLectures" />
+          <card :cards="topicLectures" :loading="fetchingLectures" />
         </a-tab-pane>
         <a-tab-pane key="jy3" tab="讲义（进阶篇）" disabled>
           尚未开启
@@ -298,7 +305,9 @@
           </a-radio-group>
 
           <div v-if="currentStudentTab === 'ranking'">
-            <ranking :doneList="doneList" :rankings="rankings" />
+            <a-spin :spinning="fetchingRank">
+              <ranking :rankings="rankings" />
+            </a-spin>
           </div>
           <div v-else>
             <a-list
@@ -345,71 +354,71 @@
             <b>不是实时的</b
             >，而是每整点更新一次，也就是说打完卡需要至少下一个整点才能更新记录。如果你刚打完卡，这里没有看到是正常的。
           </div>
-          <div v-if="mySolutions.length === 0">活动尚未开始~</div>
 
-          <a-radio-group
-            v-else
-            v-model="selectedTag"
-            @change="onSelectedTagChange"
-          >
-            <a-radio-button v-for="tag in allTags" :value="tag" :key="tag">
-              {{ tag }}
-            </a-radio-button>
-          </a-radio-group>
+          <div v-if="!fetchingPersonalProgress && mySolutions.length === 0">
+            活动尚未开始~
+          </div>
+          <a-spin v-else :spinning="fetchingPersonalProgress">
+            <a-radio-group v-model="selectedTag" @change="onSelectedTagChange">
+              <a-radio-button v-for="tag in allTags" :value="tag" :key="tag">
+                {{ tag }}
+              </a-radio-button>
+            </a-radio-group>
 
-          <div
-            :key="i"
-            v-for="(solution, i) in mySolutions.filter(
-              s => selectedTag === '全部' || s.tags.includes(selectedTag)
-            )"
-            class="my-solution"
-          >
-            <div v-if="solution">
-              {{
-                solution.tags.length > 0
-                  ? '【' + solution.tags.join('，') + '】'
-                  : ''
-              }}
+            <div
+              :key="i"
+              v-for="(solution, i) in mySolutions.filter(
+                s => selectedTag === '全部' || s.tags.includes(selectedTag)
+              )"
+              class="my-solution"
+            >
+              <div v-if="solution">
+                {{
+                  solution.tags.length > 0
+                    ? '【' + solution.tags.join('，') + '】'
+                    : ''
+                }}
 
-              <span :class="getDifficultyClass(solution.difficulty)">
-                {{ getDifficulty(solution.difficulty) }}
-              </span>
-              <a-button
-                type="link"
-                :href="
-                  solution.url ||
-                    'https://github.com/leetcode-pp/91alg-4/issues/' +
-                      solution.issue_number
-                "
-              >
-                {{ solution.title }}
-              </a-button>
-              <div class="icon">
-                <a-tooltip v-if="solution.onTime === true">
-                  <template slot="title">
-                    打卡成功
-                  </template>
-                  <a-icon style="color: green" type="check" />
-                </a-tooltip>
+                <span :class="getDifficultyClass(solution.difficulty)">
+                  {{ getDifficulty(solution.difficulty) }}
+                </span>
+                <a-button
+                  type="link"
+                  :href="
+                    solution.url ||
+                      'https://github.com/leetcode-pp/91alg-4/issues/' +
+                        solution.issue_number
+                  "
+                >
+                  {{ solution.title }}
+                </a-button>
+                <div class="icon">
+                  <a-tooltip v-if="solution.onTime === true">
+                    <template slot="title">
+                      打卡成功
+                    </template>
+                    <a-icon style="color: green" type="check" />
+                  </a-tooltip>
 
-                <a-tooltip v-else-if="solution.onTime === false">
-                  <template slot="title">
-                    补卡成功
-                  </template>
-                  <a-icon style="color: orange" type="issues-close" />
-                </a-tooltip>
+                  <a-tooltip v-else-if="solution.onTime === false">
+                    <template slot="title">
+                      补卡成功
+                    </template>
+                    <a-icon style="color: orange" type="issues-close" />
+                  </a-tooltip>
 
-                <a-tooltip v-else-if="getDay() === i + 1">
-                  <template slot="title">
-                    未打卡或者正在更新打卡状态（打卡后一般一个小时之内会更新）
-                  </template>
-                  <a-icon type="clock-circle" />
-                </a-tooltip>
+                  <a-tooltip v-else-if="getDay() === i + 1">
+                    <template slot="title">
+                      未打卡或者正在更新打卡状态（打卡后一般一个小时之内会更新）
+                    </template>
+                    <a-icon type="clock-circle" />
+                  </a-tooltip>
 
-                <a-icon style="color: red" v-else type="close" />
+                  <a-icon style="color: red" v-else type="close" />
+                </div>
               </div>
             </div>
-          </div>
+          </a-spin>
         </a-tab-pane>
 
         <a-tab-pane key="faq" tab="FAQ"> <faq /> </a-tab-pane>
@@ -510,12 +519,16 @@ export default {
   },
   data() {
     return {
+      fetchingUserInfo: false,
+      fetchingDailyProblem: false,
+      fetchingLectures: false,
+      fetchingRank: false,
+      fetchingPersonalProgress: false,
       isTestUse: false,
       form: this.$form.createForm(this),
       selectedTag: '全部',
       allTags: ['全部'],
       currentStudentTab: 'ranking',
-      doneList: [], // 全勤列表
       rankings: [], // 打卡排行。未来可能增加其他排行，比如点赞精选排行
       mySolutions: [],
       showHistory: false,
@@ -564,10 +577,11 @@ export default {
 
   methods: {
     async handleActiveTabChange(v) {
-      this.activeTab = v
+      this.activeTab = v || 'teachers'
+
       let newurl = ''
       const searches = new URLSearchParams(new URL(window.location.href).search)
-      searches.set('tab', v)
+      searches.set('tab', this.activeTab)
 
       newurl =
         window.location.protocol +
@@ -579,7 +593,14 @@ export default {
 
       window.history.pushState({ path: newurl }, '', newurl)
       if (v === 'top-students') {
-        getRankings().then(rankings => (this.rankings = rankings))
+        try {
+          this.fetchingRank = true
+          await getRankings().then(rankings => {
+            this.rankings = rankings
+          })
+        } finally {
+          this.fetchingRank = false
+        }
       }
       if (v === 'sign') {
         await this.getDailyProblem()
@@ -590,16 +611,22 @@ export default {
         })
       }
       if (v === 'my') {
-        this.getMySolutions()
+        try {
+          this.fetchingPersonalProgress = true
+          await this.getMySolutions()
+        } finally {
+          this.fetchingPersonalProgress = false
+        }
       }
       if (v.includes('jy')) {
-        ;[
+        this.fetchingLectures = true
+        const ps = [
           getIntroLecture(),
           getBasicLecture(),
           getTopicLecture()
           // getAdvanceLecture()
-        ].forEach((p, i) => {
-          p.then(data => {
+        ].map((p, i) => {
+          return p.then(data => {
             this[
               [
                 'introLectures',
@@ -618,6 +645,7 @@ export default {
             }))
           })
         })
+        Promise.allSettled(ps).then(() => (this.fetchingLectures = false))
       }
     },
     getDay,
@@ -648,12 +676,20 @@ export default {
       return false
     },
     getDailyProblem(day) {
-      return getDailyProblem(day).then(dailyProblem => {
-        this.dailyProblem = dailyProblem
-      })
+      this.fetchingDailyProblem = true
+      return getDailyProblem(day)
+        .then(dailyProblem => {
+          this.dailyProblem = dailyProblem
+          this.fetchingDailyProblem = false
+          return dailyProblem
+        })
+        .catch(err => {
+          console.log(err)
+          this.fetchingDailyProblem = false
+        })
     },
     getMySolutions() {
-      getMySolutions().then(data => {
+      return getMySolutions().then(data => {
         this.mySolutions = data.filter((_, i) => getDay() >= i + 1)
         this.allTags = data
           .map(q => q.tags)
@@ -802,27 +838,26 @@ export default {
       new URL(window.location.href).search
     ).get('tab')
 
-    const { pay, message, name, login, avatar_url: avatar } =
-      (await getUserInfo(this.$route.query.code)) || {}
+    this.handleActiveTabChange(urlTab)
+    this.fetchingUserInfo = true
 
-    if (message === 'Bad credentials') {
-      this.errorMessage = '登录已过期，请重新登录~'
+    try {
+      const { pay, message, name, login, avatar_url: avatar } =
+        (await getUserInfo(this.$route.query.code)) || {}
+
+      if (message === 'Bad credentials') {
+        this.errorMessage = '登录已过期，请重新登录~'
+      }
+      this.avatar = avatar
+      this.pay = pay
+      this.name = name || login
+
+      this.isTestUse = this.$route.query.isTest
+
+      this.lcAccountFormShow = !this.hasLcRequstDataInLs()
+    } finally {
+      this.fetchingUserInfo = false
     }
-    this.avatar = avatar
-    this.pay = pay
-    this.name = name || login
-    let activeTab = ''
-
-    if (pay) {
-      activeTab = urlTab || 'sign'
-    } else if (urlTab) {
-      activeTab = urlTab
-    }
-    this.handleActiveTabChange(activeTab)
-
-    this.isTestUse = this.$route.query.isTest
-
-    this.lcAccountFormShow = !this.hasLcRequstDataInLs()
   }
 }
 </script>
