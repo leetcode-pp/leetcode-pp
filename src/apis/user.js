@@ -4,7 +4,7 @@ export function logout() {
     url: '/api/v1/user/logout'
   })
 }
-const TOKEN_PEROID = 1 * 24 * 60 * 60 * 1000
+const TOKEN_PEROID = 30 * 24 * 60 * 60 * 1000
 export function getUserInfo(code) {
   return request({
     url: `/api/v1/user?code=${code || ''}`
