@@ -457,6 +457,7 @@ import students from './students-talk'
 import {
   clientId,
   originalHostname,
+  hostnamePool,
   // hostname,
   startTime,
   leetcodeConfig
@@ -830,15 +831,15 @@ export default {
     }
   },
   async mounted() {
-    // if (window.location.hostname === originalHostname) {
-    //   window.location.href = `https://${hostname}/91`
-    //   return
-    // }
+    if (hostnamePool.includes(window.location.hostname)) {
+      window.location.href = `https://${originalHostname}/91`
+      return
+    }
     const urlTab = new URLSearchParams(
       new URL(window.location.href).search
     ).get('tab')
 
-    this.handleActiveTabChange(urlTab)
+    this.handleActiveTabChange(urlTab || 'agenda')
     this.fetchingUserInfo = true
 
     try {
