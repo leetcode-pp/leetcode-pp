@@ -2,8 +2,8 @@ const startTime = new Date('2021-05-10T00:00:00.000+08:00')
 const hostnamePool = [
   'algo91-4.herokuapp.com',
   'algo91.herokuapp.com',
-  'a91algo.herokuapp.com',
-  'localhost'
+  'a91algo.herokuapp.com'
+  // 'localhost'
 ]
 module.exports = {
   startTime: startTime.getTime(),

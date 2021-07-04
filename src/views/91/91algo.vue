@@ -90,13 +90,13 @@
               </a-timeline-item>
 
               <a-timeline-item :color="topicActive() ? 'green' : 'gray'">
-                <h3>专题篇 （2021-06-08 - 待定）</h3>
+                <h3>专题篇 （2021-06-08 - 2021-07-12）</h3>
                 <p v-for="lecture in topicLectures" :key="lecture.id">
                   {{ lecture.title }}
                 </p>
               </a-timeline-item>
               <a-timeline-item :color="advanceActive() ? 'green' : 'gray'">
-                <h3>进阶篇 （待定）</h3>
+                <h3>进阶篇 （2021-07-13 - 待定）</h3>
                 <p v-for="lecture in advanceLectures" :key="lecture.id">
                   {{ lecture.title }}
                 </p>
@@ -283,8 +283,8 @@
         <a-tab-pane key="jy2" tab="讲义（专题篇）">
           <card :cards="topicLectures" :loading="fetchingLectures" />
         </a-tab-pane>
-        <a-tab-pane key="jy3" tab="讲义（进阶篇）" disabled>
-          尚未开启
+        <a-tab-pane key="jy3" tab="讲义（进阶篇）">
+          <card :cards="advanceLectures" :loading="fetchingLectures" />
         </a-tab-pane>
 
         <!-- <a-tab-pane key="ebook" tab="电子书" disabled>
@@ -439,7 +439,7 @@ import {
   getBasicLecture,
   getIntroLecture,
   getTopicLecture,
-  // getAdvanceLecture,
+  getAdvanceLecture,
   getDailyProblem,
   getMySolutions,
   getRankings
@@ -624,8 +624,8 @@ export default {
         const ps = [
           getIntroLecture(),
           getBasicLecture(),
-          getTopicLecture()
-          // getAdvanceLecture()
+          getTopicLecture(),
+          getAdvanceLecture()
         ].map((p, i) => {
           return p.then(data => {
             this[
