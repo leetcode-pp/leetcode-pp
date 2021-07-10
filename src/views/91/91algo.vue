@@ -27,7 +27,7 @@
       <div class="hello" v-if="name">
         <a-avatar :size="64" :src="avatar" />
         <div>
-          欢迎回来，{{ name }} ~ 今天有没有比昨天进步一点点呢？
+          欢迎回来，{{ name }} （{{ login }}）~ 今天有没有比昨天进步一点点呢？
           <a-button type="link" @click="handlLogoutClick">退出登录</a-button>
         </div>
       </div>
@@ -852,6 +852,7 @@ export default {
       this.avatar = avatar
       this.pay = pay
       this.name = name || login
+      this.login = login
 
       this.isTestUse = this.$route.query.isTest
 
