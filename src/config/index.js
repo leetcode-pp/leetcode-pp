@@ -1,6 +1,6 @@
 const startTime = new Date('2021-05-10T00:00:00.000+08:00')
 const hostnamePool = [
-  'algo91-4.herokuapp.com',
+  // 'algo91-4.herokuapp.com', 这个月用完了，暂时移除，防止自动路由到之后报错。2021-07-25
   'algo91.herokuapp.com',
   'a91algo.herokuapp.com'
   // 'localhost'
