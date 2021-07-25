@@ -5,11 +5,14 @@ const hostnamePool = [
   'a91algo.herokuapp.com'
   // 'localhost'
 ]
+function getHostNamebyDate() {
+  return hostnamePool[new Date().getDate() % hostnamePool.length]
+}
 module.exports = {
   startTime: startTime.getTime(),
   clientId: 'c16b80e7b58a5a007157',
   originalHostname: 'leetcode-solution.cn',
-  hostname: hostnamePool[0],
+  hostname: getHostNamebyDate(),
   hostnamePool,
   leetcodeConfig: {
     _91UsernameLsName: 'login', // 在91网站中存lc用户名的 localStorage 的键名
