@@ -41,7 +41,7 @@
       "id": 5
     },
     {
-      "title": "06. 图（加餐）",
+      "title": "06. 图",
       "desc": "主要介绍了图基本原理，表示方式，常见算法。",
       "image": {
         "url": "https://tva1.sinaimg.cn/large/0081Kckwly1gk3qh59semj30ec05ptab.jpg"
@@ -49,7 +49,7 @@
       "id": 6
     },
     {
-      "title": "07. 模拟，枚举与递推（加餐）",
+      "title": "07. 模拟，枚举与递推",
       "desc": "主要介绍了模拟，枚举与递推这三种基本的编程技巧。",
       "image": {
         "url": "https://tva1.sinaimg.cn/large/0081Kckwly1gk3qh59semj30ec05ptab.jpg"
@@ -212,14 +212,6 @@
         "url": "https://tva1.sinaimg.cn/large/008i3skNly1gpzcyzany9j31u90u0n14.jpg"
       },
       "id": 20
-    },
-    {
-      "title": "07. 高频面试题",
-      "desc": "最后给大家带来常见的面试题系列，为大家的面试保驾护航~",
-      "image": {
-        "url": "https://tva1.sinaimg.cn/large/008i3skNly1gpzd0qzll5j30zk0k10tz.jpg"
-      },
-      "id": 21
     }
   ],
 

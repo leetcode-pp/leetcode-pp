@@ -75,7 +75,7 @@
           <div class="timeline">
             <a-timeline mode="alternate">
               <a-timeline-item color="green">
-                <h3>先导篇（2021-05-10 前）</h3>
+                <h3>先导篇（2021-09-10 前）</h3>
                 <p v-for="lecture in introLectures" :key="lecture.id">
                   {{ lecture.title }}
                 </p>
@@ -83,20 +83,20 @@
                 <p />
               </a-timeline-item>
               <a-timeline-item :color="basicActive() ? 'green' : 'gray'">
-                <h3>基础篇 （2021-05-10 - 2021-06-07）</h3>
+                <h3>基础篇 （2021-09-10 - 2021-10-07）</h3>
                 <p v-for="lecture in basicLectures" :key="lecture.id">
                   {{ lecture.title }}
                 </p>
               </a-timeline-item>
 
               <a-timeline-item :color="topicActive() ? 'green' : 'gray'">
-                <h3>专题篇 （2021-06-08 - 2021-07-12）</h3>
+                <h3>专题篇 （2021-10-08 - 2021-11-12）</h3>
                 <p v-for="lecture in topicLectures" :key="lecture.id">
                   {{ lecture.title }}
                 </p>
               </a-timeline-item>
               <a-timeline-item :color="advanceActive() ? 'green' : 'gray'">
-                <h3>进阶篇 （2021-07-13 - 待定）</h3>
+                <h3>进阶篇 （2021-11-13 - 2021-12-10）</h3>
                 <p v-for="lecture in advanceLectures" :key="lecture.id">
                   {{ lecture.title }}
                 </p>
@@ -107,7 +107,7 @@
         <a-tab-pane key="sign" tab="打卡" :disabled="!pay">
           <!-- 后期考虑使用 https://microsoft.github.io/monaco-editor/index.html 来进行本地打卡 -->
           <div v-if="dailyProblem.issue_number">
-            本期暂时不支持在此打卡，还请大家去
+            <!-- 本期暂时不支持在此打卡，还请大家去
             <a-button
               type="link"
               :href="
@@ -120,7 +120,7 @@
             找到当天的题目进行打卡~ (如果出现 404 请参考
             <a @click="$router.push({ query: { tab: 'faq' } })"
               >FAQ 的解决方案</a
-            >)
+            >) -->
           </div>
           <div v-else>
             仓库暂时没有更新今天的题目，会有大约一个小时以内的延迟，大家耐心等待下哦~
@@ -212,7 +212,7 @@
             </div>
           </a-spin>
 
-          <div v-show="isTestUse">
+          <div>
             <!-- <a-form
               v-show="lcAccountFormShow"
               :form="form"
@@ -482,6 +482,7 @@ function getDay(date = new Date().getTime()) {
   return ((date - startTime + MS_PER_DAY - 1) / MS_PER_DAY) >> 0
 }
 
+// 将 id 和 tag 合并为 labels，然后根据 labels 查询仓库下符合条件的 issue，然后将 issue 下的 comments 展示出来。
 async function loadComment({
   id,
   tags = [],
@@ -490,6 +491,7 @@ async function loadComment({
   link = ''
 }) {
   const { clientID, clientSecret } = await getCommentApp()
+
   const gitalk = new Gitalk({
     clientID,
     clientSecret,
