@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- <div v-if="!started">
+    <div v-if="!started">
       <div>
         我们
         <span class="time">{{
@@ -10,8 +10,8 @@
       </div>
 
       <counter :time="time" />
-    </div> -->
-    <a-spin :spinning="fetchingUserInfo">
+    </div>
+    <!-- <a-spin :spinning="fetchingUserInfo">
       <div v-if="!pay">
         <a-alert :message="errorMessage" type="error" />
         <a-button v-if="!name" type="link" :href="loginUrl"
@@ -31,7 +31,7 @@
           <a-button type="link" @click="handlLogoutClick">退出登录</a-button>
         </div>
       </div>
-    </a-spin>
+    </a-spin> -->
 
     <div>
       <!-- 正在为大家准备讲义~ TODO: 讲师介绍，讲义查看，打卡跳到
@@ -428,7 +428,7 @@
 </template>
 
 <script>
-// import counter from '@/components/Counter'
+import counter from '@/components/Counter'
 import 'gitalk/dist/gitalk.css'
 import Gitalk from 'gitalk/dist/gitalk'
 import request from '@/apis/request'
@@ -512,7 +512,7 @@ ${link}
 
 export default {
   components: {
-    // counter,
+    counter,
     faq: Faq,
     ranking: Rank,
     card: Card
@@ -840,26 +840,26 @@ export default {
     ).get('tab')
 
     this.handleActiveTabChange(urlTab || 'agenda')
-    this.fetchingUserInfo = true
 
-    try {
-      const { pay, message, name, login, avatar_url: avatar } =
-        (await getUserInfo(this.$route.query.code)) || {}
+    // try {
+    //   this.fetchingUserInfo = true
+    //   const { pay, message, name, login, avatar_url: avatar } =
+    //     (await getUserInfo(this.$route.query.code)) || {}
 
-      if (message === 'Bad credentials') {
-        this.errorMessage = '登录已过期，请重新登录~'
-      }
-      this.avatar = avatar
-      this.pay = pay
-      this.name = name || login
-      this.login = login
+    //   if (message === 'Bad credentials') {
+    //     this.errorMessage = '登录已过期，请重新登录~'
+    //   }
+    //   this.avatar = avatar
+    //   this.pay = pay
+    //   this.name = name || login
+    //   this.login = login
 
-      this.isTestUse = this.$route.query.isTest
+    //   this.isTestUse = this.$route.query.isTest
 
-      this.lcAccountFormShow = !this.hasLcRequstDataInLs()
-    } finally {
-      this.fetchingUserInfo = false
-    }
+    //   this.lcAccountFormShow = !this.hasLcRequstDataInLs()
+    // } finally {
+    //   this.fetchingUserInfo = false
+    // }
   }
 }
 </script>
