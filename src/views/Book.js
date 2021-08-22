@@ -211,26 +211,6 @@ export default [
         ]
       },
       {
-        title: '代码2.10.1',
-        codes: [
-          {
-            language: 'Cpp',
-            content:
-              'typedef long long ll;\n\nconst ll magic = 1000000007LL;\n\nclass Solution {\npublic:\n  ll factorial(ll n) {\n    return (n <= 1LL) ? 1LL : n % magic * (factorial(n - 1) % magic) % magic;\n  }\n  ll numPrimeArrangements(ll n) {\n    ll primes[] = {\n            2,\n            3,\n            5,\n            7,\n            11,\n            13,\n            17,\n            19,\n            23,\n            29,\n            31,\n            37,\n            41,\n            43,\n            47,\n            53,\n            59,\n            61,\n            67,\n            71,\n            73,\n            79,\n            83,\n            89,\n            97,\n            101,\n    };\n    int primeCount = 0;\n    while (primes[primeCount] <= n)\n      primeCount += 1;\n    return factorial(primeCount) % magic * \\\n      (factorial(n - primeCount) % magic) % magic;\n  }\n};\n\n'
-          },
-          {
-            language: 'Java',
-            content:
-              'public class Solution {\n  public final long magic = (long)1000000007;\n  public long factorial(long n) {\n    return (n <= 1) ? 1 : n % magic * (factorial(n - 1) % magic) % magic;\n  }\n  public int numPrimeArrangements(int n) {\n    int[] primes = {\n            2,\n            3,\n            5,\n            7,\n            11,\n            13,\n            17,\n            19,\n            23,\n            29,\n            31,\n            37,\n            41,\n            43,\n            47,\n            53,\n            59,\n            61,\n            67,\n            71,\n            73,\n            79,\n            83,\n            89,\n            97,\n            101\n    };\n    int primeCount = 0;\n    while (primes[primeCount] <= n)\n      primeCount += 1;\n    return (int)(factorial((long)primeCount) % magic *\n      (factorial((long)n - (long)primeCount) % magic) % magic);\n  }\n}\n\n'
-          },
-          {
-            language: 'Py',
-            content:
-              'class Solution:\n    def numPrimeArrangements(self, n: int) -> int:\n        def factorial(n) -> int:\n            if n <= 1:\n                return 1\n            return n * factorial(n - 1)\n\n        primes = [\n            2,\n            3,\n            5,\n            7,\n            11,\n            13,\n            17,\n            19,\n            23,\n            29,\n            31,\n            37,\n            41,\n            43,\n            47,\n            53,\n            59,\n            61,\n            67,\n            71,\n            73,\n            79,\n            83,\n            89,\n            97,\n            101,\n        ]\n\n        primeCount = 0\n        while primes[primeCount] <= n:\n            primeCount += 1\n        return factorial(primeCount) * factorial(n - primeCount) % (10 ** 9 + 7)\n\n'
-          }
-        ]
-      },
-      {
         title: '代码2.2.1',
         codes: [
           {
@@ -510,6 +490,26 @@ export default [
             language: 'Py',
             content:
               'class Solution:\n    def largestDivisibleSubset(self, nums: List[int]) -> List[int]:\n        S = {-1: set()}\n        for x in sorted(nums):\n            S[x] = max((S[d] for d in S if x % d == 0), key=len) | {x}\n        return list(max(S.values(), key=len))\n\n'
+          }
+        ]
+      },
+      {
+        title: '代码2.10.1',
+        codes: [
+          {
+            language: 'Cpp',
+            content:
+              'typedef long long ll;\n\nconst ll magic = 1000000007LL;\n\nclass Solution {\npublic:\n  ll factorial(ll n) {\n    return (n <= 1LL) ? 1LL : n % magic * (factorial(n - 1) % magic) % magic;\n  }\n  ll numPrimeArrangements(ll n) {\n    ll primes[] = {\n            2,\n            3,\n            5,\n            7,\n            11,\n            13,\n            17,\n            19,\n            23,\n            29,\n            31,\n            37,\n            41,\n            43,\n            47,\n            53,\n            59,\n            61,\n            67,\n            71,\n            73,\n            79,\n            83,\n            89,\n            97,\n            101,\n    };\n    int primeCount = 0;\n    while (primes[primeCount] <= n)\n      primeCount += 1;\n    return factorial(primeCount) % magic * \\\n      (factorial(n - primeCount) % magic) % magic;\n  }\n};\n\n'
+          },
+          {
+            language: 'Java',
+            content:
+              'public class Solution {\n  public final long magic = (long)1000000007;\n  public long factorial(long n) {\n    return (n <= 1) ? 1 : n % magic * (factorial(n - 1) % magic) % magic;\n  }\n  public int numPrimeArrangements(int n) {\n    int[] primes = {\n            2,\n            3,\n            5,\n            7,\n            11,\n            13,\n            17,\n            19,\n            23,\n            29,\n            31,\n            37,\n            41,\n            43,\n            47,\n            53,\n            59,\n            61,\n            67,\n            71,\n            73,\n            79,\n            83,\n            89,\n            97,\n            101\n    };\n    int primeCount = 0;\n    while (primes[primeCount] <= n)\n      primeCount += 1;\n    return (int)(factorial((long)primeCount) % magic *\n      (factorial((long)n - (long)primeCount) % magic) % magic);\n  }\n}\n\n'
+          },
+          {
+            language: 'Py',
+            content:
+              'class Solution:\n    def numPrimeArrangements(self, n: int) -> int:\n        def factorial(n) -> int:\n            if n <= 1:\n                return 1\n            return n * factorial(n - 1)\n\n        primes = [\n            2,\n            3,\n            5,\n            7,\n            11,\n            13,\n            17,\n            19,\n            23,\n            29,\n            31,\n            37,\n            41,\n            43,\n            47,\n            53,\n            59,\n            61,\n            67,\n            71,\n            73,\n            79,\n            83,\n            89,\n            97,\n            101,\n        ]\n\n        primeCount = 0\n        while primes[primeCount] <= n:\n            primeCount += 1\n        return factorial(primeCount) * factorial(n - primeCount) % (10 ** 9 + 7)\n\n'
           }
         ]
       }

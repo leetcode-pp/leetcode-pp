@@ -83,6 +83,13 @@ for (const dir of dirs) {
       codes: codesMapper[key]
     })
   })
+
+  // 重新排序
+  chs[chs.length - 1].list.sort((a, b) => {
+    const [, a2, a3] = a.title.split('.')
+    const [, b2, b3] = b.title.split('.')
+    return Number(a2) * 100 + Number(a3) - Number(b2) * 100 - Number(b3)
+  })
 }
 
 function writeToDisk() {
@@ -91,7 +98,6 @@ function writeToDisk() {
 export default [${chs.map(ch => JSON.stringify(ch))}]
 `
 
-  console.log(content)
   const outputPath = '/Users/luxiaopeng/github/leetcode-pp/src/views/Book.js'
   fs.writeFileSync(outputPath, content)
 }

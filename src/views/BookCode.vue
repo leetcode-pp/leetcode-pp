@@ -36,13 +36,13 @@
 import hljs from 'highlight.js'
 import MarkdownIt from 'markdown-it'
 import 'highlight.js/styles/github.css'
-import copy from 'markdown-it-code-copy'
+// import copy from 'markdown-it-code-copy'
 
 const md = new MarkdownIt()
-md.use(copy, {
-  buttonStyle:
-    'position: absolute; top: 7.5px; right: 6px; cursor: pointer; border: none;'
-})
+// md.use(copy, {
+//   buttonStyle:
+//     'position: absolute; top: 7.5px; right: 6px; cursor: pointer; border: none;'
+// })
 
 function render(s) {
   return md.render(s)
