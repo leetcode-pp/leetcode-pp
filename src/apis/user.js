@@ -1,5 +1,6 @@
 import request from './request'
 export function logout() {
+  window.localStorage.removeItem('token')
   return request({
     url: '/api/v1/user/logout'
   })
