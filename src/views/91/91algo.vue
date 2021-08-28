@@ -11,7 +11,7 @@
 
       <counter :time="time" />
     </div>
-    <!-- <a-spin :spinning="fetchingUserInfo">
+    <a-spin :spinning="fetchingUserInfo">
       <div v-if="!pay">
         <a-alert :message="errorMessage" type="error" />
         <a-button v-if="!name" type="link" :href="loginUrl"
@@ -31,7 +31,7 @@
           <a-button type="link" @click="handlLogoutClick">退出登录</a-button>
         </div>
       </div>
-    </a-spin> -->
+    </a-spin>
 
     <div>
       <!-- 正在为大家准备讲义~ TODO: 讲师介绍，讲义查看，打卡跳到
@@ -632,10 +632,10 @@ export default {
           return p.then(data => {
             this[
               [
-                'introLectures',
-                'basicLectures',
-                'topicLectures',
-                'advanceLectures'
+                'introLectures'
+                // 'basicLectures',
+                // 'topicLectures',
+                // 'advanceLectures'
               ][i]
             ] = data.map(q => ({
               ...q,
@@ -843,25 +843,25 @@ export default {
 
     this.handleActiveTabChange(urlTab || 'agenda')
 
-    // try {
-    //   this.fetchingUserInfo = true
-    //   const { pay, message, name, login, avatar_url: avatar } =
-    //     (await getUserInfo(this.$route.query.code)) || {}
+    try {
+      this.fetchingUserInfo = true
+      const { pay, message, name, login, avatar_url: avatar } =
+        (await getUserInfo(this.$route.query.code)) || {}
 
-    //   if (message === 'Bad credentials') {
-    //     this.errorMessage = '登录已过期，请重新登录~'
-    //   }
-    //   this.avatar = avatar
-    //   this.pay = pay
-    //   this.name = name || login
-    //   this.login = login
+      if (message === 'Bad credentials') {
+        this.errorMessage = '登录已过期，请重新登录~'
+      }
+      this.avatar = avatar
+      this.pay = pay
+      this.name = name || login
+      this.login = login
 
-    //   this.isTestUse = this.$route.query.isTest
+      this.isTestUse = this.$route.query.isTest
 
-    //   this.lcAccountFormShow = !this.hasLcRequstDataInLs()
-    // } finally {
-    //   this.fetchingUserInfo = false
-    // }
+      this.lcAccountFormShow = !this.hasLcRequstDataInLs()
+    } finally {
+      this.fetchingUserInfo = false
+    }
   }
 }
 </script>
