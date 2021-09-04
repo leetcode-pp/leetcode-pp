@@ -632,8 +632,8 @@ export default {
           return p.then(data => {
             this[
               [
-                'introLectures'
-                // 'basicLectures',
+                'introLectures',
+                'basicLectures'
                 // 'topicLectures',
                 // 'advanceLectures'
               ][i]
