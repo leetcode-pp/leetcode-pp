@@ -111,7 +111,7 @@
             <a-button
               type="link"
               :href="
-                'https://github.com/leetcode-pp/91alg-4/issues/' +
+                'https://github.com/leetcode-pp/91alg-5/issues/' +
                   dailyProblem.issue_number
               "
               target="_blank"
@@ -386,7 +386,7 @@
                   type="link"
                   :href="
                     solution.url ||
-                      'https://github.com/leetcode-pp/91alg-4/issues/' +
+                      'https://github.com/leetcode-pp/91alg-5-daily-check/issues/' +
                         solution.issue_number
                   "
                 >
