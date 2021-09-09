@@ -497,7 +497,7 @@ async function loadComment({
     clientSecret,
     repo: '91alg-5-daily-check', // The repository of store comments,
     owner: 'leetcode-pp',
-    admin: ['azl39798585633'],
+    admin: ['azl397985856'],
     body: `
 ${description}
 ${link}
