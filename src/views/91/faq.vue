@@ -1,5 +1,35 @@
 <template>
   <div class="faq">
+    请确保自己:<br />
+
+    - 熟悉和了解github的基本使用<br />
+    - 熟悉和了解markdown的基本使用<br />
+
+    自测问题<br />
+
+    1. 我能快速登陆我的github账号吗？<br />
+
+    2. 我的github username是什么？<br />
+
+    3. repo是什么？什么是public repo和private
+    repo？为什么我访问一个repo会出现404，但是其他人就能访问？（加分：建立一个自己的力扣打卡repo）<br />
+
+    4. 一个repo的code在哪里？<br />
+
+    5. 一个repo的issue在哪里？<br />
+
+    6. markdown是什么？<br />
+
+    7. 怎么样在markdown里添加标题？<br />
+
+    8. 怎么样在markdown里添加带有语言特征的code
+    block？（比如我写c++，怎么样让markdown里的这段code按照c++语法高亮呢）<br />
+
+    9. 怎么在md里添加超链接？<br />
+
+    10.
+    加分：创建自己喜欢的刷题markdown笔记模板，模板内可以包含题目名称，题目链接，题目思路，题目解体的code，时间和空间复杂度。<br />
+
     Q：提示没有登录或者付费是怎么回事？<br />
     A：顾名思义，它的意思是你没有登录或者没有付费。如果你确认已经付费，请检查群公告中的表格是否已经添加了你且<b>名字拼接正确</b>，其中
     githubid 是github.com/xxxxx 的xxxx这一部分。如果全部检查没有问题，
