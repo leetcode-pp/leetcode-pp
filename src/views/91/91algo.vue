@@ -459,23 +459,23 @@ import {
   originalHostname,
   hostnamePool,
   // hostname,
-  startTime,
-  leetcodeConfig
+  startTime
+  // leetcodeConfig
 } from '../../config/index'
-const {
-  _91UsernameLsName,
-  _91PwdLsName,
-  lcSeesionCookieName,
-  lcCsrftokenCookieName
-} = leetcodeConfig
-const lcDataKeys = [
-  _91UsernameLsName,
-  _91PwdLsName,
-  lcSeesionCookieName,
-  lcCsrftokenCookieName
-]
+// const {
+//   _91UsernameLsName,
+//   _91PwdLsName,
+//   lcSeesionCookieName,
+//   lcCsrftokenCookieName
+// } = leetcodeConfig
+// const lcDataKeys = [
+//   _91UsernameLsName,
+//   _91PwdLsName,
+//   lcSeesionCookieName,
+//   lcCsrftokenCookieName
+// ]
 // import CodeEditor from '../../components/Code'
-import { message } from 'ant-design-vue'
+// import { message } from 'ant-design-vue'
 
 const MS_PER_DAY = 24 * 60 * 60 * 1000
 function getDay(date = new Date().getTime()) {
@@ -490,6 +490,7 @@ async function loadComment({
   description = '',
   link = ''
 }) {
+  console.log(id)
   const { clientID, clientSecret } = await getCommentApp()
 
   const gitalk = new Gitalk({
@@ -580,7 +581,7 @@ export default {
 
   methods: {
     async handleActiveTabChange(v) {
-      this.activeTab = v || 'teachers'
+      this.activeTab = v
 
       let newurl = ''
       const searches = new URLSearchParams(new URL(window.location.href).search)
@@ -728,109 +729,109 @@ export default {
       logout().then(() => {
         window.location.href = `https://${originalHostname}/91`
       })
-    },
-    submitCode() {
-      const { link, title } = this.dailyProblem
-      const id = +title.match(/[1-9]+/)[0]
-      if (!id) {
-        return message.error('当日讲义格式有误，请联系讲师!')
-      }
-      const slug = link
-        .split('/')
-        .reverse()
-        .find(item => item)
-      let needClearLcStorage = false
-      request({
-        method: 'post',
-        url: '/api/v1/lc/submitCode',
-        headers: this.getLcRequestHeader(),
-        data: {
-          link,
-          lang: this.codeLanguage,
-          id,
-          slug,
-          code: this.$refs.codeEditor.getEditorValue()
-        }
-      })
-        .then(data => {
-          const { submission_id: subMissionId } = data
-          if (subMissionId) {
-            message.info('题解提交成功')
-            this.setLcDataInLs(data)
-            // 数据持久化。将当前用户的打卡信息入库
-            // TODO: 弹出写题解的弹窗（即使不写题解也算打卡成功）
-          } else {
-            throw data
-          }
-        })
-        .catch((data = {}) => {
-          message.destroy()
-          // 如果状态码为403,代表需要用户重新输入一遍账号与密码,这时需要清空一波缓存
-          needClearLcStorage = data.code === 403
-          message.error(data.message || '题解提交失败')
-        })
-        .finally(() => {
-          // 清空缓存
-          if (needClearLcStorage) {
-            this.clearLcDataInLs()
-          }
-          this.lcAccountFormShow = !this.hasLcRequstDataInLs()
-        })
-    },
-    handleLcAccountLogin(e) {
-      e.preventDefault()
-      const data = this.form.getFieldsValue()
-      let needClearLcStorage = false
-      request({
-        method: 'post',
-        url: '/api/v1/lc/submitLcAccount',
-        headers: this.getLcRequestHeader(),
-        data
-      })
-        .then(data => {
-          message.info(data.message || '登陆成功')
-          this.setLcDataInLs(data)
-        })
-        .catch((data = {}) => {
-          message.destroy()
-          message.error(data.message || '登陆失败')
-          // 如果状态码为403,代表需要用户重新输入一遍账号与密码,这时需要清空一波cookie
-          needClearLcStorage = data.code === 403
-        })
-        .finally(() => {
-          // 清空缓存
-          if (needClearLcStorage) {
-            this.clearLcDataInLs()
-          }
-          this.lcAccountFormShow = !this.hasLcRequstDataInLs()
-        })
-    },
-    getLcRequestHeader(header = {}) {
-      const arr = [
-        _91UsernameLsName,
-        _91PwdLsName,
-        lcSeesionCookieName,
-        lcCsrftokenCookieName
-      ]
-      const data = arr.reduce((obj, key) => {
-        const val = window.localStorage.getItem(key)
-        if (val) {
-          obj[key] = val
-        }
-        return obj
-      }, {})
-      return Object.assign(header, data)
-    },
-    setLcDataInLs(data) {
-      lcDataKeys.forEach(key => window.localStorage.setItem(key, data[key]))
-    },
-    clearLcDataInLs() {
-      lcDataKeys.forEach(key => window.localStorage.removeItem(key))
-    },
-    hasLcRequstDataInLs() {
-      const requestKeys = [_91UsernameLsName, _91PwdLsName]
-      return requestKeys.every(key => window.localStorage.getItem(key))
     }
+    // submitCode() {
+    //   const { link, title } = this.dailyProblem
+    //   const id = +title.match(/[1-9]+/)[0]
+    //   if (!id) {
+    //     return message.error('当日讲义格式有误，请联系讲师!')
+    //   }
+    //   const slug = link
+    //     .split('/')
+    //     .reverse()
+    //     .find(item => item)
+    //   let needClearLcStorage = false
+    //   request({
+    //     method: 'post',
+    //     url: '/api/v1/lc/submitCode',
+    //     headers: this.getLcRequestHeader(),
+    //     data: {
+    //       link,
+    //       lang: this.codeLanguage,
+    //       id,
+    //       slug,
+    //       code: this.$refs.codeEditor.getEditorValue()
+    //     }
+    //   })
+    //     .then(data => {
+    //       const { submission_id: subMissionId } = data
+    //       if (subMissionId) {
+    //         message.info('题解提交成功')
+    //         this.setLcDataInLs(data)
+    //         // 数据持久化。将当前用户的打卡信息入库
+    //         // TODO: 弹出写题解的弹窗（即使不写题解也算打卡成功）
+    //       } else {
+    //         throw data
+    //       }
+    //     })
+    //     .catch((data = {}) => {
+    //       message.destroy()
+    //       // 如果状态码为403,代表需要用户重新输入一遍账号与密码,这时需要清空一波缓存
+    //       needClearLcStorage = data.code === 403
+    //       message.error(data.message || '题解提交失败')
+    //     })
+    //     .finally(() => {
+    //       // 清空缓存
+    //       if (needClearLcStorage) {
+    //         this.clearLcDataInLs()
+    //       }
+    //       this.lcAccountFormShow = !this.hasLcRequstDataInLs()
+    //     })
+    // }
+    // handleLcAccountLogin(e) {
+    //   e.preventDefault()
+    //   const data = this.form.getFieldsValue()
+    //   let needClearLcStorage = false
+    //   request({
+    //     method: 'post',
+    //     url: '/api/v1/lc/submitLcAccount',
+    //     headers: this.getLcRequestHeader(),
+    //     data
+    //   })
+    //     .then(data => {
+    //       message.info(data.message || '登陆成功')
+    //       this.setLcDataInLs(data)
+    //     })
+    //     .catch((data = {}) => {
+    //       message.destroy()
+    //       message.error(data.message || '登陆失败')
+    //       // 如果状态码为403,代表需要用户重新输入一遍账号与密码,这时需要清空一波cookie
+    //       needClearLcStorage = data.code === 403
+    //     })
+    //     .finally(() => {
+    //       // 清空缓存
+    //       if (needClearLcStorage) {
+    //         this.clearLcDataInLs()
+    //       }
+    //       this.lcAccountFormShow = !this.hasLcRequstDataInLs()
+    //     })
+    // },
+    // getLcRequestHeader(header = {}) {
+    //   const arr = [
+    //     _91UsernameLsName,
+    //     _91PwdLsName,
+    //     lcSeesionCookieName,
+    //     lcCsrftokenCookieName
+    //   ]
+    //   const data = arr.reduce((obj, key) => {
+    //     const val = window.localStorage.getItem(key)
+    //     if (val) {
+    //       obj[key] = val
+    //     }
+    //     return obj
+    //   }, {})
+    //   return Object.assign(header, data)
+    // },
+    // setLcDataInLs(data) {
+    //   lcDataKeys.forEach(key => window.localStorage.setItem(key, data[key]))
+    // },
+    // clearLcDataInLs() {
+    //   lcDataKeys.forEach(key => window.localStorage.removeItem(key))
+    // },
+    // hasLcRequstDataInLs() {
+    //   const requestKeys = [_91UsernameLsName, _91PwdLsName]
+    //   return requestKeys.every(key => window.localStorage.getItem(key))
+    // }
   },
   async mounted() {
     if (hostnamePool.includes(window.location.hostname)) {
@@ -858,7 +859,7 @@ export default {
 
       this.isTestUse = this.$route.query.isTest
 
-      this.lcAccountFormShow = !this.hasLcRequstDataInLs()
+      // this.lcAccountFormShow = !this.hasLcRequstDataInLs()
     } finally {
       this.fetchingUserInfo = false
     }
