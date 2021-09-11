@@ -20,6 +20,15 @@
 
 Just enjoy it ฅ●ω●ฅ
 
+## 贡献新书代码
+
+本书所有代码存放在 code 文件夹。
+
+- 如果你需要纠错，可以按照章节找到对应文件修改。
+- 如果你需要新增语言，可以新建同名文件，后缀改为对应语言。
+
+修改后执行 `npm run bcode`，然后 `npm run start` 查看 http://localhost:8080/book 显示是否正确。如果确认无误，可以提交 [pr](https://github.com/leetcode-pp/leetcode-pp/pulls?q=is%3Apr+is%3Aopen+sort%3Aupdated-desc) 给我们。
+
 ## Timeline
 
 - 2021/02/23: 迁移到新的仓库，调整到 github pages，使用 jsdelivr 加速。视频区，专题区改版。

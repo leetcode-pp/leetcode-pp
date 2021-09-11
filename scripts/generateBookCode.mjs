@@ -1,7 +1,11 @@
 /* eslint-disable */
 import fs from 'fs'
-const DIRECTORY = '/Users/luxiaopeng/github/leetcode-solutions'
-const dirs = fs.readdirSync(DIRECTORY).filter(d => d.startsWith('ch'))
+import path from 'path'
+
+const DIRECTORY = './code'
+const dirs = fs
+  .readdirSync(path.resolve(process.cwd(), DIRECTORY))
+  .filter(d => d.startsWith('ch'))
 const nameMapper = {
   '01': '一',
   '02': '二',
@@ -30,7 +34,21 @@ const chs = []
 for (const dir of dirs) {
   const id = dir.slice(2)
   const name = `第${nameMapper[id]}章`
-  const files = fs.readdirSync(`${DIRECTORY}/${dir}/code`)
+  const files = fs.readdirSync(
+    path.resolve(process.cwd(), `${DIRECTORY}/${dir}`)
+  )
+  // fs.mkdirSync(`./code/${dir}`, { recursive: true })
+
+  // files.forEach(file => {
+  //   fs.writeFileSync(
+  //     `./code/${dir}/${file}`,
+  //     fs
+  //       .readFileSync(
+  //         path.resolve(process.cwd(), `${DIRECTORY}/${dir}/${file}`)
+  //       )
+  //       .toString()
+  //   )
+  // })
   chs.push({
     id,
     name,
@@ -39,7 +57,10 @@ for (const dir of dirs) {
   const codesMapper = {}
   for (const filename of files) {
     if (filename === '.DS_Store') continue
-    const fullpath = `${DIRECTORY}/${dir}/code/${filename}`
+    const fullpath = path.resolve(
+      process.cwd(),
+      `${DIRECTORY}/${dir}/${filename}`
+    )
     let parts = filename.split('.')
     let no = '代码'
     let language = ''
@@ -93,8 +114,7 @@ for (const dir of dirs) {
 }
 
 function writeToDisk() {
-  const content = `
-/* eslint-disable */
+  const content = `/* eslint-disable */
 export default [${chs.map(ch => JSON.stringify(ch))}]
 `
 
