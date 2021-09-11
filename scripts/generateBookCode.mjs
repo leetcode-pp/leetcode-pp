@@ -118,8 +118,8 @@ function writeToDisk() {
 export default [${chs.map(ch => JSON.stringify(ch))}]
 `
 
-  const outputPath = '/Users/luxiaopeng/github/leetcode-pp/src/views/Book.js'
-  fs.writeFileSync(outputPath, content)
+  const outputPath = './src/views/Book.js'
+  fs.writeFileSync(path.resolve(process.cwd(), outputPath), content)
 }
 
 writeToDisk()
