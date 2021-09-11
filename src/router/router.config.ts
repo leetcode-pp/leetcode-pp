@@ -68,6 +68,11 @@ export const asyncRouterMap = [
         component: () =>
           import(/* webpackChunkName: "view-book" */ '@/views/BookCode.vue')
       },
+      {
+        path: 'recall',
+        component: () =>
+          import(/* webpackChunkName: "view-book" */ '@/views/91/recall.vue')
+      },
       // {
       //   path: 'book-code',
       //   component: () =>

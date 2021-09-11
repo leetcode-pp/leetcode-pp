@@ -35,11 +35,14 @@
               Github Reader</router-link
             >
           </a-menu-item>
-          <a-menu-item key="solution-code">
+          <a-menu-item key="book">
+            <router-link to="/book" class="nav-font">新书配套代码</router-link>
+          </a-menu-item>
+          <!-- <a-menu-item key="solution-code">
             <router-link to="/solution-code" class="nav-font"
               >题解配套代码</router-link
             >
-          </a-menu-item>
+          </a-menu-item> -->
         </a-menu>
       </a-col>
     </a-row>
