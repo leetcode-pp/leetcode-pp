@@ -73,11 +73,11 @@ export const asyncRouterMap = [
         component: () =>
           import(/* webpackChunkName: "view-book" */ '@/views/91/recall.vue')
       },
-      // {
-      //   path: 'book-code',
-      //   component: () =>
-      //     import(/* webpackChunkName: "view-book" */ '@/views/BookCode.vue')
-      // },
+      {
+        path: 'book-intro',
+        component: () =>
+          import(/* webpackChunkName: "view-book" */ '@/views/Book.vue')
+      },
       {
         path: 'solution-code',
         component: () =>

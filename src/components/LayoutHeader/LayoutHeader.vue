@@ -30,13 +30,17 @@
               >91算法(第五期)</router-link
             >
           </a-menu-item>
+
+          <a-menu-item key="book-intro">
+            <router-link to="/book-intro" class="nav-font icon-new"
+              >《算法通关之路》</router-link
+            >
+          </a-menu-item>
+
           <a-menu-item key="github">
             <router-link to="/github" class="nav-font">
               Github Reader</router-link
             >
-          </a-menu-item>
-          <a-menu-item key="book">
-            <router-link to="/book" class="nav-font">新书配套代码</router-link>
           </a-menu-item>
           <!-- <a-menu-item key="solution-code">
             <router-link to="/solution-code" class="nav-font"

@@ -18,10 +18,15 @@
       data-tool="mdnice编辑器"
       style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;"
     >
-      经过了半年时间打磨，投入诸多人力，这本 LeetCode
-      题解书终于快要和大家见面了。目前已经完成了大部分章节的编写工作，预计经过一段时间的打磨就会和大家见面啦
-      💐💐💐💐💐。
+      经过了半年时间打磨，投入诸多人力，这本 LeetCode 题解书终于要和大家见面了。
+      💐💐💐💐💐。 购书链接：https://u.jd.com/rKdWLvP
     </p>
+
+    <img
+      src="https://tva1.sinaimg.cn/large/008i3skNly1gughg8kx8sj60dw0fagma02.jpg"
+      alt
+      style="display: block; margin: 0 auto; width: auto; max-width: 100%;"
+    />
     <h1
       data-tool="mdnice编辑器"
       style="margin-top: 30px; margin-bottom: 15px; font-weight: bold; color: black; font-size: 24px;"
@@ -39,7 +44,7 @@
         style="text-decoration: none; word-wrap: break-word; font-weight: bold; color: rgb(239, 112, 96); border-bottom: 1px solid rgb(239, 112, 96);"
         >LeetCode 题解</a
       >
-      （现在已经接近 30k star
+      （现在已经接近 45k star
       了）项目被大家开始关注，就有不少出版社开始联系我写书。刚开始后的时候，我并没有这个打算，觉得写这个相对于博客形式的题解要耗费时间，且并不一定效果比博客形式的效果好。后来当我向大家提及“出版社找我写书”这件事情的时候，很多人表示“想要买书，于是我就开始打算写这样一本书。但是一个完全没有写书经验的人，独立完成一本书工作量还是蛮大的，因此我打算寻求其他志同道合人士的帮助。
     </p>
     <h1
@@ -79,7 +84,7 @@
           <a
             href="https://leetcode-cn.com/u/hlxing/"
             style="text-decoration: none; word-wrap: break-word; font-weight: bold; color: rgb(239, 112, 96); border-bottom: 1px solid rgb(239, 112, 96);"
-            >作者 - xing</a
+            >作者 - lucifer</a
           >
         </section>
       </li>
@@ -90,7 +95,7 @@
           <a
             href="https://leetcode-cn.com/u/fe-lucifer/"
             style="text-decoration: none; word-wrap: break-word; font-weight: bold; color: rgb(239, 112, 96); border-bottom: 1px solid rgb(239, 112, 96);"
-            >作者 - lucifer</a
+            >作者 - by</a
           >
         </section>
       </li>
@@ -101,7 +106,7 @@
           <a
             href="https://leetcode-cn.com/u/bruceyuj/"
             style="text-decoration: none; word-wrap: break-word; font-weight: bold; color: rgb(239, 112, 96); border-bottom: 1px solid rgb(239, 112, 96);"
-            >作者 - BY</a
+            >作者 - fanlu</a
           >
         </section>
       </li>
@@ -112,7 +117,7 @@
           <a
             href="https://www.fanlucloud.com/"
             style="text-decoration: none; word-wrap: break-word; font-weight: bold; color: rgb(239, 112, 96); border-bottom: 1px solid rgb(239, 112, 96);"
-            >作者 - fanlu</a
+            >作者 - hlxing</a
           >
         </section>
       </li>
@@ -1297,8 +1302,12 @@ skiplist.search(1);   // 返回 false，1 已被擦除
       data-tool="mdnice编辑器"
       style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;"
     >
-      等新书发布之后，我们会在官网开辟一个区域，大家可以直接访问查看本书配套的配套代码，包括
-      JavaScript，Java，Python 和 C++。
+      大家可以直接访问查看本书配套的
+      <a
+        href="https://leetcode-solution.cn/book"
+        style="text-decoration: none; word-wrap: break-word; font-weight: bold; color: rgb(239, 112, 96); border-bottom: 1px solid rgb(239, 112, 96);"
+        >配套代码</a
+      >，包括 JavaScript，Java，Python 和 C++。
       也欢迎大家留言给我们自己想要支持的语言，我们会郑重考虑大家的意见。
     </p>
     <p
@@ -1328,8 +1337,13 @@ skiplist.search(1);   // 返回 false，1 已被擦除
       data-tool="mdnice编辑器"
       style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;"
     >
-      如果你也想要第一时间获取到我们的题解新书，那么请发送邮件到
-      azl397985856@gmail.com，标题著明“书籍《LeetCode 题解》预定”字样。
+      购书链接：https://u.jd.com/rKdWLvP
     </p>
+
+    <img
+      src="https://tva1.sinaimg.cn/large/008i3skNly1gughg8kx8sj60dw0fagma02.jpg"
+      alt
+      style="display: block; margin: 0 auto; width: auto; max-width: 100%;"
+    />
   </section>
 </template>
