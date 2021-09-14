@@ -1,0 +1,13 @@
+diff --git a/node_modules/gitalk/dist/gitalk.js b/node_modules/gitalk/dist/gitalk.js
+index f2d5d8f..d0ac2c6 100644
+--- a/node_modules/gitalk/dist/gitalk.js
++++ b/node_modules/gitalk/dist/gitalk.js
+@@ -13602,7 +13602,7 @@ var GitalkComponent = function (_Component) {
+     if (query.code) {
+       var code = query.code;
+       delete query.code;
+-      var replacedUrl = '' + window.location.origin + window.location.pathname + (0, _util.queryStringify)(query) + window.location.hash;
++      var replacedUrl = '' + window.location.origin + window.location.pathname + '?' + (0, _util.queryStringify)(query) + window.location.hash;
+       history.replaceState(null, null, replacedUrl);
+       _this.options = (0, _assign2.default)({}, _this.options, {
+         url: replacedUrl,

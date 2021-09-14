@@ -9,6 +9,7 @@
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
+    "postinstall": "patch-package",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -w -r 0"
   },
   "dependencies": {
@@ -56,6 +57,8 @@
     "less": "^3.0.4",
     "less-loader": "^5.0.0",
     "lint-staged": "^9.5.0",
+    "patch-package": "^6.4.7",
+    "postinstall-postinstall": "^2.1.0",
     "prettier": "^1.19.1",
     "typescript": "~3.7.5",
     "validate-commit-msg": "^2.14.0",
