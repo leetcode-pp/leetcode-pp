@@ -27,8 +27,8 @@ jobs:
       # Runs a single command using the runners shell
       - name: Install and Build
         run: |
-          npm install
-          npm run-script build
+          yarn
+          yarn build
       # Copy Files
       - name: Copy CNAME and 404.html
         run: |

@@ -1,6 +1,6 @@
 {
-  "name": "lc",
-  "version": "0.1.0",
+  "name": "leetcode-pp",
+  "version": "1.0.0",
   "private": true,
   "homepage": "https://leetcode-solution.cn",
   "scripts": {
