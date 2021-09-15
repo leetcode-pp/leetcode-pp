@@ -1,7 +1,7 @@
 <template>
   <div class="faq">
     <div class="desc">
-      请确保自己:<br />
+      请确保自己: <br />
 
       - 熟悉和了解github的基本使用<br />
       - 熟悉和了解markdown的基本使用<br />
