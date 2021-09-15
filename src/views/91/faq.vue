@@ -1,34 +1,49 @@
 <template>
   <div class="faq">
-    请确保自己:<br />
+    <div class="desc">
+      请确保自己:<br />
 
-    - 熟悉和了解github的基本使用<br />
-    - 熟悉和了解markdown的基本使用<br />
+      - 熟悉和了解github的基本使用<br />
+      - 熟悉和了解markdown的基本使用<br />
 
-    自测问题<br />
+      自测问题<br />
 
-    1. 我能快速登陆我的github账号吗？<br />
+      1. 我能快速登陆我的github账号吗？<br />
 
-    2. 我的github username是什么？<br />
+      2. 我的github username是什么？<br />
 
-    3. repo是什么？什么是public repo和private
-    repo？为什么我访问一个repo会出现404，但是其他人就能访问？（加分：建立一个自己的力扣打卡repo）<br />
+      3. repo是什么？什么是public repo和private
+      repo？为什么我访问一个repo会出现404，但是其他人就能访问？（加分：建立一个自己的力扣打卡repo）<br />
 
-    4. 一个repo的code在哪里？<br />
+      4. 一个repo的code在哪里？<br />
 
-    5. 一个repo的issue在哪里？<br />
+      5. 一个repo的issue在哪里？<br />
 
-    6. markdown是什么？<br />
+      6. markdown是什么？<br />
 
-    7. 怎么样在markdown里添加标题？<br />
+      7. 怎么样在markdown里添加标题？<br />
 
-    8. 怎么样在markdown里添加带有语言特征的code
-    block？（比如我写c++，怎么样让markdown里的这段code按照c++语法高亮呢）<br />
+      8. 怎么样在markdown里添加带有语言特征的code
+      block？（比如我写c++，怎么样让markdown里的这段code按照c++语法高亮呢）<br />
 
-    9. 怎么在md里添加超链接？<br />
+      9. 怎么在md里添加超链接？<br />
 
-    10.
-    加分：创建自己喜欢的刷题markdown笔记模板，模板内可以包含题目名称，题目链接，题目思路，题目解体的code，时间和空间复杂度。<br />
+      10.
+      加分：创建自己喜欢的刷题markdown笔记模板，模板内可以包含题目名称，题目链接，题目思路，题目解体的code，时间和空间复杂度。<br /><br />
+
+      登录提示付费的填下下面的表格，其中 github登录名是github.com/xxxxx
+      的xxxx这一部分，也就是登录后头像下方括号里的内容（这个是最准的）。大家如实填下这个表，我后面会逐个给大家添加，大家不要急
+      （一般几个小时）https://airtable.com/shrM0ri4uAGvEv9Tj <br /><br />
+      如果登记了还是进不去，请检查自己是否在名单，名单地址：https://github.com/leetcode-pp/leetcode-pp-node/blob/main/config/users-5.js
+      ，且填写无误。如果填错了，修改后同步我修改之前的和之后的。
+      不在名单就别想了，肯定进不去。名单是群主手动更新，因此需要时间。<br /><br />
+      本期打卡规则如下: <br />
+
+      1. 在打卡标签下的题目描述下方留言打卡 <br />
+      2. 当天的打卡题当天comment，记一次打卡，不需要问时差问题，自己安排。<br />
+      3. 超过连续七天未打卡的，将被脚本移出访问权限，但不会被踢出微信群。<br />
+    </div>
+    以上为常见问题及答案：<br />
 
     Q：一直转圈圈怎么回事？<br />
     A：1. 确保已经科学上网 https://github.com/fe-lucifer/fanqiang 2.
@@ -81,5 +96,12 @@
 <style lang="less" scoped>
 .faq {
   text-align: left;
+}
+.desc {
+  margin-bottom: 20px;
+  border-radius: 15px;
+  padding: 30px;
+  color: #e3e3e3;
+  background: rgba(0, 0, 0, 0.7);
 }
 </style>
