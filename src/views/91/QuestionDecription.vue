@@ -1,7 +1,17 @@
 <template>
   <div>
     <div class="daily-problem">
-      <div class="daily-problem-title">{{ dailyProblem.title }}</div>
+      <div class="daily-problem-title">
+        <!-- <div class="daily-problem-progress">
+          <span>本期进度：</span
+          ><a-progress
+            style="width: 80px;"
+            :percent="(dailyProblem.day / 0.91) >>> 0"
+            size="small"
+          />
+        </div> -->
+        【Day {{ dailyProblem.day }}】{{ dailyProblem.title }}
+      </div>
 
       <a-button
         type="link"
@@ -87,6 +97,11 @@ export default {
   font-size: 24px;
   font-weight: bold;
   color: #333;
+}
+.daily-problem-progress {
+  font-size: 14px;
+  width: 150px;
+  display: inline-block;
 }
 .daily-problem-link {
   text-align: left;
