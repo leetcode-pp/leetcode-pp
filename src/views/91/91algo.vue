@@ -483,7 +483,7 @@ export default {
       form: this.$form.createForm(this),
       selectedTag: '全部',
       allTags: ['全部'],
-      currentStudentTab: 'ranking',
+      currentStudentTab: 'interview',
       rankings: [], // 打卡排行。未来可能增加其他排行，比如点赞精选排行
       mySolutions: [],
       showHistory: false,
