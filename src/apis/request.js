@@ -2,6 +2,19 @@ import { message } from 'ant-design-vue'
 import axios from 'axios'
 import { hostname } from '@/config/index'
 
+// async function getAvaliableHost(i = 0) {
+//   if (i < hostnamePool.length) {
+//     return fetch(hostnamePool[i])
+//       .then(() => hostnamePool[i])
+//       .catch(err => {
+//         if (err.message === 'Network Error') {
+//           return getAvaliableHost(i + 1)
+//         }
+//       })
+//   }
+//   return -1
+// }
+
 const host =
   process.env.NODE_ENV === 'production'
     ? `https://${hostname}`
