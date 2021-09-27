@@ -5,7 +5,10 @@ const hostnamePool = [
   // 'a91algo.herokuapp.com'
   // 'localhost'
 ]
-const hostname = hostnamePool[new Date().getDate() % hostnamePool.length]
+const hostname =
+  hostnamePool[
+    new Date(new Date().toLocaleString('en-US')).getDate() % hostnamePool.length
+  ]
 
 module.exports = {
   startTime: startTime.getTime(),
