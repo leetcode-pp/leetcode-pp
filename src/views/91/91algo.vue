@@ -154,7 +154,11 @@
               :disabledDate="disabledDate"
               :fullscreen="false"
               @change="onDateChanged"
-            />
+            >
+              <template slot="dateFullCellRender" slot-scope="value">{{
+                renderDay(value)
+              }}</template>
+            </a-calendar>
           </a-drawer>
           <a-spin :spinning="fetchingDailyProblem">
             <Q :dailyProblem="dailyProblem" />
@@ -338,7 +342,7 @@
                         solution.issue_number
                   "
                 >
-                  {{ solution.title }}
+                  【Day {{ solution.day }}】{{ solution.title }}
                 </a-button>
                 <div class="icon">
                   <a-tooltip v-if="solution.onTime === true">
@@ -440,7 +444,6 @@ async function loadComment({
   description = '',
   link = ''
 }) {
-  console.log(id)
   const { clientID, clientSecret } = await getCommentApp()
 
   const gitalk = new Gitalk({
@@ -531,6 +534,11 @@ export default {
   },
 
   methods: {
+    renderDay(time) {
+      const day = getDay(time)
+      if (day <= 0) return ''
+      return day
+    },
     async handleActiveTabChange(v) {
       this.activeTab = v
 
