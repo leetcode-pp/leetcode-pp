@@ -536,7 +536,7 @@ export default {
   methods: {
     renderDay(time) {
       const day = getDay(time)
-      if (day <= 0) return ''
+      if (day <= 0 || day > getDay()) return ''
       return day
     },
     async handleActiveTabChange(v) {
@@ -664,6 +664,7 @@ export default {
     },
     disabledDate(moment) {
       const d = getDay(moment.valueOf())
+      console.log(d, moment.valueOf() > new Date().getTime())
       // 活动开始去除下面注释
       if (moment.valueOf() > new Date().getTime()) return true
       return d < 1 || d > 91
