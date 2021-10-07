@@ -439,7 +439,7 @@ function getDay(date = new Date().getTime()) {
 // 将 id 和 tag 合并为 labels，然后根据 labels 查询仓库下符合条件的 issue，然后将 issue 下的 comments 展示出来。
 async function loadComment({
   id,
-  tags = [],
+  tags,
   title = '',
   description = '',
   link = ''
@@ -458,7 +458,7 @@ ${link}
 `,
     id,
     title,
-    labels: tags,
+    labels: tags || [],
     distractionFreeMode: false // Facebook-like distraction free mode
   })
   document.querySelector('#gitalk-container').innerHTML = ''
