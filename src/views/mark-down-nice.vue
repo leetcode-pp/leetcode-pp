@@ -27,6 +27,16 @@
       alt
       style="display: block; margin: 0 auto; width: auto; max-width: 100%;"
     />
+
+    <iframe
+      type="text/html"
+      width="336"
+      height="550"
+      frameborder="0"
+      allowfullscreen
+      style="max-width:100%"
+      src="https://read.amazon.cn/kp/card?asin=B09DG5TRRM&preview=inline&linkCode=kpe&ref_=cm_sw_r_kb_dp_NVSYBDYA0SVC39PGA35S&hideShare=true"
+    ></iframe>
     <h1
       data-tool="mdnice编辑器"
       style="margin-top: 30px; margin-bottom: 15px; font-weight: bold; color: black; font-size: 24px;"
