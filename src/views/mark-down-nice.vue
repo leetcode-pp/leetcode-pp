@@ -19,11 +19,11 @@
       style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;"
     >
       经过了半年时间打磨，投入诸多人力，这本 LeetCode 题解书终于要和大家见面了。
-      💐💐💐💐💐。 购书链接：https://u.jd.com/rKdWLvP
+      💐💐💐💐💐。 购书链接：https://u.jd.com/DwxoZxZ
     </p>
 
     <img
-      src="https://tva1.sinaimg.cn/large/008i3skNly1gughg8kx8sj60dw0fagma02.jpg"
+      src="https://tva1.sinaimg.cn/large/008i3skNly1gvf3ok4og4j60dw0fa74z02.jpg"
       alt
       style="display: block; margin: 0 auto; width: auto; max-width: 100%;"
     />
