@@ -4,11 +4,11 @@
     <div class="info">
       七天内未打卡：<a-icon class="no-check" type="exclamation-circle" />
     </div>
-    <div class="info">
+    <!-- <div class="info">
       剩余补签卡：<img class="rank card" src="../../assets/card.svg" />
-    </div>
+    </div> -->
 
-    注：如果未满勤会自动使用补签卡，使用后满勤也算满勤
+    <!-- 注：如果未满勤会自动使用补签卡，使用后满勤也算满勤 -->
     <a-list item-layout="horizontal" :data-source="rankings" class="teachers">
       <a-list-item slot="renderItem" slot-scope="item">
         <a-list-item-meta>
@@ -21,8 +21,8 @@
                 class="no-check"
                 type="exclamation-circle"
               />
-              <img class="rank card" src="../../assets/card.svg" /> x
-              {{ item.card || 0 }}
+              <!-- <img class="rank card" src="../../assets/card.svg" /> x
+              {{ item.card || 0 }} -->
             </div>
           </div>
           <div slot="title">
