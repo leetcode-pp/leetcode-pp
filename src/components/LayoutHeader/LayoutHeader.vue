@@ -42,6 +42,16 @@
               Github Reader</router-link
             >
           </a-menu-item>
+
+          <!-- <a-menu-item key="fq">
+            <a
+              href="https://glados.space/landing/M9OHH-Q88JQ-DX72D-R04RN"
+              class="nav-font"
+            >
+              科学上网</a
+            >
+          </a-menu-item> -->
+
           <!-- <a-menu-item key="solution-code">
             <router-link to="/solution-code" class="nav-font"
               >题解配套代码</router-link
