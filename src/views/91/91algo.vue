@@ -411,7 +411,6 @@ import students from './students-talk'
 import {
   clientId,
   originalHostname,
-  hostnamePool,
   // hostname,
   startTime
   // leetcodeConfig
@@ -794,11 +793,6 @@ export default {
     // }
   },
   async mounted() {
-    if (hostnamePool.includes(window.location.hostname)) {
-      alert('此网址已废弃')
-      // window.location.href = `https://${originalHostname}/91`
-      return
-    }
     const urlTab = new URLSearchParams(
       new URL(window.location.href).search
     ).get('tab')
