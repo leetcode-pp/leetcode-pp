@@ -795,7 +795,8 @@ export default {
   },
   async mounted() {
     if (hostnamePool.includes(window.location.hostname)) {
-      window.location.href = `https://${originalHostname}/91`
+      alert('此网址已废弃')
+      // window.location.href = `https://${originalHostname}/91`
       return
     }
     const urlTab = new URLSearchParams(
