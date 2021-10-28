@@ -30,7 +30,7 @@ export default {
   },
   data() {
     return {
-      current: 'book',
+      current: 'leetcode-cheat',
       book,
       leetcodeCheat,
       anki
