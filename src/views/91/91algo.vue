@@ -90,13 +90,13 @@
               </a-timeline-item>
 
               <a-timeline-item :color="topicActive() ? 'green' : 'gray'">
-                <h3>专题篇 （2021-10-16 - 2021-11-12）</h3>
+                <h3>专题篇 （2021-10-16 - 2021-11-23）</h3>
                 <p v-for="lecture in topicLectures" :key="lecture.id">
                   {{ lecture.title }}
                 </p>
               </a-timeline-item>
               <a-timeline-item :color="advanceActive() ? 'green' : 'gray'">
-                <h3>进阶篇 （2021-11-13 - 2021-12-10）</h3>
+                <h3>进阶篇 （2021-11-24 - 2021-12-10）</h3>
                 <p v-for="lecture in advanceLectures" :key="lecture.id">
                   {{ lecture.title }}
                 </p>
