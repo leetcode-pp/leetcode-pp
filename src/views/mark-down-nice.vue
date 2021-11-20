@@ -74,16 +74,6 @@
       周赛。在这个过程中，我们积累了很多经验，希望将这些经验分享给大家，以减少大家在刷题过程中的阻碍，让大家更有效率的刷题。
       本书尤其适合那些刚刚开始刷题的人，如果你刚开始刷题，或者刷了很多题面对新题还是无法很好的解决，那么这本书肯定很适合你。最后欢迎大家加入我们的读者群和作者进行交流。
     </p>
-    <blockquote
-      data-tool="mdnice编辑器"
-      style="display: block; font-size: 0.9em; overflow: auto; overflow-scrolling: touch; border-left: 3px solid rgba(0, 0, 0, 0.4); color: #6a737d; padding-top: 10px; padding-bottom: 10px; padding-left: 20px; padding-right: 10px; margin-bottom: 20px; margin-top: 20px; border-left-color: rgb(239, 112, 96); background: #fff9f9;"
-    >
-      <p
-        style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0px; color: black; line-height: 26px;"
-      >
-        读者群会在新书出版之后的第一时间开放。
-      </p>
-    </blockquote>
     <ul
       data-tool="mdnice编辑器"
       style="margin-top: 8px; margin-bottom: 8px; padding-left: 25px; color: black; list-style-type: disc;"

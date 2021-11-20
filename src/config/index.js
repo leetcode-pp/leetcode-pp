@@ -1,11 +1,11 @@
 const startTime = new Date('2021-09-10T00:00:00.000+08:00')
 const hostnamePool = [
   // 'algo91-4.herokuapp.com',
-  // 'algo-5.herokuapp.com'
+  'algo-5.herokuapp.com'
   // 'algo91.herokuapp.com'
   // 'a91algo.herokuapp.com'
   // 'localhost'
-  'algo91bak1.herokuapp.com'
+  // 'algo91bak1.herokuapp.com'
 ]
 const hostname =
   hostnamePool[
