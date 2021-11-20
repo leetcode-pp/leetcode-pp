@@ -593,8 +593,8 @@ export default {
               [
                 'introLectures',
                 'basicLectures',
-                'topicLectures'
-                // 'advanceLectures'
+                'topicLectures',
+                'advanceLectures'
               ][i]
             ] = data.map(q => ({
               ...q,
