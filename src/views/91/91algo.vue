@@ -248,9 +248,7 @@
             v-model="currentStudentTab"
             @change="e => (currentStudentTab = e.target.value)"
           >
-            <a-radio-button value="ranking">
-              打卡排行榜
-            </a-radio-button>
+            <a-radio-button value="ranking"> 打卡排行榜 </a-radio-button>
             <a-radio-button value="interview">
               往期优秀学员专访
             </a-radio-button>
@@ -301,7 +299,7 @@
         </a-tab-pane>
 
         <a-tab-pane key="my" tab="我的" :disabled="!pay">
-          <div style="margin: 10px 0;">
+          <div style="margin: 10px 0">
             这里的打卡记录
             <b>不是实时的</b
             >，而是每整点更新一次，也就是说打完卡需要至少下一个整点才能更新记录。如果你刚打完卡，这里没有看到是正常的。
@@ -346,16 +344,12 @@
                 </a-button>
                 <div class="icon">
                   <a-tooltip v-if="solution.onTime === true">
-                    <template slot="title">
-                      打卡成功
-                    </template>
+                    <template slot="title"> 打卡成功 </template>
                     <a-icon style="color: green" type="check" />
                   </a-tooltip>
 
                   <a-tooltip v-else-if="solution.onTime === false">
-                    <template slot="title">
-                      补卡成功
-                    </template>
+                    <template slot="title"> 补卡成功 </template>
                     <a-icon style="color: orange" type="issues-close" />
                   </a-tooltip>
 
@@ -501,9 +495,9 @@ export default {
         tags: [],
         whys: []
       },
-      basicLectures,
+      basicLectures: basicLectures.filter(q => q.title !== '08. 排序'),
       introLectures,
-      advanceLectures,
+      advanceLectures: advanceLectures.filter(q => q.title !== '07. 线段树'),
       topicLectures,
       teachers,
       students,

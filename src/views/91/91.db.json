@@ -55,6 +55,14 @@
         "url": "https://tva1.sinaimg.cn/large/0081Kckwly1gk3qh59semj30ec05ptab.jpg"
       },
       "id": 7
+    },
+    {
+      "title": "08. 排序",
+      "desc": "基本排序算法，以及它们的思想是什么",
+      "image": {
+        "url": "https://tva1.sinaimg.cn/large/008i3skNly1gwzne4sdw7j31hc0u0gnc.jpg"
+      },
+      "id": 8
     }
   ],
   "introLectures": [
@@ -122,12 +130,11 @@
       },
       "id": 9
     },
-
     {
       "title": "04. 动态规划",
       "desc": "主要介绍了动态规划的本质，常见类型以及常见的套路",
       "image": {
-        "url": "https://tva1.sinaimg.cn/large/008eGmZEly1goss2vq59dj30c407rgm0.jpg"
+        "url": "https://tva1.sinaimg.cn/large/008i3skNly1gwznrig71zj30kc0ax752.jpg"
       },
       "id": 10
     },
@@ -135,7 +142,7 @@
       "title": "05. 背包",
       "desc": "主要介绍了常见的背包问题及其对应套路",
       "image": {
-        "url": "https://tva1.sinaimg.cn/large/008eGmZEly1goss2vq59dj30c407rgm0.jpg"
+        "url": "https://tva1.sinaimg.cn/large/008i3skNly1gwzns35za2j30m80m8dh3.jpg"
       },
       "id": 11
     },
@@ -143,7 +150,7 @@
       "title": "06. 分治",
       "desc": "主要介绍了分治的基本解题思路",
       "image": {
-        "url": "https://tva1.sinaimg.cn/large/008eGmZEly1goss2vq59dj30c407rgm0.jpg"
+        "url": "https://tva1.sinaimg.cn/large/008i3skNly1gwznt25ptij30m80le75n.jpg"
       },
       "id": 12
     },
@@ -151,7 +158,7 @@
       "title": "07. 贪心",
       "desc": "主要介绍了贪心的常见问题",
       "image": {
-        "url": "https://tva1.sinaimg.cn/large/008eGmZEly1goss2vq59dj30c407rgm0.jpg"
+        "url": "https://tva1.sinaimg.cn/large/008i3skNly1gwznurrnszj30dw096aai.jpg"
       },
       "id": 13
     },
@@ -159,7 +166,7 @@
       "title": "08. 位运算",
       "desc": "主要介绍了位运算是什么，种类有哪些，这是状态压缩的基础。",
       "image": {
-        "url": "https://tva1.sinaimg.cn/large/008eGmZEly1goss2vq59dj30c407rgm0.jpg"
+        "url": "https://tva1.sinaimg.cn/large/008i3skNly1gwznv5azddj30pc0bc74p.jpg"
       },
       "id": 14
     }
@@ -212,9 +219,16 @@
         "url": "https://tva1.sinaimg.cn/large/008i3skNly1gpzcyzany9j31u90u0n14.jpg"
       },
       "id": 20
+    },
+    {
+      "title": "07. 线段树",
+      "desc": "线段树的本质是什么？解决了什么问题？核心思想以及代码是什么？",
+      "image": {
+        "url": "https://tva1.sinaimg.cn/large/008i3skNly1gwynoe1xm5j30u00vvgnl.jpg"
+      },
+      "id": 21
     }
   ],
-
   "teachers": [
     {
       "title": "西法",
