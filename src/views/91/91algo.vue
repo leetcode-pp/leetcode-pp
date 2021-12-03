@@ -451,8 +451,9 @@ ${link}
 `,
     id,
     title,
+    perPage: 100,
     labels: tags || [],
-    distractionFreeMode: false // Facebook-like distraction free mode
+    distractionFreeMode: true // Facebook-like distraction free mode
   })
   document.querySelector('#gitalk-container').innerHTML = ''
 
