@@ -27,7 +27,7 @@
           </a-menu-item>
           <a-menu-item key="91">
             <router-link to="/91" class="nav-font icon-new"
-              >91算法(第五期)</router-link
+              >91 天学算法</router-link
             >
           </a-menu-item>
 
