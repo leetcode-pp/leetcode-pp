@@ -19,14 +19,10 @@
       style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;"
     >
       经过了半年时间打磨，投入诸多人力，这本 LeetCode 题解书终于要和大家见面了。
-      💐💐💐💐💐。 购书链接：https://u.jd.com/3CvyoMT
+      💐💐💐💐💐。
+      实体版购书链接：https://union-click.jd.com/jdc?e=&p=JF8BANYJK1olXQcDUV9VDUMeBF8IGloXVAIGU1pdCUIVCl9MRANLAjZbERscSkAJHTdNTwcKBlMdBgABFksWAm0BH18SWQYDXVxUFxJSXzI4UixRNl1GVjc-ci1CQA5RUl5sHVhZAlJROEonA24JG1MQWgMEUW5tCEwnQgEMGV4WVTYDZF5aCkMWA2kBH1sUVQ8yU15UOBBCbWgIHghBDgVQAw4JXx4nM18LK2slXTYBZBwzDUIWBWpdSVNFVFJQUQ1fDkMWAToKG1xCX1QEB1sJW0wnAW4JH1Il
+      电子版购书链接：https://union-click.jd.com/jdc?e=&p=JF8BAL0JK1olXDYAVVhfD04UAl9MRANLAjZbERscSkAJHTdNTwcKBlMdBgABFkkWBW0PHlgUQl9HCANtcS0SdTFvWVt1X3BkVV4Kc0JxYRtPe1cZbQcyVF9cCEMSBGoOHmslXQEyHzBcOEonA2gKE1oVWwEKXV5cAXsQA2Y4QA57WgYHBwoOCxlAUztfTmslbQUyZG5dOEgnQQFaSQ5FWQYFB1cODhgSVDpaS1hFDwQLUlwJAU5DAWcJHWsXXAcGXW4
     </p>
-
-    <img
-      src="https://tva1.sinaimg.cn/large/008i3skNly1gvochqlvr8j60dw0famxv02.jpg"
-      alt
-      style="display: block; margin: 0 auto; width: auto; max-width: 100%;"
-    />
 
     在线试读：
     <iframe
@@ -1338,7 +1334,8 @@ skiplist.search(1);   // 返回 false，1 已被擦除
       data-tool="mdnice编辑器"
       style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;"
     >
-      购书链接：https://u.jd.com/rKdWLvP
+      实体版购书链接：https://union-click.jd.com/jdc?e=&p=JF8BANYJK1olXQcDUV9VDUMeBF8IGloXVAIGU1pdCUIVCl9MRANLAjZbERscSkAJHTdNTwcKBlMdBgABFksWAm0BH18SWQYDXVxUFxJSXzI4UixRNl1GVjc-ci1CQA5RUl5sHVhZAlJROEonA24JG1MQWgMEUW5tCEwnQgEMGV4WVTYDZF5aCkMWA2kBH1sUVQ8yU15UOBBCbWgIHghBDgVQAw4JXx4nM18LK2slXTYBZBwzDUIWBWpdSVNFVFJQUQ1fDkMWAToKG1xCX1QEB1sJW0wnAW4JH1Il
+      电子版购书链接：https://union-click.jd.com/jdc?e=&p=JF8BAL0JK1olXDYAVVhfD04UAl9MRANLAjZbERscSkAJHTdNTwcKBlMdBgABFkkWBW0PHlgUQl9HCANtcS0SdTFvWVt1X3BkVV4Kc0JxYRtPe1cZbQcyVF9cCEMSBGoOHmslXQEyHzBcOEonA2gKE1oVWwEKXV5cAXsQA2Y4QA57WgYHBwoOCxlAUztfTmslbQUyZG5dOEgnQQFaSQ5FWQYFB1cODhgSVDpaS1hFDwQLUlwJAU5DAWcJHWsXXAcGXW4
     </p>
 
     <img
