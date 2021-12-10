@@ -75,7 +75,7 @@
           <div class="timeline">
             <a-timeline mode="alternate">
               <a-timeline-item color="green">
-                <h3>先导篇（2021-09-10 前）</h3>
+                <h3>先导篇（{{ timeRange.basic[0] }} 前）</h3>
                 <p v-for="lecture in introLectures" :key="lecture.id">
                   {{ lecture.title }}
                 </p>
@@ -83,20 +83,27 @@
                 <p />
               </a-timeline-item>
               <a-timeline-item :color="basicActive() ? 'green' : 'gray'">
-                <h3>基础篇 （2021-09-10 - 2021-10-15）</h3>
+                <h3>
+                  基础篇 （{{ timeRange.basic[0] }} - {{ timeRange.basic[1] }}）
+                </h3>
                 <p v-for="lecture in basicLectures" :key="lecture.id">
                   {{ lecture.title }}
                 </p>
               </a-timeline-item>
 
               <a-timeline-item :color="topicActive() ? 'green' : 'gray'">
-                <h3>专题篇 （2021-10-16 - 2021-11-23）</h3>
+                <h3>
+                  专题篇 （{{ timeRange.topic[0] }} - {{ timeRange.topic[1] }}）
+                </h3>
                 <p v-for="lecture in topicLectures" :key="lecture.id">
                   {{ lecture.title }}
                 </p>
               </a-timeline-item>
               <a-timeline-item :color="advanceActive() ? 'green' : 'gray'">
-                <h3>进阶篇 （2021-11-24 - 2021-12-10）</h3>
+                <h3>
+                  进阶篇 （{{ timeRange.advanced[0] }} -
+                  {{ timeRange.advanced[1] }}）
+                </h3>
                 <p v-for="lecture in advanceLectures" :key="lecture.id">
                   {{ lecture.title }}
                 </p>
@@ -399,7 +406,8 @@ import {
   introLectures,
   advanceLectures,
   topicLectures,
-  teachers
+  teachers,
+  timeRange
 } from './91.db.json'
 import students from './students-talk'
 import {
@@ -496,12 +504,13 @@ export default {
         tags: [],
         whys: []
       },
-      basicLectures: basicLectures.filter(q => q.title !== '08. 排序'),
+      basicLectures,
       introLectures,
-      advanceLectures: advanceLectures.filter(q => q.title !== '07. 线段树'),
+      advanceLectures,
       topicLectures,
       teachers,
       students,
+      timeRange,
       activeTab: 'teachers',
       started: new Date().getTime() >= startTime,
       time: startTime,
