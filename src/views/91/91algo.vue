@@ -239,10 +239,10 @@
           <card :cards="basicLectures" />
         </a-tab-pane>
 
-        <a-tab-pane key="jy2" tab="讲义（专题篇）">
+        <a-tab-pane key="jy2" tab="讲义（专题篇）" disabled>
           <card :cards="topicLectures" :loading="fetchingLectures" />
         </a-tab-pane>
-        <a-tab-pane key="jy3" tab="讲义（进阶篇）">
+        <a-tab-pane key="jy3" tab="讲义（进阶篇）" disabled>
           <card :cards="advanceLectures" :loading="fetchingLectures" />
         </a-tab-pane>
 
@@ -588,9 +588,9 @@ export default {
         this.fetchingLectures = true
         const ps = [
           getIntroLecture(),
-          getBasicLecture(),
-          getTopicLecture(),
-          getAdvanceLecture()
+          getBasicLecture()
+          // getTopicLecture(),
+          // getAdvanceLecture()
         ].map((p, i) => {
           return p.then(data => {
             this[
