@@ -5,7 +5,7 @@
       的xxxx这一部分，也就是登录后头像下方括号里的内容（这个是最准的）。大家如实填下这个表单：https://airtable.com/shrM0ri4uAGvEv9Tj
       <br />我后面会逐个给大家添加，大家不要急
       （一般几个小时）名单是群主手动更新，因此需要时间。<br />
-      如果登记了很久还是进不去，请检查自己是否在名单，名单地址：https://github.com/leetcode-pp/leetcode-pp-node/blob/main/config/users-5.js
+      如果登记了很久还是进不去，请检查自己是否在名单，名单地址：https://github.com/leetcode-pp/leetcode-pp-node/blob/main/config/users-6.js
       ，且填写无误。如果填错了，修改后同步我修改之前的和之后的。
       不在名单就别想了，肯定进不去。<br /><br />
       本期打卡规则如下: <br />
