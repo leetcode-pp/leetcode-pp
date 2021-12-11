@@ -540,7 +540,7 @@ export default {
     renderDay(time) {
       const day = getDay(time)
       if (day <= 0 || day > getDay()) return ''
-      return day
+      return `Day${day}`
     },
     async handleActiveTabChange(v) {
       this.activeTab = v
