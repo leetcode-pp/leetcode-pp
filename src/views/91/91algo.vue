@@ -450,7 +450,7 @@ async function loadComment({
   const gitalk = new Gitalk({
     clientID,
     clientSecret,
-    repo: '91alg-5-daily-check', // The repository of store comments,
+    repo: '91alg-6-daily-check', // The repository of store comments,
     owner: 'leetcode-pp',
     admin: ['azl397985856'],
     body: `
