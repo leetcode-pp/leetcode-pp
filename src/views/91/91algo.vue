@@ -343,12 +343,16 @@
                   type="link"
                   :href="
                     solution.url ||
-                      'https://github.com/leetcode-pp/91alg-6-daily-check/issues/' +
+                      'https://github.com/' +
+                        DAILY_CHECK_OWNER +
+                        '/' +
+                        DAILY_CHECK_REPO +
+                        '/issues/' +
                         solution.issue_number
                   "
                 >
-                  【Day {{ solution.day }}】{{ solution.title }}
-                </a-button>
+                  【Day {{ solution.day }}】{{ solution.title }} </a-button
+                >v
                 <div class="icon">
                   <a-tooltip v-if="solution.onTime === true">
                     <template slot="title"> 打卡成功 </template>
@@ -414,7 +418,9 @@ import {
   clientId,
   originalHostname,
   // hostname,
-  startTime
+  startTime,
+  DAILY_CHECK_REPO,
+  DAILY_CHECK_OWNER
   // leetcodeConfig
 } from '../../config/index'
 // const {
@@ -450,8 +456,8 @@ async function loadComment({
   const gitalk = new Gitalk({
     clientID,
     clientSecret,
-    repo: '91alg-6-daily-check', // The repository of store comments,
-    owner: 'leetcode-pp',
+    repo: DAILY_CHECK_REPO, // The repository of store comments,
+    owner: DAILY_CHECK_OWNER,
     admin: ['azl397985856'],
     body: `
 ${description}
@@ -479,6 +485,8 @@ export default {
   },
   data() {
     return {
+      DAILY_CHECK_REPO,
+      DAILY_CHECK_OWNER,
       fetchingUserInfo: false,
       fetchingDailyProblem: false,
       fetchingLectures: false,

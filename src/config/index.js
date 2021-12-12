@@ -17,7 +17,9 @@ module.exports = {
   clientId: 'c16b80e7b58a5a007157',
   originalHostname: 'leetcode-solution.cn',
   hostname,
-  hostnamePool
+  hostnamePool,
+  DAILY_CHECK_REPO: '91alg-6-daily-check', // The repository of store comments,
+  DAILY_CHECK_OWNER: 'leetcode-pp'
   // leetcodeConfig: {
   //   _91UsernameLsName: 'login', // 在91网站中存lc用户名的 localStorage 的键名
   //   _91PwdLsName: 'password', // 在91网站中存lc密码的 localStorage 的键名
