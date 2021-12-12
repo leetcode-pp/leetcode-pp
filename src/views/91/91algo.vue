@@ -343,7 +343,7 @@
                   type="link"
                   :href="
                     solution.url ||
-                      'https://github.com/leetcode-pp/91alg-5-daily-check/issues/' +
+                      'https://github.com/leetcode-pp/91alg-6-daily-check/issues/' +
                         solution.issue_number
                   "
                 >
