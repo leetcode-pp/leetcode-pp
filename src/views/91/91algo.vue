@@ -351,8 +351,8 @@
                         solution.issue_number
                   "
                 >
-                  【Day {{ solution.day }}】{{ solution.title }} </a-button
-                >v
+                  【Day {{ solution.day }}】{{ solution.title }}
+                </a-button>
                 <div class="icon">
                   <a-tooltip v-if="solution.onTime === true">
                     <template slot="title"> 打卡成功 </template>
