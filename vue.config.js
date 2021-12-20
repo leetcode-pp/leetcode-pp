@@ -5,10 +5,10 @@ function resolve(dir) {
 }
 
 module.exports = {
-  publicPath:
-    process.env.NODE_ENV === 'production'
-      ? 'https://cdn.jsdelivr.net/gh/leetcode-pp/leetcode-pp@gh-pages/'
-      : '/',
+  publicPath: '/',
+  // process.env.NODE_ENV === 'production'
+  //   ? 'https://cdn.jsdelivr.net/gh/leetcode-pp/leetcode-pp@gh-pages/'
+  //   : '/',
   css: {
     loaderOptions: {
       less: { javascriptEnabled: true }
