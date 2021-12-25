@@ -15,7 +15,7 @@ Vue.use(VueCompositionApi)
 
 Vue.config.productionTip = false
 
-if (![originalHostname].includes(window.location.hostname)) {
+if (![originalHostname, 'localhost'].includes(window.location.hostname)) {
   alert('此网址已废弃')
   // window.location.href = `https://${originalHostname}/91`
 } else {
