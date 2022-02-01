@@ -242,7 +242,7 @@
         <a-tab-pane key="jy2" tab="讲义（专题篇）">
           <card :cards="topicLectures" :loading="fetchingLectures" />
         </a-tab-pane>
-        <a-tab-pane key="jy3" tab="讲义（进阶篇）" disabled>
+        <a-tab-pane key="jy3" tab="讲义（进阶篇）">
           <card :cards="advanceLectures" :loading="fetchingLectures" />
         </a-tab-pane>
 
@@ -597,8 +597,8 @@ export default {
         const ps = [
           getIntroLecture(),
           getBasicLecture(),
-          getTopicLecture()
-          // getAdvanceLecture()
+          getTopicLecture(),
+          getAdvanceLecture()
         ].map((p, i) => {
           return p.then(data => {
             this[
