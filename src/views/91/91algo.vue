@@ -235,14 +235,14 @@
         <a-tab-pane key="jy0" tab="讲义（先导篇）">
           <card :cards="introLectures" :loading="fetchingLectures" />
         </a-tab-pane>
-        <a-tab-pane key="jy1" tab="讲义（基础篇）" :loading="fetchingLectures">
-          <card :cards="basicLectures" />
+        <a-tab-pane key="jy1" tab="讲义（基础篇）" disabled="disableBasic">
+          <card :cards="basicLectures" :loading="fetchingLectures" />
         </a-tab-pane>
 
-        <a-tab-pane key="jy2" tab="讲义（专题篇）">
+        <a-tab-pane key="jy2" tab="讲义（专题篇）" disabled="disableTopic">
           <card :cards="topicLectures" :loading="fetchingLectures" />
         </a-tab-pane>
-        <a-tab-pane key="jy3" tab="讲义（进阶篇）">
+        <a-tab-pane key="jy3" tab="讲义（进阶篇）" disabled="disableAdvanced">
           <card :cards="advanceLectures" :loading="fetchingLectures" />
         </a-tab-pane>
 
@@ -519,6 +519,10 @@ export default {
       teachers,
       students,
       timeRange,
+      disableBasic: new Date().getTime() >= timeRange.basic[0] - 3 * MS_PER_DAY,
+      disableTopic: new Date().getTime() >= timeRange.topic[0] - 3 * MS_PER_DAY,
+      disableAdvanced:
+        new Date().getTime() >= timeRange.advanced[0] - 3 * MS_PER_DAY,
       activeTab: 'teachers',
       started: new Date().getTime() >= startTime,
       time: startTime,
