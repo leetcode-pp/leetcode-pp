@@ -1,4 +1,4 @@
-const startTime = new Date('2021-12-12T00:00:00.000+08:00')
+const startTime = new Date('2022-04-01T00:00:00.000+08:00')
 const hostnamePool = [
   // 'algo91-4.herokuapp.com',
   // 'algo-6.herokuapp.com' // cpv3kbrhw
@@ -20,7 +20,7 @@ module.exports = {
   originalHostname: 'leetcode-solution.cn',
   hostname,
   hostnamePool,
-  DAILY_CHECK_REPO: '91alg-6-daily-check', // The repository of store comments,
+  DAILY_CHECK_REPO: '91alg-7-daily-check', // The repository of store comments,
   DAILY_CHECK_OWNER: 'leetcode-pp'
   // leetcodeConfig: {
   //   _91UsernameLsName: 'login', // 在91网站中存lc用户名的 localStorage 的键名
