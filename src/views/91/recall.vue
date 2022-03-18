@@ -30,9 +30,9 @@
       </a-select-option>
     </a-select>
 
-    <a-button class="btn" @click="load" type="primary"> Go </a-button>
+    <a-button class="btn" @click="load" type="primary"> 查看本题题解 </a-button>
 
-    <a-button class="btn" @click="exportSolutions"> 导出 </a-button>
+    <a-button class="btn" @click="exportSolutions"> 导出全部 </a-button>
 
     <div v-if="dailyProblem">
       <Q :dailyProblem="dailyProblem" />
@@ -48,8 +48,8 @@ import writer from 'file-writer'
 
 import Q from './QuestionDecription.vue'
 import { setStorage } from '../../utils/storage'
-import my from './db/my.json'
-import dailyProblems from './db/solution.json'
+import my from './db/my-6.json'
+import dailyProblems from './db/solution-6.json'
 
 export default {
   components: {
