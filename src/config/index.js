@@ -13,14 +13,15 @@ const hostname =
   hostnamePool[
     new Date(new Date().toLocaleString('en-US')).getDate() % hostnamePool.length
   ]
-
+const season = '7'
 module.exports = {
   startTime: startTime.getTime(),
   clientId: 'c16b80e7b58a5a007157',
   originalHostname: 'leetcode-solution.cn',
   hostname,
   hostnamePool,
-  DAILY_CHECK_REPO: '91alg-7-daily-check', // The repository of store comments,
+  season,
+  DAILY_CHECK_REPO: `91alg-${season}-daily-check`, // The repository of store comments,
   DAILY_CHECK_OWNER: 'leetcode-pp'
   // leetcodeConfig: {
   //   _91UsernameLsName: 'login', // 在91网站中存lc用户名的 localStorage 的键名
