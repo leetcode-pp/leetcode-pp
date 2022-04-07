@@ -306,76 +306,115 @@
         </a-tab-pane>
 
         <a-tab-pane key="my" tab="我的" :disabled="!pay">
-          <div style="margin: 10px 0">
-            这里的打卡记录
-            <b>不是实时的</b
-            >，而是每整点更新一次，也就是说打完卡需要至少下一个整点才能更新记录。如果你刚打完卡，这里没有看到是正常的。
-          </div>
+          <a-radio-group
+            v-model="currentMyTab"
+            @change="e => (currentMyTab = e.target.value)"
+          >
+            <a-radio-button value="history"> 打卡记录 </a-radio-button>
+            <a-radio-button value="homework">
+              作业（内测）
+            </a-radio-button>
+          </a-radio-group>
 
-          <div v-if="!fetchingPersonalProgress && mySolutions.length === 0">
-            活动尚未开始~
-          </div>
-          <a-spin v-else :spinning="fetchingPersonalProgress">
-            <a-radio-group v-model="selectedTag" @change="onSelectedTagChange">
-              <a-radio-button v-for="tag in allTags" :value="tag" :key="tag">
-                {{ tag }}
-              </a-radio-button>
-            </a-radio-group>
+          <div v-if="currentMyTab === 'history'">
+            <div style="margin: 10px 0">
+              这里的打卡记录
+              <b>不是实时的</b
+              >，而是每整点更新一次，也就是说打完卡需要至少下一个整点才能更新记录。如果你刚打完卡，这里没有看到是正常的。
+            </div>
 
-            <div
-              :key="i"
-              v-for="(solution, i) in mySolutions.filter(
-                s => selectedTag === '全部' || s.tags.includes(selectedTag)
-              )"
-              class="my-solution"
-            >
-              <div v-if="solution">
-                {{
-                  solution.tags.length > 0
-                    ? '【' + solution.tags.join('，') + '】'
-                    : ''
-                }}
+            <div v-if="!fetchingPersonalProgress && mySolutions.length === 0">
+              活动尚未开始~
+            </div>
+            <a-spin v-else :spinning="fetchingPersonalProgress">
+              <a-radio-group
+                v-model="selectedTag"
+                @change="onSelectedTagChange"
+              >
+                <a-radio-button v-for="tag in allTags" :value="tag" :key="tag">
+                  {{ tag }}
+                </a-radio-button>
+              </a-radio-group>
 
-                <span :class="getDifficultyClass(solution.difficulty)">
-                  {{ getDifficulty(solution.difficulty) }}
-                </span>
-                <a-button
-                  type="link"
-                  :href="
-                    solution.url ||
-                      'https://github.com/' +
-                        DAILY_CHECK_OWNER +
-                        '/' +
-                        DAILY_CHECK_REPO +
-                        '/issues/' +
-                        solution.issue_number
-                  "
-                >
-                  【Day {{ solution.day }}】{{ solution.title }}
-                </a-button>
-                <div class="icon">
-                  <a-tooltip v-if="solution.onTime === true">
-                    <template slot="title"> 打卡成功 </template>
-                    <a-icon style="color: green" type="check" />
-                  </a-tooltip>
+              <div
+                :key="i"
+                v-for="(solution, i) in mySolutions.filter(
+                  s => selectedTag === '全部' || s.tags.includes(selectedTag)
+                )"
+                class="my-solution"
+              >
+                <div v-if="solution">
+                  {{
+                    solution.tags.length > 0
+                      ? '【' + solution.tags.join('，') + '】'
+                      : ''
+                  }}
 
-                  <a-tooltip v-else-if="solution.onTime === false">
-                    <template slot="title"> 补卡成功 </template>
-                    <a-icon style="color: orange" type="issues-close" />
-                  </a-tooltip>
+                  <span :class="getDifficultyClass(solution.difficulty)">
+                    {{ getDifficulty(solution.difficulty) }}
+                  </span>
+                  <a-button
+                    type="link"
+                    :href="
+                      solution.url ||
+                        'https://github.com/' +
+                          DAILY_CHECK_OWNER +
+                          '/' +
+                          DAILY_CHECK_REPO +
+                          '/issues/' +
+                          solution.issue_number
+                    "
+                  >
+                    【Day {{ solution.day }}】{{ solution.title }}
+                  </a-button>
+                  <div class="icon">
+                    <a-tooltip v-if="solution.onTime === true">
+                      <template slot="title"> 打卡成功 </template>
+                      <a-icon style="color: green" type="check" />
+                    </a-tooltip>
 
-                  <a-tooltip v-else-if="getDay() === i + 1">
-                    <template slot="title">
-                      未打卡或者正在更新打卡状态（打卡后一般一个小时之内会更新）
-                    </template>
-                    <a-icon type="clock-circle" />
-                  </a-tooltip>
+                    <a-tooltip v-else-if="solution.onTime === false">
+                      <template slot="title"> 补卡成功 </template>
+                      <a-icon style="color: orange" type="issues-close" />
+                    </a-tooltip>
 
-                  <a-icon style="color: red" v-else type="close" />
+                    <a-tooltip v-else-if="getDay() === i + 1">
+                      <template slot="title">
+                        未打卡或者正在更新打卡状态（打卡后一般一个小时之内会更新）
+                      </template>
+                      <a-icon type="clock-circle" />
+                    </a-tooltip>
+
+                    <a-icon style="color: red" v-else type="close" />
+                  </div>
                 </div>
               </div>
-            </div>
-          </a-spin>
+            </a-spin>
+          </div>
+          <div v-else>
+            <ul class="align-r">
+              <div v-if="!leetcodeUsername" class="align-c">
+                抱歉，你还没有关联 LeetCode 账号，可以联系 lucifer 告知你的
+                github 和 leetcode 账号进行关联。
+
+                <counter
+                  :time="upcommingContest.time"
+                  :prefix="'下次周赛 Weekly ' + upcommingContest.id"
+                />
+              </div>
+
+              <ol>
+                完成 3 次<a
+                  href="https://leetcode-cn.com/contest/"
+                  target="_blank"
+                  >竞赛</a
+                >
+                ({{
+                  contestRankings.length
+                }}/3)
+              </ol>
+            </ul>
+          </div>
         </a-tab-pane>
 
         <a-tab-pane key="faq" tab="FAQ"> <faq /> </a-tab-pane>
@@ -404,7 +443,8 @@ import {
 import { getCommentApp } from '@/apis/github'
 import { logout, getUserInfo } from '@/apis/user'
 import Q from './QuestionDecription.vue'
-
+import contests from './db/contest.json'
+import upcommingContest from './db/upcommingContest.json'
 import {
   basicLectures,
   introLectures,
@@ -497,7 +537,12 @@ export default {
       selectedTag: '全部',
       allTags: ['全部'],
       currentStudentTab: 'interview',
+      currentMyTab: 'history',
       rankings: [], // 打卡排行。未来可能增加其他排行，比如点赞精选排行
+      contestRankings: [], // 参加竞赛的答题情况
+      contests,
+      upcommingContest,
+      leetcodeUsername: '', // leetcode 用户名
       mySolutions: [],
       showHistory: false,
       colors: ['#f50', '#2db7f5', '#87d068', '#108ee9'],
@@ -822,8 +867,14 @@ export default {
 
     try {
       this.fetchingUserInfo = true
-      const { pay, message, name, login, avatar_url: avatar } =
-        (await getUserInfo(this.$route.query.code)) || {}
+      const {
+        pay,
+        message,
+        name,
+        login,
+        avatar_url: avatar,
+        leetcodeUsername
+      } = (await getUserInfo(this.$route.query.code)) || {}
 
       if (message === 'Bad credentials') {
         this.errorMessage = '登录已过期，请重新登录~'
@@ -832,7 +883,10 @@ export default {
       this.pay = pay
       this.name = name || login
       this.login = login
-
+      this.leetcodeUsername = leetcodeUsername || ''
+      this.contestRankings = (contests[this.leetcodeUsername] || []).filter(
+        res => res && res.score > 0
+      )
       this.isTestUse = this.$route.query.isTest
 
       // this.lcAccountFormShow = !this.hasLcRequstDataInLs()
@@ -844,6 +898,12 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.align-r {
+  text-align: right;
+}
+.align-c {
+  text-align: center;
+}
 .easy {
   color: green;
 }

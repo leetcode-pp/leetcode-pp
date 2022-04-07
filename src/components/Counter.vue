@@ -6,7 +6,9 @@
 import { formateTimeStamp } from '@/utils/format.js'
 export default {
   props: {
-    time: { type: [Number] }
+    time: { type: [Number] },
+    prefix: { type: [String] },
+    suffix: { type: [String] }
   },
   data() {
     return {
@@ -19,14 +21,22 @@ export default {
     mistiming() {
       let timeStamp = (this.time - new Date().getTime()) / 1000
       this.times = formateTimeStamp(timeStamp)
-      const str = `活动将于 <span class="d">${this.times.day}</span>天<span class="h">${this.times.hour}</span>时<span class="m">${this.times.min}</span>分<span class="s">${this.times.seconds}</span>秒后开启`
-      this.countTxt = str
+      this.countTxt = `${this.prefix || '活动将于'} <span class="d">${
+        this.times.day
+      }</span>天<span class="h">${this.times.hour}</span>时<span class="m">${
+        this.times.min
+      }</span>分<span class="s">${this.times.seconds}</span>秒${this.suffix ||
+        '后开启'}`
       const TimeDown = setInterval(() => {
         if (timeStamp > 0) {
           timeStamp--
           const newTime = formateTimeStamp(timeStamp)
-          const str = `活动将于 <span class="d">${newTime.day}</span>天<span class="h">${newTime.hour}</span>时<span class="m">${newTime.min}</span>分<span class="s">${newTime.seconds}</span>秒后开启`
-          this.countTxt = str
+          this.countTxt = `${this.prefix || '活动将于'} <span class="d">${
+            newTime.day
+          }</span>天<span class="h">${newTime.hour}</span>时<span class="m">${
+            newTime.min
+          }</span>分<span class="s">${newTime.seconds}</span>秒${this.suffix ||
+            '后开启'}`
         } else {
           this.countTxt = '活动已开始'
           clearInterval(TimeDown)
