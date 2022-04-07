@@ -393,9 +393,10 @@
           </div>
           <div v-else>
             <ul class="align-r">
-              <div v-if="!leetcodeUsername" class="align-c">
-                抱歉，你还没有关联 LeetCode 账号，可以联系 lucifer 告知你的
-                github 和 leetcode 账号进行关联。
+              <div v-if="!leetcodeUsername" class="align-c m-top-bottom-sm">
+                抱歉，你还没有关联 LeetCode
+                账号。并且由于目前功能未开放，需要等到功能开启后联系 lucifer
+                告知你的 github 和 leetcode 账号进行关联。
 
                 <counter
                   :time="upcommingContest.time"
@@ -898,6 +899,9 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.m-top-bottom-sm {
+  margin: 10px 0;
+}
 .align-r {
   text-align: right;
 }
