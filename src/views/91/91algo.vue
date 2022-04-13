@@ -480,10 +480,12 @@ import {
 // import { message } from 'ant-design-vue'
 
 const MS_PER_DAY = 24 * 60 * 60 * 1000
+const DAYS_TO_PREPARE = 10 // 提前几天开放讲义
 const DAYS_PER_WEEK = 7
 function getDay(date = new Date().getTime()) {
   return ((date - startTime + MS_PER_DAY - 1) / MS_PER_DAY) >> 0
 }
+// 获取即将开始的下一次周赛信息
 function getUpcommingContest() {
   let d = 0
   const now = new Date().getTime()
@@ -580,13 +582,14 @@ export default {
       timeRange,
       disableBasic:
         new Date().getTime() <=
-        new Date(timeRange.basic[0]).getTime() - 10 * MS_PER_DAY,
+        new Date(timeRange.basic[0]).getTime() - DAYS_TO_PREPARE * MS_PER_DAY,
       disableTopic:
         new Date().getTime() <=
-        new Date(timeRange.topic[0]).getTime() - 3 * MS_PER_DAY,
+        new Date(timeRange.topic[0]).getTime() - DAYS_TO_PREPARE * MS_PER_DAY,
       disableAdvanced:
         new Date().getTime() <=
-        new Date(timeRange.advanced[0]).getTime() - 3 * MS_PER_DAY,
+        new Date(timeRange.advanced[0]).getTime() -
+          DAYS_TO_PREPARE * MS_PER_DAY,
       activeTab: 'teachers',
       started: new Date().getTime() >= startTime,
       time: startTime,
