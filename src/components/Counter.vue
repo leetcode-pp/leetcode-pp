@@ -38,7 +38,7 @@ export default {
           }</span>分<span class="s">${newTime.seconds}</span>秒${this.suffix ||
             '后开启'}`
         } else {
-          this.countTxt = '活动已开始'
+          this.countTxt = ''
           clearInterval(TimeDown)
         }
       }, 1000)

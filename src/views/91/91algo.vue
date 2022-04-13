@@ -445,7 +445,7 @@ import { getCommentApp } from '@/apis/github'
 import { logout, getUserInfo } from '@/apis/user'
 import Q from './QuestionDecription.vue'
 import contests from './db/contest.json'
-import upcommingContest from './db/upcommingContest.json'
+import baseContest from './db/baseContest.json'
 import {
   basicLectures,
   introLectures,
@@ -480,8 +480,21 @@ import {
 // import { message } from 'ant-design-vue'
 
 const MS_PER_DAY = 24 * 60 * 60 * 1000
+const DAYS_PER_WEEK = 7
 function getDay(date = new Date().getTime()) {
   return ((date - startTime + MS_PER_DAY - 1) / MS_PER_DAY) >> 0
+}
+function getUpcommingContest() {
+  let d = 0
+  const now = new Date().getTime()
+  while (baseContest.time + d * DAYS_PER_WEEK * MS_PER_DAY < now) {
+    d += 1
+  }
+  return {
+    id: baseContest.id + d,
+    time: baseContest.time + d * DAYS_PER_WEEK * MS_PER_DAY,
+    passed: false
+  }
 }
 
 // 将 id 和 tag 合并为 labels，然后根据 labels 查询仓库下符合条件的 issue，然后将 issue 下的 comments 展示出来。
@@ -542,7 +555,7 @@ export default {
       rankings: [], // 打卡排行。未来可能增加其他排行，比如点赞精选排行
       contestRankings: [], // 参加竞赛的答题情况
       contests,
-      upcommingContest,
+      upcommingContest: getUpcommingContest(),
       leetcodeUsername: '', // leetcode 用户名
       mySolutions: [],
       showHistory: false,
