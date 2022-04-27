@@ -13,7 +13,12 @@
     </div>
     <a-spin :spinning="fetchingUserInfo">
       <div v-if="!pay">
-        <a-alert :message="errorMessage" type="error" />
+        <a-alert
+          :message="
+            errorMessage + (noCheck ? '(由于连续七天未打卡，已被移除)' : '')
+          "
+          type="error"
+        />
         <a-button v-if="!name" type="link" :href="loginUrl"
           >Github 登录</a-button
         >
@@ -28,8 +33,18 @@
         <a-avatar :size="64" :src="avatar" />
         <div>
           欢迎回来，{{ name }} （{{ login }}）~ 今天有没有比昨天进步一点点呢？
+
           <a-button type="link" @click="handlLogoutClick">退出登录</a-button>
         </div>
+      </div>
+      <div>
+        <b>
+          {{
+            allCheck
+              ? '少年好武功啊！竟然满勤？坚持下去，活动结束的抽奖我看好你哦~'
+              : ''
+          }}
+        </b>
       </div>
     </a-spin>
 
@@ -541,6 +556,8 @@ export default {
   },
   data() {
     return {
+      noCheck: false,
+      allCheck: false,
       DAILY_CHECK_REPO,
       DAILY_CHECK_OWNER,
       fetchingUserInfo: false,
@@ -890,7 +907,9 @@ export default {
         name,
         login,
         avatar_url: avatar,
-        leetcodeUsername
+        leetcodeUsername,
+        noCheck,
+        allCheck
       } = (await getUserInfo(this.$route.query.code)) || {}
 
       if (message === 'Bad credentials') {
@@ -900,6 +919,8 @@ export default {
       this.pay = pay
       this.name = name || login
       this.login = login
+      this.noCheck = noCheck
+      this.allCheck = allCheck
       this.leetcodeUsername = leetcodeUsername || ''
       this.contestRankings = (contests[this.leetcodeUsername] || []).filter(
         res => res && res.score > 0
@@ -964,7 +985,7 @@ export default {
   margin: 20px auto;
 }
 .hello {
-  margin: 20px auto;
+  margin: 10px auto;
 }
 
 .code-btns {
