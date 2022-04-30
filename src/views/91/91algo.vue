@@ -407,8 +407,8 @@
             </a-spin>
           </div>
           <div v-else>
-            <ul class="align-r">
-              <div v-if="!leetcodeUsername" class="align-c m-top-bottom-sm">
+            <ul class="align-l">
+              <!-- <div v-if="!leetcodeUsername" class="align-c m-top-bottom-sm">
                 抱歉，你还没有关联 LeetCode
                 账号。并且由于目前功能未开放，需要等到功能开启后联系 lucifer
                 告知你的 github 和 leetcode 账号进行关联。
@@ -417,9 +417,9 @@
                   :time="upcommingContest.time"
                   :prefix="'下次周赛 Weekly ' + upcommingContest.id"
                 />
-              </div>
+              </div> -->
 
-              <ol>
+              <!-- <ol>
                 完成 3 次<a
                   href="https://leetcode-cn.com/contest/"
                   target="_blank"
@@ -428,6 +428,20 @@
                 ({{
                   contestRankings.length
                 }}/3)
+              </ol> -->
+
+              <ol>
+                <a-button
+                  type="link"
+                  href="/solutionDetail?type=2&id=2007&max_id=2008"
+                  >《模拟，枚举与递推》</a-button
+                >
+                <div>
+                  求 1 到 n 中所有整数 x 的 f(x) ，并以数组返回。其中 f(x)
+                  指的是 x 的 2 的因子个数。 比如 f(6) = 1 ，因为 6 = 2 *
+                  3，只有一个因子 2 。 f(4) = 2 ，因为 4 = 2 * 2，有两个因子 2
+                  。
+                </div>
               </ol>
             </ul>
           </div>
@@ -941,6 +955,9 @@ export default {
 }
 .align-r {
   text-align: right;
+}
+.align-l {
+  text-align: left;
 }
 .align-c {
   text-align: center;
