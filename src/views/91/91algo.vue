@@ -248,16 +248,28 @@
           </div>
         </a-tab-pane>
         <a-tab-pane key="jy0" tab="讲义（先导篇）">
+          <div style="margin: 10px 0">
+            最近更新时间： {{ new Date(meta.lectures.lastUpdateTime) }}
+          </div>
           <card :cards="introLectures" :loading="fetchingLectures" />
         </a-tab-pane>
         <a-tab-pane key="jy1" tab="讲义（基础篇）" :disabled="disableBasic">
+          <div style="margin: 10px 0">
+            最近更新时间： {{ new Date(meta.lectures.lastUpdateTime) }}
+          </div>
           <card :cards="basicLectures" :loading="fetchingLectures" />
         </a-tab-pane>
 
         <a-tab-pane key="jy2" tab="讲义（专题篇）" :disabled="disableTopic">
+          <div style="margin: 10px 0">
+            最近更新时间： {{ new Date(meta.lectures.lastUpdateTime) }}
+          </div>
           <card :cards="topicLectures" :loading="fetchingLectures" />
         </a-tab-pane>
         <a-tab-pane key="jy3" tab="讲义（进阶篇）" :disabled="disableAdvanced">
+          <div style="margin: 10px 0">
+            最近更新时间： {{ new Date(meta.lectures.lastUpdateTime) }}
+          </div>
           <card :cards="advanceLectures" :loading="fetchingLectures" />
         </a-tab-pane>
 
@@ -278,6 +290,9 @@
 
           <div v-if="currentStudentTab === 'ranking'">
             <a-spin :spinning="fetchingRank">
+              <div style="margin: 10px 0">
+                最近更新时间： {{ new Date(meta.checkIn.lastUpdateTime) }}
+              </div>
               <ranking :rankings="rankings" />
             </a-spin>
           </div>
@@ -332,6 +347,9 @@
           </a-radio-group>
 
           <div v-if="currentMyTab === 'history'">
+            <div style="margin: 10px 0">
+              最近更新时间： {{ new Date(meta.dailyCheck.lastUpdateTime) }}
+            </div>
             <div style="margin: 10px 0">
               这里的打卡记录
               <b>不是实时的</b
@@ -507,6 +525,7 @@ import {
   DAILY_CHECK_OWNER
   // leetcodeConfig
 } from '../../config/index'
+import { getMeta } from '@/apis/meta'
 // const {
 //   _91UsernameLsName,
 //   _91PwdLsName,
@@ -610,6 +629,11 @@ export default {
       name: '', // 当前登录人
       avatar: '',
       startTime,
+      meta: {
+        dailyCheck: new Date().getTime(),
+        checkIn: new Date().getTime(),
+        lectures: new Date().getTime()
+      },
       dailyProblem: {
         title: '',
         description: '',
@@ -926,6 +950,10 @@ export default {
     ).get('tab')
 
     this.handleActiveTabChange(urlTab || 'agenda')
+
+    getMeta().then(data => {
+      this.meta = data
+    })
 
     try {
       this.fetchingUserInfo = true
