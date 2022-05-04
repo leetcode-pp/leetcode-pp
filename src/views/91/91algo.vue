@@ -434,13 +434,27 @@
                 <a-button
                   type="link"
                   href="/solutionDetail?type=2&id=2007&max_id=2008"
-                  >《模拟，枚举与递推》</a-button
+                  >作业一：《模拟，枚举与递推》</a-button
                 >
                 <div>
-                  求 1 到 n 中所有整数 x 的 f(x) ，并以数组返回。其中 f(x)
-                  指的是 x 的 2 的因子个数。 比如 f(6) = 1 ，因为 6 = 2 *
+                  题目描述： 求 1 到 n 中所有整数 x 的 f(x) ，并以数组返回。其中
+                  f(x) 指的是 x 的 2 的因子个数。 比如 f(6) = 1 ，因为 6 = 2 *
                   3，只有一个因子 2 。 f(4) = 2 ，因为 4 = 2 * 2，有两个因子 2
                   。
+                </div>
+
+                <a-button
+                  type="link"
+                  href="/solutionDetail?type=2&id=3001&max_id=3008"
+                  >作业二：《二分查找》</a-button
+                >
+                <div>
+                  题目地址：
+                  <a-button
+                    type="link"
+                    href="https://leetcode-cn.com/problems/escape-the-spreading-fire/"
+                    >2258. 逃离火灾</a-button
+                  >
                 </div>
               </ol>
             </ul>
