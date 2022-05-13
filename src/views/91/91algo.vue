@@ -358,7 +358,7 @@
             <div style="margin: 10px 0">
               这里的打卡记录
               <b>不是实时的</b
-              >，而是每整点更新一次，也就是说打完卡需要至少下一个整点才能更新记录。如果你刚打完卡，这里没有看到是正常的。
+              >，如果你刚打完卡，这里没有看到是正常的，大家可以根据最近更新时间来辅助判断。
             </div>
 
             <div v-if="!fetchingPersonalProgress && mySolutions.length === 0">
