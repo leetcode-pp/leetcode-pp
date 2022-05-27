@@ -3,8 +3,8 @@ const hostnamePool = [
   // 'algo91-4.herokuapp.com',
   // 'algo-6.herokuapp.com' // cpv3kbrhw
   // 'algo-5.herokuapp.com' // fe_lucife  @ sina
-  'algo91.herokuapp.com' // fe-lucifer
-  // 'algo91-no-sub.herokuapp.com' // fe-lucifer
+  // 'algo91.herokuapp.com' // fe-lucifer
+  'algo91-no-sub.herokuapp.com' // fe-lucifer
   // 'a91algo.herokuapp.com' // azl
   // 'leetcode-pp.herokuapp.com' // azl
   // 'localhost'
