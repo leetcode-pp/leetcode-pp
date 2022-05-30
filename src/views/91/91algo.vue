@@ -249,26 +249,26 @@
         </a-tab-pane>
         <a-tab-pane key="jy0" tab="讲义（先导篇）">
           <div style="margin: 10px 0">
-            最近更新时间： {{ new Date(meta.lectures.lastUpdateTime) }}
+            最近更新时间： {{ new Date(meta.lectures.intro.lastUpdateTime) }}
           </div>
           <card :cards="introLectures" :loading="fetchingLectures" />
         </a-tab-pane>
         <a-tab-pane key="jy1" tab="讲义（基础篇）" :disabled="disableBasic">
           <div style="margin: 10px 0">
-            最近更新时间： {{ new Date(meta.lectures.lastUpdateTime) }}
+            最近更新时间： {{ new Date(meta.lectures.basic.lastUpdateTime) }}
           </div>
           <card :cards="basicLectures" :loading="fetchingLectures" />
         </a-tab-pane>
 
         <a-tab-pane key="jy2" tab="讲义（专题篇）" :disabled="disableTopic">
           <div style="margin: 10px 0">
-            最近更新时间： {{ new Date(meta.lectures.lastUpdateTime) }}
+            最近更新时间： {{ new Date(meta.lectures.topic.lastUpdateTime) }}
           </div>
           <card :cards="topicLectures" :loading="fetchingLectures" />
         </a-tab-pane>
         <a-tab-pane key="jy3" tab="讲义（进阶篇）" :disabled="disableAdvanced">
           <div style="margin: 10px 0">
-            最近更新时间： {{ new Date(meta.lectures.lastUpdateTime) }}
+            最近更新时间： {{ new Date(meta.lectures.advance.lastUpdateTime) }}
           </div>
           <card :cards="advanceLectures" :loading="fetchingLectures" />
         </a-tab-pane>
