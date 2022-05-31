@@ -958,6 +958,29 @@ export default {
 
     getMeta().then(data => {
       this.meta = data
+      if (!this.meta.lectures.intro) {
+        this.meta.lectures.intro = {
+          lastUpdateTime: new Date().getTime() - MS_PER_DAY * 30
+        }
+      }
+
+      if (!this.meta.lectures.basic) {
+        this.meta.lectures.basic = {
+          lastUpdateTime: new Date().getTime() - MS_PER_DAY * 30
+        }
+      }
+
+      if (!this.meta.lectures.topic) {
+        this.meta.lectures.topic = {
+          lastUpdateTime: new Date().getTime() - MS_PER_DAY * 30
+        }
+      }
+
+      if (!this.meta.lectures.advance) {
+        this.meta.lectures.advance = {
+          lastUpdateTime: new Date().getTime() - MS_PER_DAY * 30
+        }
+      }
     })
 
     try {
