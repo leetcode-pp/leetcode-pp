@@ -637,7 +637,12 @@ export default {
       meta: {
         dailyCheck: new Date().getTime(),
         checkIn: new Date().getTime(),
-        lectures: new Date().getTime()
+        lectures: {
+          intro: {},
+          basic: {},
+          topic: {},
+          advance: {}
+        }
       },
       dailyProblem: {
         title: '',
@@ -956,8 +961,7 @@ export default {
 
     this.handleActiveTabChange(urlTab || 'agenda')
 
-    getMeta().then(data => {
-      this.meta = data
+    function fallbackMeta() {
       if (!this.meta.lectures.intro) {
         this.meta.lectures.intro = {
           lastUpdateTime: new Date().getTime() - MS_PER_DAY * 30
@@ -981,6 +985,13 @@ export default {
           lastUpdateTime: new Date().getTime() - MS_PER_DAY * 30
         }
       }
+    }
+
+    fallbackMeta.call(this)
+
+    getMeta().then(data => {
+      this.meta = data
+      fallbackMeta.call(this)
     })
 
     try {
