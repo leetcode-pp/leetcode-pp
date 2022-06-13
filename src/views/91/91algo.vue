@@ -479,6 +479,21 @@
                     >2258. 逃离火灾</a-button
                   >
                 </div>
+
+                <a-button
+                  type="link"
+                  href="/solutionDetail?type=2&id=3003&max_id=3008"
+                  >作业三：《搜索》</a-button
+                >
+                <div>
+                  题目地址：
+                  <a-button
+                    type="link"
+                    href="https://binarysearch.com/problems/Cheapest-Bus-Route"
+                  >
+                    最便宜的公交路线
+                  </a-button>
+                </div>
               </ol>
             </ul>
           </div>
