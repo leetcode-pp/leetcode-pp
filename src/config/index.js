@@ -1,4 +1,4 @@
-const startTime = new Date('2022-04-01T00:00:00.000+08:00')
+const startTime = new Date('2022-07-15T00:00:00.000+08:00')
 const hostnamePool = [
   // 'algo91-4.herokuapp.com',
   // 'algo-6.herokuapp.com' // cpv3kbrhw
@@ -14,7 +14,7 @@ const hostname =
   hostnamePool[
     new Date(new Date().toLocaleString('en-US')).getDate() % hostnamePool.length
   ]
-const season = '7'
+const season = '8'
 module.exports = {
   startTime: startTime.getTime(),
   clientId: 'c16b80e7b58a5a007157',
