@@ -342,7 +342,7 @@
           >
             <a-radio-button value="history"> 打卡记录 </a-radio-button>
             <a-radio-button value="homework">
-              作业（内测）
+              作业
             </a-radio-button>
           </a-radio-group>
 
