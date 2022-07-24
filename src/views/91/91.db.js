@@ -7,7 +7,16 @@ module.exports = {
   homeworks: {
     basic: [
       {
-        title: '作业一：《模拟，枚举与递推》',
+        title: '基础篇作业一：《图论》',
+        desc: `
+        图的一个很重要的问题是求最短路，这在实际应用中也非常有用。但是如果要求次短路（即除了最短路的第二短的路径）呢？力扣有一道类似的题目，大家可以作为参考 [2045. 到达目的地的第二短时间](https://leetcode.cn/problems/second-minimum-time-to-reach-destination/)
+                  。
+        `,
+        lectureUrl: '/solutionDetail?type=2&id=2006&max_id=2008',
+        issueUrl: 'https://github.com/leetcode-pp/homework/issues/2'
+      },
+      {
+        title: '基础篇作业二：《模拟，枚举与递推》',
         desc: `
          求 1 到 n 中所有整数 x 的 f(x) ，并以数组返回。其中
                   f(x) 指的是 x 的 2 的因子个数。 比如 f(6) = 1 ，因为 6 = 2 *
@@ -20,7 +29,7 @@ module.exports = {
     ],
     topic: [
       {
-        title: '作业二：《二分查找》',
+        title: '专题篇作业一：《二分查找》',
         desc: `
 参考 2258. 逃离火灾(https://leetcode-cn.com/problems/escape-the-spreading-fire/)
         `,
@@ -28,7 +37,7 @@ module.exports = {
         issueUrl: 'https://github.com/leetcode-pp/homework/issues/2'
       },
       {
-        title: '作业三：《搜索》',
+        title: '专题篇作业二：《搜索》',
         desc: `
         参考 最便宜的公交路线(https://binarysearch.com/problems/Cheapest-Bus-Route)
                 `,
