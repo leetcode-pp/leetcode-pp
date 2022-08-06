@@ -34,7 +34,7 @@ module.exports = {
 参考 2258. 逃离火灾(https://leetcode-cn.com/problems/escape-the-spreading-fire/)
         `,
         lectureUrl: '/solutionDetail?type=2&id=3001&max_id=3008',
-        issueUrl: 'https://github.com/leetcode-pp/homework/issues/2'
+        issueUrl: 'https://github.com/leetcode-pp/homework/issues/3'
       },
       {
         title: '专题篇作业二：《搜索》',
@@ -42,7 +42,15 @@ module.exports = {
         参考 最便宜的公交路线(https://binarysearch.com/problems/Cheapest-Bus-Route)
                 `,
         lectureUrl: '/solutionDetail?type=2&id=3003&max_id=3008',
-        issueUrl: 'https://github.com/leetcode-pp/homework/issues/3'
+        issueUrl: 'https://github.com/leetcode-pp/homework/issues/4'
+      },
+      {
+        title: '专题篇作业三：《分治》',
+        desc: `
+        参考 [4. 寻找两个正序数组的中位数](https://leetcode-cn.com/problems/median-of-two-sorted-arrays/)
+                `,
+        lectureUrl: '/solutionDetail?type=2&id=3006&max_id=3008',
+        issueUrl: 'https://github.com/leetcode-pp/homework/issues/5'
       }
     ],
     advanced: []
