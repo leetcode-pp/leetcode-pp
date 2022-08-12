@@ -45,7 +45,15 @@ module.exports = {
         issueUrl: 'https://github.com/leetcode-pp/homework/issues/4'
       },
       {
-        title: '专题篇作业三：《分治》',
+        title: '专题篇作业三：《动态规划》',
+        desc: `
+        参考 [1770. 执行乘法运算的最大分数](https://leetcode.cn/problems/maximum-score-from-performing-multiplication-operations/)
+                `,
+        lectureUrl: '/solutionDetail?type=2&id=3004&max_id=3008',
+        issueUrl: 'https://github.com/leetcode-pp/homework/issues/6'
+      },
+      {
+        title: '专题篇作业四：《分治》',
         desc: `
         参考 [4. 寻找两个正序数组的中位数](https://leetcode-cn.com/problems/median-of-two-sorted-arrays/)
                 `,
