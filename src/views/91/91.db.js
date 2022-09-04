@@ -61,7 +61,17 @@ module.exports = {
         issueUrl: 'https://github.com/leetcode-pp/homework/issues/5'
       }
     ],
-    advanced: []
+    //
+    advanced: [
+      {
+        title: '进阶篇作业：《堆》',
+        desc: `
+        参考 [6170. 会议室 III](https://leetcode.cn/problems/meeting-rooms-iii/)
+                `,
+        lectureUrl: '/solutionDetail?type=2&id=4005&max_id=4008',
+        issueUrl: 'https://github.com/leetcode-pp/homework/issues/7'
+      }
+    ]
   },
   basicLectures: [
     {
