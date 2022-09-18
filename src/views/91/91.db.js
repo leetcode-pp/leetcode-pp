@@ -64,6 +64,14 @@ module.exports = {
     //
     advanced: [
       {
+        title: '进阶篇作业：《Trie》',
+        desc: `
+        本节的作业是第 311 场周赛的 T4 [6183. 字符串的前缀分数和](https://leetcode.cn/problems/sum-of-prefix-scores-of-strings/)，官方难度为困难。 如果你熟悉前缀树，能想到这道题用前缀树的话就简单了。
+                `,
+        lectureUrl: '/solutionDetail?type=2&id=4005&max_id=4001',
+        issueUrl: 'https://github.com/leetcode-pp/homework/issues/9'
+      },
+      {
         title: '进阶篇作业：《堆》',
         desc: `
         参考 [6170. 会议室 III](https://leetcode.cn/problems/meeting-rooms-iii/)
