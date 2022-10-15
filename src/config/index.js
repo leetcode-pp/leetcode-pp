@@ -14,7 +14,7 @@ const hostname =
   hostnamePool[
     new Date(new Date().toLocaleString('en-US')).getDate() % hostnamePool.length
   ]
-const season = '8'
+const season = '9'
 module.exports = {
   startTime: startTime.getTime(),
   clientId: 'c16b80e7b58a5a007157',
