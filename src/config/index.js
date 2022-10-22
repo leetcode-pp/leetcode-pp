@@ -1,6 +1,6 @@
 const startTime = new Date('2022-07-15T00:00:00.000+08:00')
 const hostnamePool = [
-  'leetcode-pp-node-aaytzrwqp-91-algo.vercel.app'
+  'leetcode-pp-node-seven.vercel.app'
   // 'algo91-4.herokuapp.com',
   // 'algo-6.herokuapp.com' // cpv3kbrhw
   // 'algo-5.herokuapp.com' // fe_lucife  @ sina
