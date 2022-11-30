@@ -197,7 +197,7 @@ module.exports = {
         url:
           'https://cdn.jsdelivr.net/gh/azl397985856/cdn/2020-10-22/1603338453129-image.png'
       },
-      id: -4
+      id: -5
     },
     {
       title: '02. 如何衡量算法的性能',
@@ -206,7 +206,7 @@ module.exports = {
         url:
           'https://cdn.jsdelivr.net/gh/azl397985856/cdn/2020-10-22/1603339778900-image.png'
       },
-      id: -3
+      id: -4
     },
     {
       title: '03. 如何使用好仓库',
@@ -216,7 +216,7 @@ module.exports = {
           'https://tva1.sinaimg.cn/large/008eGmZEly1gomv0rscf4j31c00u0adk.jpg',
         alt: '仓库使用指南'
       },
-      id: -2,
+      id: -3,
       external: true,
       externalLink: 'https://www.bilibili.com/video/av627510315'
     },
@@ -228,9 +228,19 @@ module.exports = {
           'https://tva1.sinaimg.cn/large/008eGmZEly1gomv0r0f1ej30zk0k0tac.jpg',
         alt: '方法和技巧介绍'
       },
-      id: -1,
+      id: -2,
       external: true,
       externalLink: 'https://www.bilibili.com/video/av670114626'
+    },
+    {
+      title: '05. 力扣刷题的正确姿势是什么？',
+      desc: '方法+工具',
+      image: {
+        url:
+          'https://tva1.sinaimg.cn/large/008vxvgGly1h8ni9nscv4j32bq0u0dkr.jpg',
+        alt: '方法和技巧介绍'
+      },
+      id: -1
     }
   ],
   topicLectures: [
