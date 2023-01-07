@@ -6,7 +6,7 @@
 
 ## 哪里可以找到我
 
-- 微信公众号： [力扣加加](https://p.ipic.vip/n8gbxo.jpg)
+- 微信公众号： [力扣加加](https://p.ipic.vip/h9nm77.jpg)
 - bilibili： [LeetCode 加加](https://space.bilibili.com/519510412/)
 
 ## 技术栈
