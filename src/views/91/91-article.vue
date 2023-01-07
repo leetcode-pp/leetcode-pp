@@ -13,7 +13,7 @@
       天学算法》，帮助大家摆脱困境，征服算法。
     </p>
     <img
-      src="https://tva1.sinaimg.cn/large/007S8ZIlly1gf2atkdikgj30u70u0tct.jpg"
+      src="https://p.ipic.vip/befr2w.jpeg"
       width="50%"
       data-tool=""
       style="max-width: 100%; border-radius: 6px; display: block; margin: 20px auto; object-fit: contain; box-shadow: 2px 4px 7px #999;"
