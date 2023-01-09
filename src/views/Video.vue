@@ -209,8 +209,7 @@ export default {
           bvid: 'BV14V411e7MF',
           tid: 6, // 春招/秋招
           title: '搞定春招之网易篇',
-          cover:
-            'https://tva1.sinaimg.cn/large/008eGmZEly1gozkit5v53j31c00u0jzl.jpg',
+          cover: 'https://p.ipic.vip/1e7ybn.jpg',
           created: 1616907618,
           link:
             'https://mp.weixin.qq.com/s?__biz=MzI4MzUxNjI3OA==&mid=2247488066&idx=1&sn=5e2c82b324c8ca63e0071cd5405c71a8&chksm=eb88de5bdcff574da03bc95fce53f37b2795ba635496cdb2ddfcea34a8305d2401c48d89e414&token=1873896266&lang=zh_CN#rd'
@@ -220,8 +219,7 @@ export default {
           bvid: 'BV1bp4y1H7KT',
           tid: 6, // 春招/秋招
           title: '搞定春招之虾皮篇（前端岗）',
-          cover:
-            'https://tva1.sinaimg.cn/large/008eGmZEly1gomv0k4jo5j31c00u0akj.jpg',
+          cover: 'https://p.ipic.vip/he23st.jpg',
           created: 1614823665,
           link:
             'https://mp.weixin.qq.com/s?__biz=MzI4MzUxNjI3OA==&mid=2247487632&idx=1&sn=830fe267d835e5acbfc417787f85f1c1&chksm=eb88dc89dcff559f49913c0f2dec77b1d06c2ddbe2c6c299b32b3e49c2efaf8b11ac0aedce8f&token=1676518002&lang=zh_CN#rd'
@@ -231,8 +229,7 @@ export default {
           tid: 6,
           title: '搞定春招之腾讯&钉钉篇）',
           bvid: 'BV1Qy4y187Em',
-          cover:
-            'https://tva1.sinaimg.cn/large/008eGmZEly1gomv0lfjvuj31c00u0alc.jpg',
+          cover: 'https://p.ipic.vip/p3qxar.jpg',
           created: 1615889895,
           link:
             'https://mp.weixin.qq.com/s?__biz=MzI4MzUxNjI3OA==&mid=2247487829&idx=1&sn=f31b4741853c3f51317c1a980a15b05c&chksm=eb88dd4cdcff545a7a9740d9658883f0aa711df24772cb3cda3701bac3c0c4b67a83d1f005d9&token=1929867466&lang=zh_CN#rd'
@@ -242,8 +239,7 @@ export default {
           tid: 1,
           bvid: 'BV1RJ411r7jj',
           title: '【大前端模拟面试】- 2019-12-14',
-          cover:
-            'https://tva1.sinaimg.cn/large/008eGmZEly1gomv0m7nwej30sh0ht3zt.jpg',
+          cover: 'https://p.ipic.vip/c94vzl.jpg',
           created: 1576332558,
           link: 'https://lucifer.ren/fe-interview/#/mock-interview/2019-12-14'
         },
@@ -251,8 +247,7 @@ export default {
           aid: 90738781,
           tid: 1,
           title: '【大前端模拟面试】- 2020-02-20',
-          cover:
-            'https://tva1.sinaimg.cn/large/008eGmZEly1gomv0nbe1rj30sg0g0mze.jpg',
+          cover: 'https://p.ipic.vip/loczol.jpg',
           created: 1582313002,
           link: 'https://lucifer.ren/fe-interview/#/mock-interview/2020-02-20'
         },
@@ -261,8 +256,7 @@ export default {
           bvid: 'BV1RJ411d7XT',
           title: 'mac装机（前端工程师）',
           tid: 5,
-          cover:
-            'https://tva1.sinaimg.cn/large/008eGmZEly1gomv0o7yzlj31bd0u0ncz.jpg',
+          cover: 'https://p.ipic.vip/1jmdac.jpg',
           created: 1574511732,
           link: 'https://github.com/azl397985856/mac-setup'
         },
@@ -271,8 +265,7 @@ export default {
           bvid: 'BV1qV411n7Qc',
           tid: 4,
           title: 'lucifer的面试之路（一)',
-          cover:
-            'https://tva1.sinaimg.cn/large/008eGmZEly1gp6wa1ctavj31c00u0aun.jpg',
+          cover: 'https://p.ipic.vip/p0s3hc.jpg',
           created: 1617453475,
           link: 'https://lucifer.ren/blog/2021/04/03/interview-road/'
         },
@@ -281,8 +274,7 @@ export default {
           bvid: 'BV1V4411o7AP',
           tid: 4,
           title: '大前端 每日一题 - 实现一个简单的移动端debug工具',
-          cover:
-            'https://tva1.sinaimg.cn/large/008eGmZEly1gomv0p1eyuj313i0iw0wb.jpg',
+          cover: 'https://p.ipic.vip/oky0ds.jpg',
           created: 1566132353
         },
         {
@@ -291,8 +283,7 @@ export default {
           tid: 2,
           title:
             '【贪心~双指针】 881. 求生艇 (\tBoats to Save People  ) LeetCode',
-          cover:
-            'https://tva1.sinaimg.cn/large/008eGmZEly1gomv0plh6vj31hc0u00wp.jpg',
+          cover: 'https://p.ipic.vip/ega7np.jpg',
           created: 1585907937
         },
         {
@@ -300,8 +291,7 @@ export default {
           bvid: 'BV1rE411L7eH',
           tid: 2,
           title: '【树】 404. 左叶子之和 (Sum of Left Leaves) LeetCode',
-          cover:
-            'https://tva1.sinaimg.cn/large/008eGmZEly1gomv0qj6kej31cw0u0gs9.jpg',
+          cover: 'https://p.ipic.vip/ykk4nt.jpg',
           created: 1583942986
         },
 
@@ -310,8 +300,7 @@ export default {
           tid: 3,
           bvid: 'BV1pa4y1s7g2',
           title: '【力扣加加】91天学算法 - 基础篇',
-          cover:
-            'https://tva1.sinaimg.cn/large/008eGmZEly1gomv0r0f1ej30zk0k0tac.jpg',
+          cover: 'https://p.ipic.vip/g5r985.jpg',
           created: 1603901419
         },
         {
@@ -319,8 +308,7 @@ export default {
           tid: 3,
           bvid: 'BV17t4y1i71G',
           title: '【力扣加加】91算法先导篇',
-          cover:
-            'https://tva1.sinaimg.cn/large/008eGmZEly1gomv0rscf4j31c00u0adk.jpg',
+          cover: 'https://p.ipic.vip/qltqzt.jpg',
           created: 1603612539
         },
         {
@@ -328,8 +316,7 @@ export default {
           tid: 3,
           bvid: 'BV1qK4y1J7DD',
           title: '91 天学算法第三期视频会议',
-          cover:
-            'https://tva1.sinaimg.cn/large/008eGmZEly1gomv0sq1fdj30w00k0wgj.jpg',
+          cover: 'https://p.ipic.vip/9ok5nq.jpg',
           link:
             'https://mp.weixin.qq.com/s?__biz=MzI4MzUxNjI3OA==&mid=2247487620&idx=1&sn=5f2b73c5b57c6451ca1fe1bcbb036a80&chksm=eb88dc9ddcff558bf74c367b6c71055cb190cd72b60a08664e11c216183f716f689f176cf3b9&token=1676518002&lang=zh_CN#rd'
         },
@@ -338,8 +325,7 @@ export default {
           aid: 797618520,
           bvid: 'BV1fy4y1r7pX',
           title: '【力扣加加】 二分图',
-          cover:
-            'https://tva1.sinaimg.cn/large/008eGmZEly1gomv0te7nsj31bz0u0jvr.jpg',
+          cover: 'https://p.ipic.vip/maaynq.jpg',
           created: 1603612713
         },
         {
@@ -347,8 +333,7 @@ export default {
           aid: 285933298,
           bvid: 'BV11f4y127Se',
           title: '【哈希表~双指针】 141. 环形链表 142. 环形链表 II  LeetCode',
-          cover:
-            'https://tva1.sinaimg.cn/large/008eGmZEly1gomv0u8vhkj31hc0u0glp.jpg',
+          cover: 'https://p.ipic.vip/0hnnc3.jpg',
           created: 1591802077
         },
         {
@@ -356,8 +341,7 @@ export default {
           aid: 883465515,
           bvid: 'BV1UK4y1x7zj',
           title: '帮助你高效刷题的插件了解一下？',
-          cover:
-            'https://tva1.sinaimg.cn/large/008eGmZEly1gomv0v3ie1j31hc0u0q6s.jpg',
+          cover: 'https://p.ipic.vip/416v87.jpg',
           created: 1591438281,
           link: 'https://lucifer.ren/blog/2020/08/16/leetcode-cheat/'
         },
@@ -367,8 +351,7 @@ export default {
           aid: 925519225,
           title:
             '【递归，分治】 236.最近公共祖先 (Lowest Common Ancestor of a Binary Tree) LeetCode',
-          cover:
-            'https://tva1.sinaimg.cn/large/008eGmZEly1gomv0w051mj31hc0u0grh.jpg',
+          cover: 'https://p.ipic.vip/17xf0j.jpg',
           created: 1589107045
         },
         {
@@ -377,8 +360,7 @@ export default {
           bvid: 'BV1Xa4y1x7st',
           title:
             '【记忆化递归，动态规划】 44.通配符匹配（wildcard-matching） LeetCode',
-          cover:
-            'https://tva1.sinaimg.cn/large/008eGmZEly1gomv0whgsxj31hc0u00vu.jpg',
+          cover: 'https://p.ipic.vip/ci9w0o.jpg',
           created: 1587205244
         },
         {
@@ -386,8 +368,7 @@ export default {
           aid: 455316365,
           bvid: 'BV1f5411t7cF',
           title: '【栈，中心扩展】 32.最长有效括号 LeetCode',
-          cover:
-            'https://tva1.sinaimg.cn/large/008eGmZEly1gomv0xehnij31cw0u0q4b.jpg',
+          cover: 'https://p.ipic.vip/l8ycti.jpg',
           created: 1586798500
         },
         {
@@ -395,8 +376,7 @@ export default {
           aid: 840186648,
           bvid: 'BV1N54y197Xe',
           title: '【树】 1367.二叉树中的列表  LeetCode',
-          cover:
-            'https://tva1.sinaimg.cn/large/008eGmZEly1gomv0yguvdj31hc0u0jvf.jpg',
+          cover: 'https://p.ipic.vip/phrja0.jpg',
           created: 1586442654
         },
         {
@@ -404,8 +384,7 @@ export default {
           aid: 752707742,
           bvid: 'BV1Rk4y197AJ',
           title: '【二叉树的搜索】 1379. 找出克隆二叉树中的相同节点 LeetCode',
-          cover:
-            'https://tva1.sinaimg.cn/large/008eGmZEly1gomv0zhsjxj31hc0u0gq2.jpg',
+          cover: 'https://p.ipic.vip/iugorj.jpg',
           created: 1586182368
         }
       ]).then(vlist =>

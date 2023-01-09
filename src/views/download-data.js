@@ -4,8 +4,7 @@ module.exports = {
       id: 'uuid-001',
       title: '力扣刷题插件',
       image: {
-        url:
-          'https://tva1.sinaimg.cn/large/008eGmZEly1gmrz98cxflj31bp0u07k9.jpg',
+        url: 'https://p.ipic.vip/qikfdb.jpg',
         alt: '插件中的数据结构可视化功能'
       },
       viewUrl: 'https://lucifer.ren/blog/2020/08/16/leetcode-cheat/',
@@ -31,8 +30,7 @@ module.exports = {
       desc: '一共7张卡片',
       title: '全部',
       image: {
-        url:
-          'https://tva1.sinaimg.cn/large/00831rSTly1gcwzy8nuk7j30m80ci0th.jpg',
+        url: 'https://p.ipic.vip/nr4e1f.jpg',
         alt: 'two-pointer'
       },
       viewUrl: 'https://ankiweb.net/shared/info/1077931604',
@@ -44,8 +42,7 @@ module.exports = {
       desc: '双指针是一种很重要的算法技巧',
       title: '双指针',
       image: {
-        url:
-          'https://tva1.sinaimg.cn/large/00831rSTly1gcwyvtv1fnj30bm0gc75d.jpg',
+        url: 'https://p.ipic.vip/5o0rby.jpg',
         alt: 'two-pointer'
       }
     },
@@ -54,8 +51,7 @@ module.exports = {
       title: '滑动窗口',
       desc: '滑动窗口分为固定窗口和可变窗口两类。',
       image: {
-        url:
-          'https://tva1.sinaimg.cn/large/00831rSTly1gcwzluowzzj308z0d5gm4.jpg',
+        url: 'https://p.ipic.vip/bqpbua.jpg',
         alt: 'slide-window'
       }
     },
@@ -65,8 +61,7 @@ module.exports = {
       desc:
         '二分的题目有很多，其中有的很直观，有的比较隐蔽，并且考察方式也千变万化。',
       image: {
-        url:
-          'https://tva1.sinaimg.cn/large/00831rSTly1gcwzn02aa1j30q00lvad6.jpg',
+        url: 'https://p.ipic.vip/t2sdfw.jpg',
         alt: 'binary-search'
       }
     },
@@ -75,8 +70,7 @@ module.exports = {
       title: '栈',
       desc: '如何用栈的特点来简化操作， 涉及到的题目有哪些？',
       image: {
-        url:
-          'https://tva1.sinaimg.cn/large/00831rSTly1gcx1g3yja0j30lh0f0400.jpg',
+        url: 'https://p.ipic.vip/14fgzf.jpg',
         alt: 'stack'
       }
     },
@@ -85,8 +79,7 @@ module.exports = {
       title: '回溯法',
       desc: '回溯法解题的思路以及相关题目有哪些？',
       image: {
-        url:
-          'https://tva1.sinaimg.cn/large/00831rSTly1gcx1jdzmsnj30n20npadk.jpg',
+        url: 'https://p.ipic.vip/5pif3m.jpg',
         alt: 'backtrack'
       }
     },
@@ -95,8 +88,7 @@ module.exports = {
       title: '数论',
       desc: '数论解决问题的关键点是什么，相关问题有哪些？',
       image: {
-        url:
-          'https://tva1.sinaimg.cn/large/00831rSTly1gcx1hu2fc6j30vq0hc76o.jpg',
+        url: 'https://p.ipic.vip/viseme.jpg',
         alt: 'math'
       }
     },
@@ -105,8 +97,7 @@ module.exports = {
       title: '位运算',
       desc: '位运算解决问题的关键点是什么，相关问题有哪些？',
       image: {
-        url:
-          'https://tva1.sinaimg.cn/large/00831rSTly1gcx1iurc0ij308007wt91.jpg',
+        url: 'https://p.ipic.vip/2lrggu.jpg',
         alt: 'bit'
       }
     }

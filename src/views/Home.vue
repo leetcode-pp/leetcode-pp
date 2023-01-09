@@ -27,22 +27,13 @@
       <div class="banner-image-wrapper">
         <a-carousel :autoplay="true" :dots="false">
           <div>
-            <img
-              src="http://ww1.sinaimg.cn/large/0085d5ZVly1gdrfvhxmzfj318x0lcdgq.jpg"
-              alt=""
-            />
+            <img src="https://p.ipic.vip/auif0d.jpg" alt="" />
           </div>
           <div>
-            <img
-              src="http://ww1.sinaimg.cn/large/0085d5ZVgy1gdrfxn8o0kj31890irq4z.jpg"
-              alt=""
-            />
+            <img src="https://p.ipic.vip/nh694s.jpg" alt="" />
           </div>
           <div>
-            <img
-              src="http://ww1.sinaimg.cn/large/0085d5ZVgy1gdrfxyngmtj31570n8gxv.jpg"
-              alt=""
-            />
+            <img src="https://p.ipic.vip/dtgiwy.jpg" alt="" />
           </div>
         </a-carousel>
       </div>

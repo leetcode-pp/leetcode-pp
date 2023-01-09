@@ -518,7 +518,7 @@ skiplist.search(1);   // 返回 false，1 已被擦除
     >
       现在我们通过一个简单的例子来描述跳表是如何实现的。假设我们有一个有序链表如下图：
       <img
-        src="https://tva1.sinaimg.cn/large/00831rSTly1gdl834i5t2j33340ecdil.jpg"
+        src="https://p.ipic.vip/l59hy6.jpg"
         alt
         style="display: block; margin: 0 auto; width: auto; max-width: 100%;"
       />
@@ -533,7 +533,7 @@ skiplist.search(1);   // 返回 false，1 已被擦除
       >。那么如何来提高链表的查询效率呢？
       如下图所示，我们可以从原始链表中每两个元素抽出来一个元素，加上一级索引，并且一级索引指向原始链表：
       <img
-        src="https://tva1.sinaimg.cn/large/00831rSTly1gdl81x0d7vj33340rbwjx.jpg"
+        src="https://p.ipic.vip/uhabat.jpg"
         alt
         style="display: block; margin: 0 auto; width: auto; max-width: 100%;"
       />
@@ -1009,7 +1009,7 @@ skiplist.search(1);   // 返回 false，1 已被擦除
       ></span>
       是如何推导出来的，首先我们看下图：
       <img
-        src="https://tva1.sinaimg.cn/large/00831rSTly1gdl82ermgfj31rr0rs77h.jpg"
+        src="https://p.ipic.vip/ooeygs.jpg"
         alt
         style="display: block; margin: 0 auto; width: auto; max-width: 100%;"
       />
@@ -1334,7 +1334,7 @@ skiplist.search(1);   // 返回 false，1 已被擦除
       style="margin: 0; margin-top: 10px; margin-bottom: 10px;"
     >
       <img
-        src="https://tva1.sinaimg.cn/large/00831rSTly1gdl80ojj2rj31tw0u00x1.jpg"
+        src="https://p.ipic.vip/3ryof6.jpg"
         alt
         style="display: block; margin: 0 auto; width: auto; max-width: 100%;"
       />
@@ -1366,7 +1366,7 @@ skiplist.search(1);   // 返回 false，1 已被擦除
     </p>
 
     <img
-      src="https://tva1.sinaimg.cn/large/008i3skNly1gughg8kx8sj60dw0fagma02.jpg"
+      src="https://p.ipic.vip/lt4mim.jpg"
       alt
       style="display: block; margin: 0 auto; width: auto; max-width: 100%;"
     />
