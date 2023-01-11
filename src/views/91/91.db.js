@@ -52,7 +52,7 @@ module.exports = {
         代码中 k 为窗口大小，nums 为原数组。
         `,
         lectureUrl: '/solutionDetail?type=2&id=3002&max_id=3008',
-        issueUrl: 'https://github.com/leetcode-pp/homework/issues/3'
+        issueUrl: 'https://github.com/leetcode-pp/homework/issues/10'
       },
       {
         title: '专题篇：《搜索》',
@@ -88,6 +88,14 @@ module.exports = {
                 `,
         lectureUrl: '/solutionDetail?type=2&id=4005&max_id=4001',
         issueUrl: 'https://github.com/leetcode-pp/homework/issues/9'
+      },
+      {
+        title: '进阶篇作业：《并查集》',
+        desc: `
+        本节的作业是第 223 场周赛的 T3 [1722. 执行交换操作后的最小汉明距离](https://leetcode.cn/problems/minimize-hamming-distance-after-swap-operations/)，官方难度为中等。 如果你熟悉并查集，能想到这道题用并查集的话就简单了。
+                `,
+        lectureUrl: '/solutionDetail?type=2&id=4005&max_id=4002',
+        issueUrl: 'https://github.com/leetcode-pp/homework/issues/11'
       },
       {
         title: '进阶篇作业：《堆》',
