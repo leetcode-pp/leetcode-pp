@@ -86,7 +86,7 @@ module.exports = {
         desc: `
         本节的作业是第 311 场周赛的 T4 [6183. 字符串的前缀分数和](https://leetcode.cn/problems/sum-of-prefix-scores-of-strings/)，官方难度为困难。 如果你熟悉前缀树，能想到这道题用前缀树的话就简单了。
                 `,
-        lectureUrl: '/solutionDetail?type=2&id=4005&max_id=4001',
+        lectureUrl: '/solutionDetail?type=2&id=4001&max_id=4008',
         issueUrl: 'https://github.com/leetcode-pp/homework/issues/9'
       },
       {
@@ -94,7 +94,7 @@ module.exports = {
         desc: `
         本节的作业是第 223 场周赛的 T3 [1722. 执行交换操作后的最小汉明距离](https://leetcode.cn/problems/minimize-hamming-distance-after-swap-operations/)，官方难度为中等。 如果你熟悉并查集，能想到这道题用并查集的话就简单了。
                 `,
-        lectureUrl: '/solutionDetail?type=2&id=4005&max_id=4002',
+        lectureUrl: '/solutionDetail?type=2&id=4002&max_id=4002',
         issueUrl: 'https://github.com/leetcode-pp/homework/issues/11'
       },
       {
