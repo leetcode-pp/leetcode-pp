@@ -77,6 +77,38 @@ module.exports = {
                 `,
         lectureUrl: '/solutionDetail?type=2&id=3006&max_id=3008',
         issueUrl: 'https://github.com/leetcode-pp/homework/issues/5'
+      },
+      {
+        title: '专题篇作业：《贪心》',
+        desc: `
+        [621. 任务调度器](https://leetcode-cn.com/problems/task-scheduler)`,
+        lectureUrl: '/solutionDetail?type=2&id=3007&max_id=3008',
+        issueUrl: 'https://github.com/leetcode-pp/homework/issues/8',
+        answer: `
+        class Solution:
+          def leastInterval(self, tasks: List[str], n: int) -> int:
+              counter = collections.Counter(tasks)
+              max_count = max(counter.values())
+              cnt = 0
+              for k in counter:
+                  if counter[k] == max_count:
+                      cnt += 1
+
+              return max((max_count - 1) * (n + 1) + cnt, len(tasks))
+        `
+      },
+      {
+        title: '专题篇作业：《位运算》',
+        desc: `
+        如何求解一个数字 n 的 x 进制表示是多少? 比如数字 4 的二进制表示为 10，就返回字符串 "10"。`,
+        lectureUrl: '/solutionDetail?type=2&id=3008&max_id=3008',
+        issueUrl: 'https://github.com/leetcode-pp/homework/issues/8',
+        answer: `
+        s = ""
+        while n:
+            s = s + str(n % x) # 取 x 进制的最后一位
+            n = n // x # x 进制下，移动一位
+        `
       }
     ],
     //
@@ -104,19 +136,6 @@ module.exports = {
                 `,
         lectureUrl: '/solutionDetail?type=2&id=4005&max_id=4008',
         issueUrl: 'https://github.com/leetcode-pp/homework/issues/7'
-      },
-      {
-        title: '进阶篇作业：《位运算》',
-        desc: `
-        如何求解一个数字 n 的 x 进制表示是多少? 比如数字 4 的二进制表示为 10，就返回字符串 "10"。`,
-        lectureUrl: '/solutionDetail?type=2&id=4008&max_id=4008',
-        issueUrl: 'https://github.com/leetcode-pp/homework/issues/8',
-        answer: `
-        s = ""
-        while n:
-            s = s + str(n % x) # 取 x 进制的最后一位
-            n = n // x # x 进制下，移动一位
-        `
       }
     ]
   },
