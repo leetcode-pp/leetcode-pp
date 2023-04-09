@@ -416,7 +416,13 @@
                       <a-icon style="color: orange" type="issues-close" />
                     </a-tooltip>
 
-                    <a-tooltip v-else-if="getDay() === i + 1">
+                    <a-tooltip
+                      v-else-if="
+                        getDay() === i + 1 ||
+                          (getDay(meta.dailyCheck.lastUpdateTime) < getDay() &&
+                            getDay(lastFulllyUpdateTime) < getDay())
+                      "
+                    >
                       <template slot="title">
                         未打卡或者正在更新打卡状态（打卡后一般一个小时之内会更新）
                       </template>
