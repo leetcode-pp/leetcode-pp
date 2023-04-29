@@ -24,7 +24,7 @@
         >
         <a-button
           type="link"
-          href="https://lucifer.ren/blog/2021/05/02/91algo-4/"
+          href="https://github.com/azl397985856/leetcode/discussions/532"
           >活动介绍及报名方式</a-button
         >
       </div>
