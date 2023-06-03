@@ -1,6 +1,12 @@
 .DS_Store
 node_modules
 /dist
+/js
+/css
+/img
+404.html
+index.html
+favicon.ico
 
 # local env files
 .env.local
