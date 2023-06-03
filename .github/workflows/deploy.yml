@@ -24,6 +24,11 @@ jobs:
         with:
           persist-credentials: false
 
+      - name: Install NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.9.0'
+          cache: 'yarn'
       # Runs a single command using the runners shell
       - name: Install and Build
         run: |
