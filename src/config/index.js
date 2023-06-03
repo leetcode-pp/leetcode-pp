@@ -1,4 +1,4 @@
-const startTime = new Date('2023-02-14T00:00:00.000+08:00')
+const startTime = new Date('2023-06-10T00:00:00.000+08:00')
 const hostnamePool = [
   'leetcode-pp-node-seven.vercel.app'
   // 'leetcode-pp-node-91-algo.vercel.app'
@@ -16,7 +16,7 @@ const hostname =
   hostnamePool[
     new Date(new Date().toLocaleString('en-US')).getDate() % hostnamePool.length
   ]
-const season = '10'
+const season = '11'
 module.exports = {
   startTime: startTime.getTime(),
   clientId: 'c16b80e7b58a5a007157',
