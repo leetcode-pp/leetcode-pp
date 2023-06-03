@@ -48,6 +48,10 @@
     </div>
     以下为常见问题及答案：<br />
 
+    Q: 如何使用 chatgpt 翻译和讲解代码?<br />
+    A: 这个科学工具自带了 chatgpt backup solution， 里面有 token
+    可以直接用。https://github.com/fe-lucifer/fanqiang <br /><br />
+
     Q：一直转圈圈，提示 Network Error 或者 timeout of xxxx 是怎么回事？<br />
     A：1. 确保已经科学上网，如果没有，可以看下这个
     https://github.com/fe-lucifer/fanqiang 2.
