@@ -459,6 +459,20 @@
                 }}/3)
               </ol> -->
 
+              <ol>
+                <div v-for="homework in homeworks.pre" :key="homework.title">
+                  <a-button type="link" :href="homework.lectureUrl">
+                    {{ homework.title }}</a-button
+                  >
+                  <div>
+                    {{ homework.desc }}
+                  </div>
+                  <a-button type="link" :href="homework.issueUrl">
+                    讨论
+                  </a-button>
+                </div>
+              </ol>
+
               <ol
                 v-if="
                   new Date().getTime() > new Date(timeRange.basic[0]).getTime()

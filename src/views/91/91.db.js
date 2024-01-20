@@ -5,6 +5,31 @@ module.exports = {
     advanced: ['2024/1/27', '2024/2/14']
   },
   homeworks: {
+    pre: [
+      {
+        title: '预习篇作业一：《如何衡量算法的性能》',
+        desc: `
+        给定代码，分析时间复杂度是学习算法最核心的技能之一，务必掌握。
+
+        请分析下面代码的时间空间复杂度，并解释原因。
+
+        下面的代码打印了所有从 0 到 n 的斐波那契数列。时间复杂度是多少？
+        void allFib(int n) {
+          for (int i = 0; i < n; i++) {
+            System.out.println(i + ": " + fib(i));
+          }
+        }
+        
+        int fib(int n) {
+          if (n <= 0) return 0;
+          else if (n == 1) return 1;
+            return fib(n - 1) + fib(n - 2);
+        }
+        `,
+        lectureUrl: '/solutionDetail?type=2&id=1002&max_id=1005',
+        issueUrl: 'https://github.com/leetcode-pp/homework/issues/12'
+      }
+    ],
     basic: [
       {
         title: '基础篇作业一：《图论》',
@@ -16,7 +41,7 @@ module.exports = {
         issueUrl: 'https://github.com/leetcode-pp/homework/issues/2'
       },
       {
-        title: '基础篇作业二：《模拟，枚举与递推》',
+        title: '基础篇作业 2.1：《模拟，枚举与递推》',
         desc: `
          求 1 到 n 中所有整数 x 的 f(x) ，并以数组返回。其中
                   f(x) 指的是 x 的 2 的因子个数。 比如 f(6) = 1 ，因为 6 = 2 *
@@ -25,6 +50,19 @@ module.exports = {
         `,
         lectureUrl: '/solutionDetail?type=2&id=2007&max_id=2008',
         issueUrl: 'https://github.com/leetcode-pp/homework/issues/1'
+      },
+      {
+        title: '基础篇作业 2.2 ：《模拟，枚举与递推》',
+        desc: `
+编写一种方法，将字符串中的空格全部替换为 %20。假定该字符串尾部有足够
+的空间存放新增字符，并且知道字符串的“真实”长度。
+
+示例：
+输入："Mr John Smith ", 13
+输出："Mr%20John%20Smith"
+        `,
+        lectureUrl: '/solutionDetail?type=2&id=2007&max_id=2008',
+        issueUrl: 'https://github.com/leetcode-pp/homework/issues/13'
       }
     ],
     topic: [
